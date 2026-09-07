@@ -1,0 +1,121 @@
+name: PR-preview-build
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+concurrency:
+  group: preview-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # JOB 1: Build the HTML
+  select-dc-files:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    outputs:
+      build-list: ${{ steps.select-dc-build.outputs.dc-list }}
+      allow-build: ${{ steps.select-dc-build.outputs.allow-build }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Checking basic soundness of DC files
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: soundness
+
+      - name: Selecting DC files to build
+        id: select-dc-build
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: list-build
+          original-org: SUSE
+
+  build-html:
+    if: github.event.action != 'closed' && needs.select-dc-files.outputs.allow-build == 'true'
+    runs-on: ubuntu-latest
+    needs: select-dc-files
+    strategy:
+      matrix:
+        dc-files: ${{ fromJson(needs.select-dc-files.outputs.build-list) }}
+    steps:
+      - uses: actions/checkout@v7
+      
+      - name: Building HTML for PR
+        id: build-dc
+        uses: openSUSE/doc-ci@gha-build
+        with:
+          dc-files: ${{ matrix.dc-files }}
+          
+      - name: Upload PR Preview as Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.build-dc.outputs.artifact-name }}
+          path: ${{ steps.build-dc.outputs.artifact-dir }}/*
+          retention-days: 1
+
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    needs: build-html
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Download all HTML builds
+        uses: actions/download-artifact@v8
+        with:
+          path: preview-dir
+          pattern: builds-*
+          merge-multiple: true
+
+      - name: Deploy HTML to gh-pages branch
+        run: |
+          # Configure the actions bot 
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          
+          mkdir -p pr-${{ github.event.number }}
+          rm -rf pr-${{ github.event.number }}/*  # Clear out old files if updating the PR
+          cp -r preview-dir/* pr-${{ github.event.number }}/
+          
+          git add pr-${{ github.event.number }}
+          if ! git diff --cached --quiet; then
+            git commit -m "Deploy preview for PR #${{ github.event.number }}"
+            git push origin gh-pages
+          fi
+
+      - name: Comment on PR
+        env:
+          # This securely passes the default GitHub token to the CLI tool
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Try to edit the last comment first. If that fails (meaning it doesn't exist yet), create a new one.
+          MESSAGE="🚀 Live Preview built! You can review the preview for this PR here: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.number }}/"
+          
+          gh pr comment ${{ github.event.number }} --edit-last --body "$MESSAGE" || \
+          gh pr comment ${{ github.event.number }} --body "$MESSAGE"        
+
+  clean-up:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Delete old preview files
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          rm -rf pr-${{ github.event.number }}
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "Clean preview for pr-${{ github.event.number }}"
+            git push
+          fi
