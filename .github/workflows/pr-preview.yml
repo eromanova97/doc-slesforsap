@@ -5,8 +5,7 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 permissions:
-  pull-requests: write
-  contents: write
+  contents: read
 
 concurrency:
   group: preview-pages-${{ github.ref }}
@@ -33,7 +32,7 @@ jobs:
         uses: openSUSE/doc-ci@gha-select-dcs
         with:
           mode: list-build
-          original-org: SUSE
+          original-org: ${{ github.repository_owner }}
 
   build-html:
     if: github.event.action != 'closed' && needs.select-dc-files.outputs.allow-build == 'true'
@@ -62,6 +61,12 @@ jobs:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     needs: build-html
+    permissions:
+      contents: write
+      pull-requests: write
+    concurrency:
+      group: write-gh-pages
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
         with:
@@ -76,14 +81,21 @@ jobs:
 
       - name: Deploy HTML to gh-pages branch
         run: |
-          # Configure the actions bot 
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           
           mkdir -p pr-${{ github.event.number }}
-          rm -rf pr-${{ github.event.number }}/*  # Clear out old files if updating the PR
+          rm -rf pr-${{ github.event.number }}/*
           cp -r preview-dir/* pr-${{ github.event.number }}/
           
+          cd pr-${{ github.event.number }}
+          echo "<html><body><h2>Preview for PR #${{ github.event.number }}</h2><ul>" > index.html
+          find html single-html -mindepth 1 -maxdepth 1 -type d 2>/dev/null | while read dir; do
+            echo "<li><a href=\"$dir/\">$dir</a></li>" >> index.html
+          done
+          echo "</ul></body></html>" >> index.html
+          cd ..
+
           git add pr-${{ github.event.number }}
           if ! git diff --cached --quiet; then
             git commit -m "Deploy preview for PR #${{ github.event.number }}"
@@ -104,6 +116,11 @@ jobs:
   clean-up:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: write-gh-pages
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
         with:
