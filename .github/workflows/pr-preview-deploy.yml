@@ -1,0 +1,213 @@
+name: PR-preview-deploy
+
+# Publishes the artifacts built by pr-preview.yml to the gh-pages branch and removes them again when the pull request is closed.
+
+on:
+  workflow_run:
+    workflows: ["PR-preview-build"]
+    types: [completed]
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-preview:
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # push to gh-pages
+      pull-requests: write  # leave the preview comment
+      actions: read         # download artifacts from the build run
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Downloading the PR number
+        uses: actions/download-artifact@v8
+        with:
+          name: pr-number
+          path: pr-meta
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verifying the PR number
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          claimed="$(tr -cd '0-9' < pr-meta/pr-number)"
+          [ -n "$claimed" ] || { echo "::error::pr-number artifact is empty"; exit 1; }
+
+          if ! pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$claimed" \
+                       --jq '[.head.sha, .state] | @tsv')"; then
+            echo "::error::No pull request #$claimed in $GITHUB_REPOSITORY"
+            exit 1
+          fi
+          IFS=$'\t' read -r sha state <<< "$pr"
+
+          if [ "$sha" != "$HEAD_SHA" ]; then
+            echo "PR #$claimed is at $sha but this run built $HEAD_SHA; skipping."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "$state" != "open" ]; then
+            echo "PR #$claimed is $state; skipping deploy."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "number=$claimed" >> "$GITHUB_OUTPUT"
+          echo "deploy=true" >> "$GITHUB_OUTPUT"
+
+      - name: Downloading all HTML builds
+        if: steps.pr.outputs.deploy == 'true'
+        uses: actions/download-artifact@v8
+        with:
+          path: preview-dir
+          pattern: builds-*
+          merge-multiple: true
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploying HTML to the gh-pages branch
+        if: steps.pr.outputs.deploy == 'true'
+        env:
+          PR: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          push_with_retry() {
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              if git push origin gh-pages; then
+                return 0
+              fi
+              echo "Push rejected (attempt $attempt); rebasing onto the current tip..."
+              sleep $(( RANDOM % 5 + 1 ))
+              git fetch origin gh-pages
+              if ! git rebase origin/gh-pages; then
+                git rebase --abort || true
+                echo "::error::Rebase onto gh-pages conflicted"
+                return 1
+              fi
+            done
+            echo "::error::Could not push to gh-pages after 5 attempts"
+            return 1
+          }
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          rm -rf "pr-$PR"
+          mkdir -p "pr-$PR"
+          cp -r preview-dir/. "pr-$PR/"
+
+          docs="$(find "pr-$PR/html" "pr-$PR/single-html" \
+                    -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
+                  | sort -u || true)"
+          {
+            echo '<!DOCTYPE html>'
+            echo '<html lang="en"><head><meta charset="utf-8">'
+            echo "<title>Preview for PR #${PR}</title>"
+            echo '</head><body>'
+            echo "<h1>Documentation preview for PR #${PR}</h1>"
+            echo "<p>Built from commit <code>${HEAD_SHA}</code>.</p>"
+            if [ -z "$docs" ]; then
+              echo '<p>No documents were built for this pull request.</p>'
+            else
+              echo '<ul>'
+              while IFS= read -r doc; do
+                line="<li><strong>${doc}</strong>:"
+                [ -d "pr-$PR/html/$doc" ] && line="$line <a href=\"html/${doc}/\">HTML</a>"
+                [ -d "pr-$PR/single-html/$doc" ] && line="$line <a href=\"single-html/${doc}/\">single HTML</a>"
+                echo "$line</li>"
+              done <<< "$docs"
+              echo '</ul>'
+            fi
+            echo '</body></html>'
+          } > "pr-$PR/index.html"
+
+          git add -A "pr-$PR"
+          if git diff --cached --quiet; then
+            echo "Preview is already up to date."
+            exit 0
+          fi
+          git commit -m "Deploy preview for PR #$PR"
+          push_with_retry
+
+      - name: Commenting on the pull request
+        if: steps.pr.outputs.deploy == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          owner="$(printf '%s' "${GITHUB_REPOSITORY%%/*}" | tr '[:upper:]' '[:lower:]')"
+          repo="${GITHUB_REPOSITORY#*/}"
+          url="https://${owner}.github.io/${repo}/pr-${PR}/"
+
+          body="$(printf '%s\n\n%s' \
+            "🚀 **Documentation preview** for this pull request is ready: $url" \
+            "<sub>Built from \`$HEAD_SHA\`. The preview is updated on every push and removed when this pull request is closed.</sub>")"
+
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --body "$body" \
+            || gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$body"
+
+  clean-up:
+    if: github.event_name == 'pull_request_target' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Removing the preview
+        env:
+          PR: ${{ github.event.number }}
+        run: |
+          set -euo pipefail
+
+          push_with_retry() {
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              if git push origin gh-pages; then
+                return 0
+              fi
+              echo "Push rejected (attempt $attempt); rebasing onto the current tip..."
+              sleep $(( RANDOM % 5 + 1 ))
+              git fetch origin gh-pages
+              if ! git rebase origin/gh-pages; then
+                git rebase --abort || true
+                echo "::error::Rebase onto gh-pages conflicted"
+                return 1
+              fi
+            done
+            echo "::error::Could not push to gh-pages after 5 attempts"
+            return 1
+          }
+
+          if [ ! -d "pr-$PR" ]; then
+            echo "No preview to remove for PR #$PR."
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git rm -r --quiet "pr-$PR"
+          git commit -m "Remove preview for PR #$PR"
+          push_with_retry

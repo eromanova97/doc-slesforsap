@@ -1,0 +1,80 @@
+name: PR-preview-build
+
+# Builds HTML for every document affected by a pull request and uploads it as  an artifact. Deployment happens in pr-preview-deploy.yml.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'DC-*'
+      - 'xml/**'
+      - 'adoc/**'
+      - 'images/src/**'
+      - '**/DC-*'
+      - '**/xml/**'
+      - '**/adoc/**'
+      - '**/images/src/**'
+      - '.github/workflows/pr-preview*.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  select-dc-files:
+    runs-on: ubuntu-latest
+    outputs:
+      build-list: ${{ steps.select-dc-build.outputs.dc-list }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Checking basic soundness of DC files
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: soundness
+
+      - name: Selecting DC files to build
+        id: select-dc-build
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: list-validate
+
+      - name: Recording the PR number for the deploy workflow
+        env:
+          PR: ${{ github.event.number }}
+        run: echo "$PR" > pr-number
+
+      - name: Uploading the PR number
+        uses: actions/upload-artifact@v7
+        with:
+          name: pr-number
+          path: pr-number
+          retention-days: 1
+
+  build-html:
+    runs-on: ubuntu-latest
+    needs: select-dc-files
+    strategy:
+      fail-fast: false
+      matrix:
+        dc-files: ${{ fromJson(needs.select-dc-files.outputs.build-list) }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Building DC files - ${{ matrix.dc-files }}
+        id: build-dc
+        uses: openSUSE/doc-ci@gha-build
+        with:
+          dc-files: ${{ matrix.dc-files }}
+          format-html: true
+          format-single-html: true
+
+      - name: Uploading builds as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.build-dc.outputs.artifact-name }}
+          path: ${{ steps.build-dc.outputs.artifact-dir }}/*
+          retention-days: 1
