@@ -36,15 +36,41 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Reading the PR number
+      - name: Verifying the PR number
         id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         run: |
           set -euo pipefail
-          number="$(tr -cd '0-9' < pr-meta/pr-number)"
-          [ -n "$number" ] || { echo "::error::pr-number artifact is empty"; exit 1; }
-          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+          claimed="$(tr -cd '0-9' < pr-meta/pr-number)"
+          [ -n "$claimed" ] || { echo "::error::pr-number artifact is empty"; exit 1; }
+
+          if ! pr="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$claimed" \
+                       --jq '[.head.sha, .state] | @tsv')"; then
+            echo "::error::No pull request #$claimed in $GITHUB_REPOSITORY"
+            exit 1
+          fi
+          IFS=$'\t' read -r sha state <<< "$pr"
+
+          if [ "$sha" != "$HEAD_SHA" ]; then
+            echo "PR #$claimed is at $sha but this run built $HEAD_SHA; skipping."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "$state" != "open" ]; then
+            echo "PR #$claimed is $state; skipping deploy."
+            echo "deploy=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "number=$claimed" >> "$GITHUB_OUTPUT"
+          echo "deploy=true" >> "$GITHUB_OUTPUT"
 
       - name: Downloading all HTML builds
+        if: steps.pr.outputs.deploy == 'true'
         uses: actions/download-artifact@v8
         with:
           path: preview-dir
@@ -54,6 +80,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploying HTML to the gh-pages branch
+        if: steps.pr.outputs.deploy == 'true'
         env:
           PR: ${{ steps.pr.outputs.number }}
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
@@ -108,6 +135,7 @@ jobs:
           exit 1
 
       - name: Commenting on the pull request
+        if: steps.pr.outputs.deploy == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ steps.pr.outputs.number }}
