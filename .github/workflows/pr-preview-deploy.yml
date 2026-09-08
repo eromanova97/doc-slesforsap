@@ -1,0 +1,165 @@
+name: PR-preview-deploy
+
+# Publishes the artifacts built by pr-preview.yml to the gh-pages branch and removes them again when the pull request is closed.
+
+on:
+  workflow_run:
+    workflows: ["PR-preview-build"]
+    types: [completed]
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-preview:
+    if: github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # push to gh-pages
+      pull-requests: write  # leave the preview comment
+      actions: read         # download artifacts from the build run
+    concurrency:
+      group: write-gh-pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Downloading the PR number
+        uses: actions/download-artifact@v8
+        with:
+          name: pr-number
+          path: pr-meta
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Reading the PR number
+        id: pr
+        run: |
+          set -euo pipefail
+          number="$(tr -cd '0-9' < pr-meta/pr-number)"
+          [ -n "$number" ] || { echo "::error::pr-number artifact is empty"; exit 1; }
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+
+      - name: Downloading all HTML builds
+        uses: actions/download-artifact@v8
+        with:
+          path: preview-dir
+          pattern: builds-*
+          merge-multiple: true
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploying HTML to the gh-pages branch
+        env:
+          PR: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          rm -rf "pr-$PR"
+          mkdir -p "pr-$PR"
+          cp -r preview-dir/. "pr-$PR/"
+
+          docs="$(find "pr-$PR/html" "pr-$PR/single-html" \
+                    -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null \
+                  | sort -u || true)"
+          {
+            echo '<!DOCTYPE html>'
+            echo '<html lang="en"><head><meta charset="utf-8">'
+            echo "<title>Preview for PR #${PR}</title>"
+            echo '</head><body>'
+            echo "<h1>Documentation preview for PR #${PR}</h1>"
+            echo "<p>Built from commit <code>${HEAD_SHA}</code>.</p>"
+            if [ -z "$docs" ]; then
+              echo '<p>No documents were built for this pull request.</p>'
+            else
+              echo '<ul>'
+              while IFS= read -r doc; do
+                line="<li><strong>${doc}</strong>:"
+                [ -d "pr-$PR/html/$doc" ] && line="$line <a href=\"html/${doc}/\">HTML</a>"
+                [ -d "pr-$PR/single-html/$doc" ] && line="$line <a href=\"single-html/${doc}/\">single HTML</a>"
+                echo "$line</li>"
+              done <<< "$docs"
+              echo '</ul>'
+            fi
+            echo '</body></html>'
+          } > "pr-$PR/index.html"
+
+          git add -A "pr-$PR"
+          if git diff --cached --quiet; then
+            echo "Preview is already up to date."
+            exit 0
+          fi
+          git commit -m "Deploy preview for PR #$PR"
+
+          for attempt in 1 2 3; do
+            git push origin gh-pages && exit 0
+            echo "Push rejected, rebasing (attempt $attempt)..."
+            git pull --rebase origin gh-pages
+          done
+          echo "::error::Could not push to gh-pages after 3 attempts"
+          exit 1
+
+      - name: Commenting on the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+
+          owner="$(printf '%s' "${GITHUB_REPOSITORY%%/*}" | tr '[:upper:]' '[:lower:]')"
+          repo="${GITHUB_REPOSITORY#*/}"
+          url="https://${owner}.github.io/${repo}/pr-${PR}/"
+
+          body="$(printf '%s\n\n%s' \
+            "🚀 **Documentation preview** for this pull request is ready: $url" \
+            "<sub>Built from \`$HEAD_SHA\`. The preview is updated on every push and removed when this pull request is closed.</sub>")"
+
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --body "$body" \
+            || gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$body"
+
+  clean-up:
+    if: github.event_name == 'pull_request_target' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: write-gh-pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages
+
+      - name: Removing the preview
+        env:
+          PR: ${{ github.event.number }}
+        run: |
+          set -euo pipefail
+
+          if [ ! -d "pr-$PR" ]; then
+            echo "No preview to remove for PR #$PR."
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git rm -r --quiet "pr-$PR"
+          git commit -m "Remove preview for PR #$PR"
+
+          for attempt in 1 2 3; do
+            git push origin gh-pages && exit 0
+            echo "Push rejected, rebasing (attempt $attempt)..."
+            git pull --rebase origin gh-pages
+          done
+          echo "::error::Could not push to gh-pages after 3 attempts"
+          exit 1
