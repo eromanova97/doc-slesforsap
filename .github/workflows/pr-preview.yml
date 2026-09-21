@@ -1,0 +1,229 @@
+name: PR-preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    paths:
+      - 'DC-*'
+      - 'xml/**'
+      - 'adoc/**'
+      - 'images/src/**'
+      - '**/DC-*'
+      - '**/xml/**'
+      - '**/adoc/**'
+      - '**/images/src/**'
+      - '.github/workflows/pr-preview*.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  select-dc-files:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    outputs:
+      build-list: ${{ steps.filter-dc.outputs.dc-list }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Checking basic soundness of DC files
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: soundness
+
+      - name: Selecting DC files to build
+        id: select-dc-build
+        uses: openSUSE/doc-ci@gha-select-dcs
+        with:
+          mode: list-validate
+
+      - name: Filter out localized (l10n) files
+        id: filter-dc
+        env:
+          RAW_LIST: ${{ steps.select-dc-build.outputs.dc-list }}
+        run: |
+          
+          FILTERED_LIST=$(printf '%s' "$RAW_LIST" | jq -c 'map(select((startswith("l10n/") or contains("/l10n/")) | not))')
+          
+          echo "Original list: $RAW_LIST"
+          echo "Filtered list: $FILTERED_LIST"
+          echo "dc-list=$FILTERED_LIST" >> "$GITHUB_OUTPUT"
+
+  build-html:
+    if: github.event.action != 'closed' && needs.select-dc-files.outputs.build-list != '[]'
+    runs-on: ubuntu-latest
+    needs: select-dc-files
+    strategy:
+      fail-fast: false
+      matrix:
+        dc-files: ${{ fromJson(needs.select-dc-files.outputs.build-list) }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Building DC files - ${{ matrix.dc-files }}
+        id: build-dc
+        uses: openSUSE/doc-ci@gha-build
+        with:
+          dc-files: ${{ matrix.dc-files }}
+          format-html: true
+          format-single-html: true
+
+      - name: Uploading builds as artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ steps.build-dc.outputs.artifact-name }}
+          path: ${{ steps.build-dc.outputs.artifact-dir }}/*
+          retention-days: 1
+
+  deploy-preview:
+    if: github.event.action != 'closed' && needs.select-dc-files.outputs.build-list != '[]' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    needs: build-html
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages 
+          fetch-depth: 0
+
+      - name: Downloading all HTML builds
+        uses: actions/download-artifact@v7
+        with:
+          path: preview-dir
+          pattern: builds-*
+          merge-multiple: true
+
+      - name: Deploying HTML to the gh-pages branch
+        env:
+          PR: ${{ github.event.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          push_with_retry() {
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              if git push origin gh-pages; then
+                return 0
+              fi
+              echo "Push rejected (attempt $attempt); rebasing onto the current tip..."
+              sleep $(( RANDOM % 5 + 1 ))
+              git fetch origin gh-pages
+              if ! git rebase origin/gh-pages; then
+                git rebase --abort || true
+                echo "::error::Rebase onto gh-pages conflicted"
+                return 1
+              fi
+            done
+            echo "::error::Could not push to gh-pages after 5 attempts"
+            return 1
+          }
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          rm -rf "pr-$PR"
+          mkdir -p "pr-$PR"
+          cp -r preview-dir/. "pr-$PR/"
+
+          docs="$(find "pr-$PR/html" "pr-$PR/single-html" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | sort -u || true)"
+          {
+            echo '<!DOCTYPE html>'
+            echo '<html lang="en"><head><meta charset="utf-8">'
+            echo "<title>Preview for PR #${PR}</title>"
+            echo '</head><body>'
+            echo "<h1>Documentation preview for PR #${PR}</h1>"
+            echo "<p>Built from commit <code>${HEAD_SHA}</code>.</p>"
+            if [ -z "$docs" ]; then
+              echo '<p>No documents were built for this pull request.</p>'
+            else
+              echo '<ul>'
+              while IFS= read -r doc; do
+                line="<li><strong>${doc}</strong>:"
+                [ -d "pr-$PR/html/$doc" ] && line="$line <a href=\"html/${doc}/\">HTML</a>"
+                [ -d "pr-$PR/single-html/$doc" ] && line="$line <a href=\"single-html/${doc}/\">single HTML</a>"
+                echo "$line</li>"
+              done <<< "$docs"
+              echo '</ul>'
+            fi
+            echo '</body></html>'
+          } > "pr-$PR/index.html"
+
+          git add -A "pr-$PR"
+          if git diff --cached --quiet; then
+            echo "Preview is already up to date."
+            exit 0
+          fi
+          git commit -m "Deploy preview for PR #$PR"
+          push_with_retry
+
+      - name: Commenting on the pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          owner="$(printf '%s' "${GITHUB_REPOSITORY%%/*}" | tr '[:upper:]' '[:lower:]')"
+          repo="${GITHUB_REPOSITORY#*/}"
+          url="https://${owner}.github.io/${repo}/pr-${PR}/"
+          
+          body="$(printf '%s\n\n%s' \
+            "🚀 **Documentation preview** for this pull request is ready: $url" \
+            "<sub>Built from \`$HEAD_SHA\`. The preview is updated on every push and removed when this pull request is closed.</sub>")"
+
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --body "$body" || \
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$body"
+
+  clean-up:
+    if: github.event.action == 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: gh-pages 
+          fetch-depth: 0
+
+      - name: Removing the preview
+        env:
+          PR: ${{ github.event.number }}
+        run: |
+          set -euo pipefail
+
+          push_with_retry() {
+            local attempt
+            for attempt in 1 2 3 4 5; do
+              if git push origin gh-pages; then
+                return 0
+              fi
+              echo "Push rejected (attempt $attempt); rebasing onto the current tip..."
+              sleep $(( RANDOM % 5 + 1 ))
+              git fetch origin gh-pages
+              if ! git rebase origin/gh-pages; then
+                git rebase --abort || true
+                echo "::error::Rebase onto gh-pages conflicted"
+                return 1
+              fi
+            done
+            echo "::error::Could not push to gh-pages after 5 attempts"
+            return 1
+          }
+
+          if [ ! -d "pr-$PR" ]; then
+            echo "No preview to remove for PR #$PR."
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git rm -r --quiet "pr-$PR"
+          git commit -m "Remove preview for PR #$PR"
+          push_with_retry
