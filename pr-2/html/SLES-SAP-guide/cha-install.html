@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2026-07-09T00:00+02:00",
     "dateModified": "2026-07-09T00:00+02:00",
-    "datePublished": "2026-09-21T11:27+02:00",
+    "datePublished": "2026-09-21T11:39+02:00",
     "about": [
 
     ],
@@ -149,173 +149,246 @@
      settings anyway, click <span class="guimenu">Network Configuration</span>.
     </p><p>
      When you are finished configuring networking, proceed with
-     <span class="guimenu" 15 SP7</span>を選択します。
-    </p></li><li class="step"><p>
-     使用許諾契約に目を通してください。同意する場合は、<span class="guimenu">ライセンス条件に同意します</span>を選択します。<span class="guimenu">次へ</span>で続行します。
-    </p><p>
-     同意しない場合は、<span class="guimenu">中止</span> › <span class="guimenu">インストールを中止</span>でインストールをキャンセルします。
-    </p></li><li class="step"><p><span class="step-optional">(オプション)</span> 
-     DHCPを介した自動ネットワーク設定が失敗すると、<span class="guimenu">ネットワーク設定</span>画面が開きます。
-    </p><p>
-     ただし、代わりに<span class="guimenu">登録</span>画面が表示された場合、ネットワーク接続が機能していることを示します。ネットワーク設定を変更するには、<span class="guimenu">ネットワーク設定</span>をクリックします。
-    </p><p>
-     ネットワークを設定し終えたら、<span class="guimenu">次へ</span>で続行します。
-    </p><div id="id-1.6.4.7.7.4" data-id-title="SAPで推奨するようにネットワークを設定する" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: SAPで推奨するようにネットワークを設定する</div><p>
-      SAPで提供されているドキュメントどおりに、ネットワーク接続を設定してください。
+     <span class="guimenu">Next</span>.
+    </p><div id="id-1.6.4.7.7.4" data-id-title="Configure networking as recommended by SAP" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Configure networking as recommended by SAP</div><p>
+      Make sure to configure the network connection as recommended in the
+      documentation provided to you by SAP.
      </p></div><p>
-     ネットワーキングの設定については、<em class="citetitle">
-      Administration Guide, Chapter <span class="quote">「<span class="quote">Basic Networking</span>」</span>,
-      Section <span class="quote">「<span class="quote">Configuring a Network Connection with YaST</span>」</span>
-     </em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+     For information about configuring networking, see <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-network.html#sec-network-yast" target="_blank">Configuring a network connection with YaST</a>.
     </p></li><li class="step"><p>
-     <span class="guimenu">登録</span>画面で、<span class="guimenu">電子メールアドレス</span>と<span class="guimenu">登録コード</span>を入力します。登録成功は、製品の更新を受け取り、テクニカルサポートを受ける資格を得るための前提条件です。
+     On the screen <span class="guimenu">Registration</span>, enter your
+     <span class="guimenu">E-mail Address</span> and <span class="guimenu">Registration Code</span>.
+     Successful registration is a prerequisite for receiving product updates and
+     the entitlement to technical support.
     </p><p>
-     <span class="guimenu">次へ</span>で続行します。
-    </p><div id="id-1.6.4.7.8.3" data-id-title="このステップで登録" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: このステップで登録</div><p>
-      インストールのこのステップでシステムを必ず登録してください。登録をしないと、最小限のSLEシステムしかインストールできず、更新を受け取ることができなくなります。
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div id="id-1.6.4.7.8.3" data-id-title="Register at this step" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Register at this step</div><p>
+      Make sure to register your system at this step in the installation.
+      Otherwise, you can only install a minimal SLE system and will not
+      receive updates.
      </p><p>
-      インストール中にネットワークにアクセスせずに完全な(ただしアップデートされていない) SLES for SAPシステムをインストールするには、<a class="link" href="https://download.suse.com" target="_blank">https://download.suse.com</a>からのSLE 15 SP7パッケージISOイメージを使用してください。次にこのページで<span class="guimenu">登録を行なわずに次へ進む</span>を選択し、次のページでアドオン製品としてSLE 15 SP7パッケージISOイメージを選択できます。
+      To install a full (but not updated) SLES for SAP system without network
+      access during the installation, use the SLE 15 SP7 Full Media 1
+      ISO image from <a class="link" href="https://download.suse.com" target="_blank">https://download.suse.com</a>. You can
+      then choose <span class="guimenu">Skip Registration</span> on this page and register at a later date.
      </p></div></li><li class="step"><p>
-     更新リポジトリを有効にするかどうか尋ねられたら、<span class="guimenu">はい</span>を選択します。
+     When asked whether to enable update repositories, choose
+     <span class="guimenu">Yes</span>.
     </p></li><li class="step"><p>
-     システムが正常に登録されたら、YaSTでSUSE Customer CenterからSUSE Linux Enterprise Server for SAP applicationsで使用可能なモジュールが一覧表示されます。デフォルトでは、最も一般的なケースが選択されています。追加のモジュールを有効にするには、そのエントリを有効にします。
-    </p><div id="id-1.6.4.7.10.2" data-id-title="リリースノート" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: リリースノート</div><p>
-      これ以降の手順では、<span class="guimenu">リリースノート</span>を選択することで、インストールプロセスのどの画面からでもリリースノートを参照できます。
+     After the system is successfully registered, YaST lists available
+     modules for SUSE Linux Enterprise Server for SAP applications from the SUSE Customer Center. The default selection
+     covers the most common cases. To enable an additional module,
+     activate its entry.
+    </p><div id="id-1.6.4.7.10.2" data-id-title="Release notes" class="admonition note normal"><img class="symbol" alt="Note" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">Note: Release notes</div><p>
+      From this point on, the release notes can be viewed from any screen during
+      the installation process by selecting <span class="guimenu">Release Notes</span>.
      </p></div><p>
-     <span class="guimenu">次へ</span>で続行します。
-    </p></li><li class="step"><p><span class="step-optional">(オプション)</span> <span class="guimenu">アドオン製品</span>ダイアログを使用して、SUSE Customer Centerで提供されていない他のソフトウェアソース(<span class="quote">「<span class="quote">リポジトリ</span>」</span>)をSUSE Linux Enterprise Server for SAP applicationsに追加できます。このようなアドオン製品には、ご使用のシステム用のサードパーティの製品や、ドライバまたは追加ソフトウェアなどがあります。
+     Proceed with <span class="guimenu">Next</span>.
+    </p></li><li class="step"><p><span class="step-optional">(Optional)</span> The <span class="guimenu">Add On Product</span> dialog allows you
+     to add additional software sources (so-called
+     <span class="quote">“<span class="quote">repositories</span>”</span>) to SUSE Linux Enterprise Server for SAP applications that are not provided
+     by the SUSE Customer Center. Such add-on products may include third-party products,
+     drivers or additional software for your system.
     </p></li><li class="step"><p>
-     <span class="guimenu">システムの役割</span>を選択します。システムの役割は、選択したシナリオに合わせてシステムを調整する事前定義済みの使用例です。SUSE Linux Enterprise Server for SAP applicationsの場合、次のいずれかを選択できます。
+     Choose the <span class="guimenu">System Role</span>. System roles are predefined
+     use cases which tailor the system for the selected scenario. For
+     SUSE Linux Enterprise Server for SAP applications, you can choose between:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       <span class="guimenu">SAPアプリケーション向けSLES</span>:デフォルト。ほとんどの状況に推奨されます。このシステムの役割には、次のプロパティが含まれています。
+       <span class="guimenu">SLES for SAP Applications</span>:
+       Default, recommended for most situations.
+       This system role contains the following properties:
       </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-         SUSE Linux Enterprise Server for SAP applicationsのインストールウィザードのサポート。
+         Supports the installation wizard for SUSE Linux Enterprise Server for SAP applications.
         </p></li><li class="listitem"><p>
-         RDPアクセス(<span><span class="emphasis"><strong>リモートデスクトッププロトコル</strong></span></span>)の有効化。
+         Enables RDP access (<span><em class="emphasis">Remote Desktop Protocol</em></span>).
         </p></li><li class="listitem"><p>
-         特別なパーティショニング推奨事項の提供。
+         Provides special partitioning recommendations.
         </p></li></ul></div></li><li class="listitem"><p>
-       <span class="guimenu">GNOMEを利用するSLES</span>:固有なケースで必要になる場合があります。このインストールパスについては、このドキュメントでは説明していません。このインストールパスの詳細については、<em class="citetitle">
-        Installation Quick Start, Section <span class="quote">「<span class="quote">Installing SUSE Linux Enterprise Server</span>」</span>
-       </em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+       <span class="guimenu">SLES with GNOME</span>: Can be necessary in specific
+       cases. This installation path is not covered in this document.
+       For more information about this installation path, see the <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/book-deployment.html" target="_blank">Deployment Guide</a>.
       </p></li></ul></div><p>
-     特定のユースケース(高可用性、テキストモード、最小、およびKVM/XEN仮想化ホスト)に追加のシステムの役割を使用できます。
+     Additional system roles are available for specific use cases (High Availability,
+     text mode, minimal and KVM/XEN virtualization hosts).
     </p><p>
-     <span class="guimenu">次へ</span>で続行します。
-    </p><div class="figure" id="fig-install-type"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-installationtype.png"><img src="images/s4s-install-installationtype.png" width="73%" alt="システムの役割" title="システムの役割"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 3.2: </span><span class="title-name">システムの役割 </span></span><a title="Permalink" class="permalink" href="cha-install.html#fig-install-type">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li></ol></div></div><div class="procedure" id="pro-workflow-finish" data-id-title="OSインストールの完了"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">手順 3.2: </span><span class="title-name">OSインストールの完了 </span></span><a title="Permalink" class="permalink" href="cha-install.html#pro-workflow-finish">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
-     次のオプションを有効にするかどうかを選択します。
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div class="figure" id="fig-install-type"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-installationtype.png"><img src="images/s4s-install-installationtype.png" width="73%" alt="System role" title="System role"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 3.2: </span><span class="title-name">System role </span></span><a title="Permalink" class="permalink" href="cha-install.html#fig-install-type">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></li></ol></div></div><div class="procedure" id="pro-workflow-finish" data-id-title="Finishing the OS installation"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">Procedure 3.2: </span><span class="title-name">Finishing the OS installation </span></span><a title="Permalink" class="permalink" href="cha-install.html#pro-workflow-finish">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     Choose whether to enable the following options:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       システムとともにSAPアプリケーションをインストールするには、<span class="guimenu">オペレーティングシステムのインストール後にSAP製品のインストールウィザードを起動する</span>を有効にします。
+       To install an SAP Application along with the system,
+       activate <span class="guimenu">Launch SAP product installation wizard right after the
+       operating system is installed</span>.
       </p></li><li class="listitem"><p>
-       このマシンへのRDPアクセス(リモートデスクトッププロトコル)を有効にするには、<span class="guimenu">RDPサービスを有効にしてファイアウォールでポートを開く</span>を有効にします。
+       To enable RDP access (Remote Desktop Protocol) to this machine,
+       activate <span class="guimenu">Enable Remote Desktop Protocol (RDP) Service and open port in
+       Firewall</span>.
       </p><p>
-       RDPを介した接続の詳細については、<a class="xref" href="cha-configure-rdp.html" title="第12章 RDPを介した接続">第12章 「<em>RDPを介した接続</em>」</a>を参照してください。
+       For more information about connecting via RDP, see
+       <a class="xref" href="cha-configure-rdp.html" title="Chapter 12. Connecting via RDP">Chapter 12, <em>Connecting via RDP</em></a>.
       </p></li></ul></div></li><li class="step"><p>
-     ボリューム<code class="literal">/dev/system/root</code>および<code class="literal">/dev/system/swap</code>に対して提案されたパーティションセットアップを確認します。ボリューム<code class="literal">/dev/system/data</code>は、<a class="xref" href="cha-plan.html#sec-partition" title="2.7. パーティショニング">2.7項 「パーティショニング」</a>で説明されているように、後で作成されます。
+     Review the proposed partition setup for the volumes
+     <code class="literal">/dev/system/root</code> and <code class="literal">/dev/system/swap</code>.
+     The volume <code class="literal">/dev/system/data</code> will be created later,
+     as described in <a class="xref" href="cha-plan.html#sec-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
     </p><p>
-     適切な値が事前に選択されています。ただし、必要に応じて、パーティションレイアウトを変更します。次のオプションがあります。
-    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.6.4.8.3.3.1"><span class="term"><span class="guimenu">ガイド付き設定</span></span></dt><dd><p>
-        入力に基づいて新しいパーティショニングの提案を作成します。
-       </p></dd><dt id="id-1.6.4.8.3.3.2"><span class="term"><span class="guimenu">熟練者向けパーティション設定</span></span></dt><dd><p>
-        <span class="guimenu">熟練者向けパーティション設定</span>を開きます。<em class="citetitle">Deployment Guide,
-         Chapter <span class="quote">「<span class="quote">Advanced Disk Setup</span>」</span>,
-         Section <span class="quote">「<span class="quote">Using the YaST Partitioner</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+     Suitable values are preselected. However, if necessary, change the
+     partition layout.
+     You have the following options:
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.6.4.8.3.3.1"><span class="term"><span class="guimenu">Guided setup</span></span></dt><dd><p>
+        Create a new partitioning suggestion based on your input.
+       </p></dd><dt id="id-1.6.4.8.3.3.2"><span class="term"><span class="guimenu">Expert partitioner</span></span></dt><dd><p>
+        Open the <span class="guimenu">Expert Partitioner</span> described in <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-expert-partitioner.html" target="_blank">Expert Partitioner</a>.
        </p><p>
-        SUSE Linux Enterprise Server for SAP applicationsに固有のパーティショニングアドバイスについては、<a class="xref" href="cha-plan.html#sec-partition" title="2.7. パーティショニング">2.7項 「パーティショニング」</a>を参照してください。
+        For partitioning advice specific to SUSE Linux Enterprise Server for SAP applications, see
+        <a class="xref" href="cha-plan.html#sec-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
        </p></dd></dl></div><p>
-     提案されたセットアップを変更しないで受け入れるには、<span class="guimenu">次へ</span>で続行します。
+     To accept the proposed setup without changes, proceed with
+     <span class="guimenu">Next</span>.
     </p></li><li class="step"><p>
-     システムで使用する時計とタイムゾーンを選択します。時刻を手動で調整したり、時刻同期用のNTPサーバを設定したりするには、<span class="guimenu">その他の設定</span>を選択します。詳細については、<em class="citetitle">Deployment Guide,
-     Chapter <span class="quote">「<span class="quote">Installation with YaST</span>」</span>,
-     Section <span class="quote">「<span class="quote">Clock and Time Zone</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+     Select the clock and time zone to use on your system. To manually adjust
+     the time or to configure an NTP server for time synchronization, choose
+     <span class="guimenu">Other Settings</span>.
+     For detailed information, see <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-install.html#sec-yast-install-date-time" target="_blank">Clock and time zone</a>.
     </p><p>
-     <span class="guimenu">次へ</span>で続行します。
+     Proceed with <span class="guimenu">Next</span>.
     </p></li><li class="step"><p>
-     システム管理者アカウント(<code class="systemitem">root</code>と呼ばれる)のパスワードを入力し、<span class="guimenu">パスワードの確認</span>にも入力します。<span class="guimenu">キーボードレイアウトのテスト</span>テキストボックスを使用して、すべての特殊文字が正しく表示されているか確認できます。
+     Type a password for the system administrator account (called
+     <code class="systemitem">root</code>) and repeat the password under
+     <span class="guimenu">Confirm Password</span>.
+     You can use the text box <span class="guimenu">Test Keyboard Layout</span> to
+     make sure that all special characters appear correctly.
     </p><p>
      
-     SSHログインを介してパスワード不要認証を有効にする場合は、<span class="guimenu">SSH公開鍵の取り込み</span>を介して鍵を取り込むことができます。パスワードを介して<code class="systemitem">root</code>ログインを完全に無効にする場合は、鍵のみをアップロードし、rootパスワードは指定しないでください。この場合、システム管理者としてのログインは、それぞれの鍵を使用したSSH経由でのみ可能です。
+     To enable passwordless authentication via SSH
+     login, you can import a key via <span class="guimenu">Import Public SSH
+     Key</span>. To disable <code class="systemitem">root</code> login via
+     password, upload a key only and do not provide a root password. A login
+     as system administrator will only be possible via SSH using the
+     respective key in this case.
     </p><p>
-     詳細については、<em class="citetitle">Deployment Guide,
-     Chapter <span class="quote">「<span class="quote">Installation with YaST</span>」</span>,
-     Section <span class="quote">「<span class="quote">Password for the System Administrator
-     root</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+     For more information, see <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-install.html#sec-yast-install-user-root" target="_blank">Authentication for the system administrator <code class="systemitem">root</code></a>.
     </p><p>
-     <span class="guimenu">次へ</span>で続行します。
-    </p><div id="id-1.6.4.8.5.5" data-id-title="rootのパスワードは、決して忘れないでください" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: <code class="systemitem">root</code>のパスワードは、決して忘れないでください</div><p>
-      ユーザ<code class="systemitem">root</code>には、すべての管理タスクを実行する権限があります。このパスワードがなければ、<code class="systemitem">root</code>としてシステムにログインできません。ここに入力したパスワードを後で取得することはできません。
+     Proceed with <span class="guimenu">Next</span>.
+    </p><div id="id-1.6.4.8.5.5" data-id-title="Do not forget the root password" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Do not forget the <code class="systemitem">root</code> password</div><p>
+      The user <code class="systemitem">root</code> has the
+      permission to carry out all administrative tasks. Without this password,
+      you cannot log in to the system as
+      <code class="systemitem">root</code>.
+      The password entered here cannot be retrieved later.
      </p></div></li><li class="step"><p>
-     <span class="guimenu">インストール設定</span>画面で、いくつかの提案されるインストール設定を確認し、必要に応じて変更できます。各設定は現在の設定とともに表示されます。設定の一部を変更するには、適切なヘッドライン、他の下線付きアイテムをクリックします。
-    </p><div id="id-1.6.4.8.6.2" data-id-title="ファイアウォール設定" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: ファイアウォール設定</div><p>
-      SLES for SAPのソフトウェアファイアウォールは、デフォルトで有効になっています。ただし、多くの場合、SAP製品が開く必要のあるポートは自動的に開かれません。これは、必要なポートを手動で開くまで、ネットワークの問題が生じる可能性があることを意味します。
+     On the screen <span class="guimenu">Installation Settings</span>, you can review
+     and, if necessary, change several proposed installation settings.
+     Each setting is shown alongside its current configuration.
+     To change parts of the configuration, click the appropriate headline or
+     other underlined items.
+    </p><div id="id-1.6.4.8.6.2" data-id-title="Firewall configuration" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Firewall configuration</div><p>
+      The software firewall of SLES for SAP is enabled by default.
+      However, often, the ports your SAP product requires to be open
+      are not opened automatically.
+      This means that there may be network issues until you open the required
+      ports manually.
      </p><p>
-      詳細については、<a class="xref" href="cha-access.html#sec-configure-firewall" title="10.1. firewalldの構成">10.1項 「<code class="systemitem">firewalld</code>の構成」</a>を参照してください。
-     </p></div><div class="figure" id="fig-install-overview"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-overview.png"><img src="images/s4s-install-overview.png" alt="インストール設定" title="インストール設定"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 3.3: </span><span class="title-name">インストール設定 </span></span><a title="Permalink" class="permalink" href="cha-install.html#fig-install-overview">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step"><p>
-     必要なシステム設定を完了したら、<span class="guimenu">インストール</span>をクリックします。
+      For details, see <a class="xref" href="cha-access.html#sec-configure-firewall" title="10.1. Configuring firewalld">Section 10.1, “Configuring <code class="systemitem">firewalld</code>”</a>.
+     </p></div><div class="figure" id="fig-install-overview"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-overview.png"><img src="images/s4s-install-overview.png" alt="Installation settings" title="Installation settings"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">Figure 3.3: </span><span class="title-name">Installation settings </span></span><a title="Permalink" class="permalink" href="cha-install.html#fig-install-overview">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></li><li class="step"><p>
+     When you are satisfied with the system configuration, click
+     <span class="guimenu">Install</span>.
     </p><p>
-     ソフトウェアの選択によって、インストールプロセスを開始することを確認するよう求められる前に、さらにライセンス契約に同意する必要がある場合があります。
-    </p><div id="id-1.6.4.8.7.3" data-id-title="データの削除" class="admonition warning normal"><img class="symbol" alt="警告" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">警告: データの削除</div><p>
-      インストールプロセスが完全または部分的にディスク上の既存のデータを上書きします。
+     Depending on your software selection, you may need to agree to further
+     license agreements before you are asked to confirm that you want to start
+     the installation process.
+    </p><div id="id-1.6.4.8.7.3" data-id-title="Deletion of data" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">Warning: Deletion of data</div><p>
+      The installation process fully or partially overwrites existing
+      data on the disk.
      </p></div><p>
-     インストールの確認ボックスで、<span class="guimenu">インストール</span>をクリックします。
+     In the installation confirmation box, click <span class="guimenu">Install</span>.
     </p><p>
-     オペレーティングシステムのインストールが完了したら、システムは自動的に再起動します。
+     When the installation of the operating system is finished, the system
+     will reboot automatically:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       システムのインストール準備のみを選択した場合、システムはデスクトップログイン画面から起動します。
+       If you chose to only prepare the system for installation, the system will
+       boot to a desktop login screen.
       </p></li><li class="listitem"><p>
-       SAPアプリケーションを直ちにインストールすることを選択した場合、インストールは再起動後に続行します。<a class="xref" href="cha-install-sap.html" title="第4章 SAPアプリケーションのインストール">第4章 「<em>SAPアプリケーションのインストール</em>」</a>に進んでください。
-      </p></li></ul></div></li></ol></div></div></section><section class="sect1" id="sec-install-network" data-id-title="ネットワークからSLES for SAPメディアを使用する"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.2 </span><span class="title-name">ネットワークからSLES for SAPメディアを使用する</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-install-network">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
-   このセクションでは、ネットワークを介して提供されるインストールメディアからインストールする方法について簡単に説明します。これにより、たとえば、通常のSLESメディアを使用してSLES for SAPをインストールできます。
+       If you chose to install an SAP application now, the installation
+       will continue after a reboot. Continue with
+       <a class="xref" href="cha-install-sap.html" title="Chapter 4. Installing SAP applications">Chapter 4, <em>Installing SAP applications</em></a>.
+      </p></li></ul></div></li></ol></div></div></section><section class="sect1" id="sec-install-network" data-id-title="Using SLES for SAP media from the network"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.2 </span><span class="title-name">Using SLES for SAP media from the network</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-install-network">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   This section provides a short description of how to install from an
+   installation medium served over the network. This allows, for example,
+   using a regular SLES medium to install SLES for SAP.
   </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
-     SUSE Linux Enterprise Server for SAP applicationsインストールメディアのコンテンツをWebサーバ(例: <code class="literal">example.com</code>)のディレクトリ<code class="filename">/srv/www/htdocs/sap_repo</code>にコピーします。
+     Copy the content of the SUSE Linux Enterprise Server for SAP applications installation media to a Web server
+     (for example, <code class="literal">example.com</code>), to the directory
+     <code class="filename">/srv/www/htdocs/sap_repo</code>.
     </p></li><li class="step"><p>
-     SLESインストールメディアからのブート
+     Boot from a SLES installation medium.
     </p></li><li class="step"><p>
-     <span class="keycap">↓</span>/<span class="keycap">↑</span>キーを使用して、ブートメニューオプションのいずれかを選択します。次にコマンドラインに追加します。これを実行するには、下に一覧表示されるパラメータを指定します。
+     Select one of the boot menu options using the keys
+     <span class="keycap">↓</span>/<span class="keycap">↑</span>.
+     Then add to the command line. To do so, specify the parameters listed
+     below:
     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-       ネットワークの使用を許可するには、<code class="literal">ifcfg=*=dhcp</code>を追加します(これがデフォルトです)。
+       To allow network usage, add <code class="literal">ifcfg=*=dhcp</code> (though this
+       should be the default).
       </p></li><li class="listitem"><p>
-       パラメータ<code class="literal">install=<em class="replaceable">SERVER</em>/<em class="replaceable">DIRECTORY</em></code>を追加します。
+       Add the parameter
+       <code class="literal">install=<em class="replaceable">SERVER</em>/<em class="replaceable">DIRECTORY</em></code>.
       </p></li></ul></div></li><li class="step"><p>
-     <a class="xref" href="cha-install.html#sec-install-workflow" title="3.1. インストールワークフロー">3.1項 「インストールワークフロー」</a>の指示に従います。
+     Follow the instructions in <a class="xref" href="cha-install.html#sec-install-workflow" title="3.1. Installation workflow">Section 3.1, “Installation workflow”</a>.
     </p></li></ol></div></div><p>
-   詳細については、<em class="citetitle">Deployment Guide, Chapter <span class="quote">「<span class="quote">Remote Installation</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+   For more information, see <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-remote-installation.html" target="_blank">Remote installation</a>.
   </p><p>
-   SLESインストールメディアを使用してシステムを初期化する必要がないようにするため、PXEを介してネットワーク経由でブートできます。詳細については、<em class="citetitle">AutoYaST Guide,
-   Chapter <span class="quote">「<span class="quote">Booting via PXE over the Network</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
-  </p></section><section class="sect1" id="sec-autoyast" data-id-title="外部AutoYaSTプロファイルの使用"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.3 </span><span class="title-name">外部AutoYaSTプロファイルの使用</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-autoyast">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
-  AutoYaSTを使用したインストールの詳細については、次のガイドを参照してください。
+   To avoid having to use a SLES installation medium to initialize the
+   system, you can boot over the network via PXE.
+   For details, see <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/Invoking.html#bootmedium-pxe" target="_blank">Booting via PXE over the network</a>.
+  </p></section><section class="sect1" id="sec-autoyast" data-id-title="Using an external AutoYaST profile"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.3 </span><span class="title-name">Using an external AutoYaST profile</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-autoyast">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_autoyast.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+  For more information about installing with AutoYaST, see:
  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
-    <em class="citetitle">Deployment Guide, Part <span class="quote">「<span class="quote">Automated Installations</span>」</span>,
-     Chapter <span class="quote">「<span class="quote">Automated Installation</span>」</span>
-    </em> (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)
+    <a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/book-autoyast.html" target="_blank">AutoYaST Guide</a>.
    </p></li><li class="listitem"><p>
-    <em class="citetitle">AutoYaST Guide</em> (<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)
+    <a class="link" href="https://documentation.suse.com/sles-sap-15/single-html/SLES-SAP-guide/#sec-install-sap-autoyast" target="_blank">Automated installation of SAP applications with AutoYaST</a>.
    </p></li></ul></div><p>
-  AutoYaSTを使用したSAPアプリケーションのパーティショニングに関する詳細については、<a class="xref" href="cha-plan.html#sec-partition" title="2.7. パーティショニング">2.7項 「パーティショニング」</a>を参照してください。
+  For more information about partitioning for SAP applications with AutoYaST, see
+  <a class="xref" href="cha-plan.html#sec-partition" title="2.7. Partitioning">Section 2.7, “Partitioning”</a>.
  </p><p>
-   SUSE Multi-Linux ManagerサーバからSUSE Linux Enterprise Server for SAP applicationsを展開する予定の場合、『<em class="citetitle">SUSE Multi-Linux Manager <span class="quote">「<span class="quote">Reference Guide</span>」</span>, <span class="quote">「<span class="quote">Systems</span>」</span>, <span class="quote">「<span class="quote">Autoinstallation</span>」</span></em>』および『<em class="citetitle">SUSE Manager <span class="quote">「<span class="quote">Advanced Topics</span>」</span>, Chapter <span class="quote">「<span class="quote">Minimalist AutoYaST Profile for Automated Installations and Useful Enhancements</span>」</span></em>』(<a class="link" href="https://documentation.suse.com/multi-linux-manager" target="_blank">https://documentation.suse.com/multi-linux-manager</a>)を参照してください。
- </p></section><section class="sect1" id="sec-convert-sles" data-id-title="SLESインストールをSLES for SAPインストールに変換する"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.4 </span><span class="title-name">SLESインストールをSLES for SAPインストールに変換する</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-convert-sles">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
-   SUSE Linux Enterprise Server 15 SP7またはJeOS 15 SP7のインストールをSLES for SAPのインストールに変換するには、スクリプト<code class="command">Migrate_SLES_to_SLES-for-SAP.sh</code>を使用します。このスクリプトは、システムを正しく登録し、適切なリポジトリにサブスクライブします。
+   If you plan to deploy SUSE Linux Enterprise Server for SAP applications from a SUSE Multi-Linux Manager server, refer to <a class="link" href="https://documentation.suse.com/multi-linux-manager/en/docs/specialized-guides/qs-sap/overview.html" target="_blank">Quick Start: SAP Overview</a>.
+ </p></section><section class="sect1" id="sec-convert-sles" data-id-title="Converting a SLES installation to a SLES for SAP installation"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.4 </span><span class="title-name">Converting a SLES installation to a SLES for SAP installation</span></span> <a title="Permalink" class="permalink" href="cha-install.html#sec-convert-sles">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="Report an issue"> </a><a target="_blank" class="icon-editsource" href="https://github.com/SUSE/doc-slesforsap/blob/main/xml/s4s_installation.xml" title="Edit source document"> </a></div></div></div></div></div><p>
+   To convert an installation of SUSE Linux Enterprise Server 15 SP7 or JeOS
+   15 SP7 to an installation of SLES for SAP, use the script
+   <code class="command">Migrate_SLES_to_SLES-for-SAP.sh</code>. The script will
+   register the system correctly and subscribe it to the appropriate
+   repositories.
   </p><p>
-   登録用のメールアドレスおよびSLES for SAPの登録コードがあることを確認します。
+   Make sure that you have an e-mail address for registration and a
+   registration code for SLES for SAP.
   </p><div class="procedure" id="pro-convert-sles"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
-     パッケージ <span class="package">migrate-sles-to-sles4sap</span>.
+     Install the package <span class="package">migrate-sles-to-sles4sap</span>.
     </p></li><li class="step"><p>
-     次のコマンドを実行します。
+     Execute the following command:
     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">Migrate_SLES_to_SLES-for-SAP.sh</code></pre></div></li><li class="step"><p>
-     マイグレーションを続行することを確認するように求められたら、<span class="keycap">Y</span>を押して、<span class="keycap">Enter</span>を押します。
+     When asked to confirm to continue the migration, press
+     <span class="keycap">Y</span>, then <span class="keycap">Enter</span>.
     </p></li><li class="step"><p>
-     求められたら、登録用の電子メールアドレスを入力し、<span class="keycap">Enter</span>を押します。
+     When asked, type the e-mail address to use for registration, then press
+     <span class="keycap">Enter</span>.
     </p></li><li class="step"><p>
-     求められたら、登録キーを入力し、<span class="keycap">Enter</span>を押します。
+     When asked, type the registration key, then press
+     <span class="keycap">Enter</span>.
     </p><p>
-     スクリプトが完了するまで待ちます。その後、SUSE Linux Enterprise Server for SAP applicationsソフトウェアリポジトリにサブスクライブされ、パッケージ<span class="package">SLES-release</span>が削除され、代わりに<span class="package">SLES_SAP-release</span>が選択されます。
-    </p></li></ol></div></div><div id="id-1.6.7.5" data-id-title="スクリプトはデフォルトのSLES for SAPパッケージをインストールしない" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: スクリプトはデフォルトのSLES for SAPパッケージをインストールしない</div><p>
-    スクリプトはデフォルトのSLES for SAPインストールに含まれているすべてのパッケージをインストールするわけではありません。ただし、これらは自分で手動インストールできます。デフォルトのパッケージの選択をインストールするには、次のコマンドを使用します。
-   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">zypper in patterns-server-enterprise-sap_server</code></pre></div></div><div id="id-1.6.7.6" data-id-title="パブリッククラウド上のマイグレーションスクリプト" class="admonition warning normal"><img class="symbol" alt="警告" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">警告: パブリッククラウド上のマイグレーションスクリプト</div><p>
-      パブリッククラウドインスタンス(特に従量課金制インスタンス)では、請求は、利用資格を識別し、実際の消費量を計算する社内メカニズムによって異なります。これは、オペレーティングシステム内のリポジトリのマイグレーションのみを実行するため、マイグレーションスクリプトを無効にします。
+     Wait until the script is finished. Afterward, you are subscribed to the
+     SUSE Linux Enterprise Server for SAP applications software repositories and the package
+     <span class="package">SLES-release</span> is removed in favor of
+     <span class="package">SLES_SAP-release</span>.
+    </p></li></ol></div></div><div id="id-1.6.7.5" data-id-title="Script does not install default SLES for SAP packages" class="admonition important normal"><img class="symbol" alt="Important" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">Important: Script does not install default SLES for SAP packages</div><p>
+    The script does not install all packages that are included with a default
+    SLES for SAP installation. However, you can install these yourself manually.
+    To install the default package selection, use:
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">zypper in patterns-server-enterprise-sap_server</code></pre></div></div><div id="id-1.6.7.6" data-id-title="Migration script on public cloud" class="admonition warning normal"><img class="symbol" alt="Warning" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">Warning: Migration script on public cloud</div><p>
+      On public cloud instances (pay-as-you-go instances in particular), billing
+      depends on internal mechanisms to identify the entitlement and to calculate
+      the actual consumption. This makes the migration script ineffective, as it
+      only performs migration of repositories inside the operating system.
     </p><p>
-      マイグレーションを実行するには、クラウドソリューションプロバイダを使用してイメージのマイグレーションガイドラインに従う必要があります。
-    </p></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-plan.html"><span class="pagination-relation">前へ</span><span class="pagination-label"><span class="title-number">第2章 </span>インストールの計画</span></a> </div><div><a class="pagination-link next" href="cha-install-sap.html"><span class="pagination-relation">次へ</span><span class="pagination-label"><span class="title-number">第4章 </span>SAPアプリケーションのインストール</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">このページで</div><div class="toc"><ul><li><span class="sect1"><a href="cha-install.html#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">インストールワークフロー</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-install-network"><span class="title-number">3.2 </span><span class="title-name">ネットワークからSLES for SAPメディアを使用する</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-autoyast"><span class="title-number">3.3 </span><span class="title-name">外部AutoYaSTプロファイルの使用</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-convert-sles"><span class="title-number">3.4 </span><span class="title-name">SLESインストールをSLES for SAPインストールに変換する</span></a></span></li></ul></div><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+      To perform migration, you must follow image migration guidelines with your
+      cloud solution provider.
+    </p></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-plan.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 2 </span>Planning the installation</span></a> </div><div><a class="pagination-link next" href="cha-install-sap.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Chapter 4 </span>Installing SAP applications</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="cha-install.html#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">Installation workflow</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-install-network"><span class="title-number">3.2 </span><span class="title-name">Using SLES for SAP media from the network</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-autoyast"><span class="title-number">3.3 </span><span class="title-name">Using an external AutoYaST profile</span></a></span></li><li><span class="sect1"><a href="cha-install.html#sec-convert-sles"><span class="title-number">3.4 </span><span class="title-name">Converting a SLES installation to a SLES for SAP installation</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
 <script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>

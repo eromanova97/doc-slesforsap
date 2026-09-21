@@ -42,7 +42,7 @@
     ],
     "dateCreated": "2026-04-28T00:00+02:00",
     "dateModified": "2026-04-28T00:00+02:00",
-    "datePublished": "2026-09-21T11:27+02:00",
+    "datePublished": "2026-09-21T11:39+02:00",
     "about": [
 
     ],
@@ -101,15 +101,33 @@
       contains different <code class="filename">.prod</code>
       files.
      </p><p>
-      Depending www.suse.com/support/kb/doc/?id=7023490" target="_blank">https://www.suse.com/support/kb/doc/?id=7023490</a>にある記事を参照してください。
-     </p></dd><dt id="id-1.18.5.3.2"><span class="term"><code class="filename">/etc/products.d/baseproduct</code></span></dt><dd><p>
-      XMLファイルへのリンク。<code class="filename">/etc/products.d/</code>ディレクトリにはさまざまな<code class="filename">.prod</code>ファイルが含まれています。
-     </p><p>
-      購入した製品およびシステムのインストール方法に応じて、リンク<code class="filename">/etc/products.d/baseproduct</code>が異なる<code class="filename">.prod</code>ファイル(<code class="filename">sle-module-sap-applications.prod</code>など)を指す可能性があります。<code class="varname">CPE_NAME</code>と同じ情報がタグ<code class="sgmltag-starttag">&lt;cpeid&gt;</code>に保存されます。
+      Depending on which products you have purchased and how you installed your
+      system, the link <code class="filename">/etc/products.d/baseproduct</code> can
+      point to a different <code class="filename">.prod</code>
+      file, for example, <code class="filename">sle-module-sap-applications.prod</code>.
+      The same information as <code class="varname">CPE_NAME</code> is stored in the tag
+      <code class="sgmltag-starttag">&lt;cpeid&gt;</code>.
      </p></dd></dl></div><p>
-   その他の情報として、両方のファイルにオペレーティングシステムと基本製品が含まれています。基本製品(キー<code class="varname">CPE_NAME</code>とタグ<code class="sgmltag-starttag">&lt;cpeid&gt;</code>)は、<a class="link" href="https://scap.nist.gov/specifications/cpe/" target="_blank">Common Platform Enumeration仕様</a>に従います。
+   Among other information, both files contain the operating system and base
+   product. The base product (key <code class="varname">CPE_NAME</code> and tag
+   <code class="sgmltag-starttag">&lt;cpeid&gt;</code>) follow the
+   <a class="link" href="https://scap.nist.gov/specifications/cpe/" target="_blank">Common
+   Platform Enumeration Specification</a>.
   </p><p>
-   コマンド<code class="command">grep</code>または<code class="command">xmlstarlet</code> (どちらも製品で使用可能)のいずれかを使用して、ファイル<code class="filename">/etc/products.d/baseproduct</code>から情報を引き出すことができます。XMLもテキストであるため、出力の形式がそれほど重要でない場合は、<span class="quote"/o:suse:sle-module-sap-applications:<em class="replaceable">RELEASE</em>:sp<em class="replaceable">SP_NUMBER</em>&lt;/cpeid&gt;</pre></div><p>
+   You can extract any information from the file
+   <code class="filename">/etc/products.d/baseproduct</code> either with the
+   commands <code class="command">grep</code> or <code class="command">xmlstarlet</code> (both are
+   available for your products). As XML is also text, use
+   <code class="command">grep</code> for <span class="quote">“<span class="quote">simple searches</span>”</span> when the format
+   of the output does not matter much. However, if your search is more
+   advanced, you need the output in another script, or you want to avoid the
+   XML tags in the output, use the <code class="command">xmlstarlet</code> command
+   instead.
+  </p><p>
+   For example, to get your base product, use <code class="command">grep</code> like
+   this:
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">grep</code> cpeid /etc/products.d/baseproduct
+&lt;cpeid&gt;cpe:/o:suse:sle-module-sap-applications:<em class="replaceable">RELEASE</em>:sp<em class="replaceable">SP_NUMBER</em>&lt;/cpeid&gt;</pre></div><p>
    The <em class="replaceable">RELEASE</em> and
    <em class="replaceable">SP_NUMBER</em> are placeholders and describe your
    product release number and service pack.
@@ -156,5 +174,4 @@ sle-ha</pre></div></section><section class="sect1" id="sec-suseconnectprogram" d
    For more information, see the SUSE Package Hub Web site at
    <a class="link" href="https://packagehub.suse.com" target="_blank">https://packagehub.suse.com</a>.
   </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-trouble.html"><span class="pagination-relation">Previous</span><span class="pagination-label"><span class="title-number">Chapter 14 </span>Important log files</span></a> </div><div><a class="pagination-link next" href="app-autoyast-partition.html"><span class="pagination-relation">Next</span><span class="pagination-label"><span class="title-number">Appendix B </span>Partitioning for the SAP system using AutoYaST</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">On this page</div><div class="toc"><ul><li><span class="sect1"><a href="app-additional-software.html#id-1.18.5"><span class="title-number">A1 </span><span class="title-name">Identifying a base product for SUSE Linux Enterprise Server for SAP applications</span></a></span></li><li><span class="sect1"><a href="app-additional-software.html#sec-suseconnectprogram"><span class="title-number">A2 </span><span class="title-name">SUSE Connect Program</span></a></span></li><li><span class="sect1"><a href="app-additional-software.html#sec-packagehub"><span class="title-number">A3 </span><span class="title-name">SUSE Package Hub</span></a></span></li></ul></div><div class="side-title">Share this page</div><ul class="share"><li><a id="_share-mail" href="#" title="E-Mail"> </a></li><li><a id="_print-button" href="#" title="Print this page"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
-<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>ionsの基本製品の特定</span></a></span></li><li><span class="sect1"><a href="app-additional-software.html#sec-suseconnectprogram"><span class="title-number">A2 </span><span class="title-name">SUSE Connectプログラム</span></a></span></li><li><span class="sect1"><a href="app-additional-software.html#sec-packagehub"><span class="title-number">A3 </span><span class="title-name">SUSE Package Hub</span></a></span></li></ul></div><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
 <script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>
