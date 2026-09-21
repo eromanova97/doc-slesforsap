@@ -52,6 +52,10 @@
  </itemizedlist>
 
  <para>
+  THIS IS A TEST LINE
+ </para>
+
+ <para>
   &sles4sap; consists of software components and service offerings which are
   described in the following sections. The figure
   <xref linkend="fig-offering" xrefstyle="select:title"/> shows an
