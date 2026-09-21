@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head><title>インストールの計画 | インストールクイックスタート | SLES for SAP 15 SP7</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2025-06-17"/>
+<meta name="dcterms.modified" content="2025-06-17"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-21"/>
+<meta name="title" content="インストールの計画 | SLES for SAP 15 SP7"/>
+<meta name="description" content="インストールの計画"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
+<meta name="product-number" content="15 SP7"/>
+<meta name="book-title" content="インストールクイックスタート"/>
+<meta name="chapter-title" content="第2章 インストールの計画"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP7"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="インストールクイックスタート"/>
+<meta property="og:description" content="SLES for SAPのインストール"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="インストールクイックスタート"/>
+<meta name="twitter:description" content="SLES for SAPのインストール"/>
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": ["TechArticle"],
+    "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
+    "name": "インストールの計画 | SLES for SAP 15 SP7",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Products &amp; Solutions"
+    },
+    "inLanguage": "ja",
+    "headline": "インストールの計画",
+    "description": "インストールの計画",
+    "author": [
+      {
+        "@type": "Corporation",
+        "name": "SUSE Product &amp; Solution Documentation Team",
+        "url": "https://documentation.suse.com"
+      }
+    ],
+    "dateCreated": "2025-06-17T00:00+02:00",
+    "dateModified": "2025-06-17T00:00+02:00",
+    "datePublished": "2026-09-21T11:23+02:00",
+    "about": [
+
+    ],
+    "mentions": [
+      { "@type": "SoftwareApplication",
+        "name": "SLES for SAP",
+        "softwareVersion": "15 SP7",
+        "applicationCategory": "Operating System",
+        "operatingSystem": "Linux"
+      }
+    ],
+    "sameAs": [
+          "https://www.facebook.com/SUSEWorldwide/about",
+          "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
+          "https://twitter.com/SUSE",
+          "https://www.linkedin.com/company/suse"
+    ],
+    "publisher": {
+      "@type": "Corporation",
+      "name": "SUSE",
+      "url": "https://documentation.suse.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+      }
+    }
+  }</script>
+<link rel="prev" href="cha-about.html" title="第1章 SUSE Linux Enterprise Server for SAP applicationsとは"/><link rel="next" href="cha-install.html" title="第3章 オペレーティングシステムのインストール"/><link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">目次にジャンプ</a><a href="#_bottom-pagination">ページナビゲーションにジャンプ: 前のページ[アクセスキーp]/次のページ[アクセスキーn]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">インストールクイックスタート</a><span class="sep">|</span><a class="crumb" href="cha-plan.html">インストールの計画</a></div></div><main id="_content"><nav id="_side-toc-overall" tabindex="0" class="side-toc"><div class="side-title"><span class="phrase">インストールクイックスタート</span></div><ol role="list"><li role="listitem"><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">序文</span></a></li><li role="listitem"><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></a></li><li role="listitem"><a href="cha-plan.html" class=" you-are-here"><span class="title-number">2 </span><span class="title-name">インストールの計画</span></a></li><li role="listitem"><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">オペレーティングシステムのインストール</span></a></li><li role="listitem"><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">SAPアプリケーションのインストール</span></a></li><li role="listitem"><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></a></li><li role="listitem"><a href="apa.html" class=" "><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="目次"> </button><article class="documentation"><button id="_unfold-side-toc-page">このページで</button><section class="chapter" id="cha-plan" data-id-title="インストールの計画"><div class="titlepage"><div><div class="version-info">適用項目  <span class="productname">SUSE Linux Enterprise Server for SAP applications</span> <span class="productnumber">15 SP7</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">2 </span><span class="title-name">インストールの計画</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  この章はインストールの計画に役立つため、注意深くお読みください。この章には要件のリストが記載されており、システムに関するデータを収集するのに役立ちます。
+ </p><section class="sect1" id="sec-hardware" data-id-title="ハードウェア要件"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.1 </span><span class="title-name">ハードウェア要件</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-hardware">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   このセクションでは、SUSE Linux Enterprise Server for SAP applicationsのインストールの最小ハードウェア要件を一覧表示し、特定のSAPソフトウェアの想定されるハードウェア要件に関する基本的なガイダンスを示します。SAPソフトウェアのハードウェア要件の最新情報については、<a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>にある公式サイジングガイドラインを参照してください。
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.4.3.1"><span class="term">サポートされているCPU</span></dt><dd><p>
+      Intel 64
+     </p><p>
+      IBM POWER 8 (PowerVM搭載)
+     </p><p>
+      IBM POWER 9 (PowerVM搭載)
+     </p></dd><dt id="id-1.5.4.3.2"><span class="term">ハードディスク</span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsには、システムボリュームに対して最低41GB (スワップなし)のハードディスク容量が必要です。それに加えて、スワップパーティション用に適切なハードディスク容量を予約します。
+     </p><p>
+      SAP NetWeaverなどのSAPアプリケーションをインストールするには、アプリケーションの<code class="filename">/data</code>パーティションのオペレーティングシステムに必要な容量のほか、最低200GBの空きディスク容量が必要です。
+     </p><p>
+      SAP HANAをインストールするには、次のいずれかが必要です。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP BusinessOne認定マシン
+       </p></li><li class="listitem"><p>
+        SAP HANA TDI (Tailored Datacenter Integration)の要件を満たす互換性のあるマシン。つまり、オペレーティングシステムに必要な容量のほか、次の空きディスク容量が必要です。
+       </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          パーティション<code class="filename">/usr/sap</code>用に52GBの空きディスク容量
+         </p></li><li class="listitem"><p>
+          SAP HANAデータ用の3つのパーティションの容量: <code class="filename">/hana/data</code> (RAMと同じサイズ)、<code class="filename">/hana/log</code> (RAMと同じサイズで最大512GB)、および<code class="filename">/hana/shared</code> (RAMと同じサイズで最大1TB)。
+         </p></li></ul></div></li></ul></div><p>
+      SAP HANAの詳細については、<a class="link" href="https://help.sap.com/docs/SAP_HANA_PLATFORM" target="_blank">https://help.sap.com/docs/SAP_HANA_PLATFORM</a> (セクション<span class="guimenu">実装</span> › <span class="guimenu">SAP HANAマスタガイド</span> › <span class="guimenu">SAP HANA展開オプション</span> › <span class="guimenu">オンプレミス展開</span>)を参照してください。
+     </p></dd><dt id="id-1.5.4.3.3"><span class="term">RAM</span></dt><dd><p>
+      SUSE Linux Enterprise Serverオペレーティングシステムそれ自体には、CPUコアあたり最低1024MBの合計RAMまたは最低512MBのRAM(どちらか高いほうを選択)が必要です。
+     </p><p>
+      インストールするSAPソフトウェアには追加のRAMが必要です。
+     </p><p>
+      SAP HANAをインストールするには、マシンに最低24GBのRAMが必要です。
+     </p></dd></dl></div><p>
+   SAP HANAのハードウェアの設定の詳細については、『<em class="citetitle">SAP Note 1944415: Hardware Configuration Guide and Software
+   Installation Guide for SUSE Linux Enterprise Server with SAP HANA and SAP
+   Business One</em>』(<a class="link" href="https://launchpad.support.sap.com/#/notes/1944415" target="_blank">https://launchpad.support.sap.com/#/notes/1944415</a>)を参照してください。
+  </p><p>
+   パーティショニングに関する詳細については、<a class="xref" href="cha-plan.html#sec-partition" title="2.6. パーティショニング">2.6項 「パーティショニング」</a>を参照してください。
+  </p></section><section class="sect1" id="sec-download" data-id-title="インストールイメージ"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.2 </span><span class="title-name">インストールイメージ</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-download">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   以前のSLE製品と異なり、SLE 15 SP7製品ライン全体を単一インストールメディアである<code class="literal">SLE 15 SP7 Online media 1</code>からインストールできます。ネットワークアクセスや登録なしでインストールするには、<code class="literal">SLE 15 SP7 Full media 1</code>イメージをダウンロードしてください。両方のISOイメージは<a class="link" href="https://download.suse.com/" target="_blank">https://download.suse.com/</a>から入手できます。
+  </p><p>
+   物理DVDにイメージを書き込むか、リムーバブルフラッシュディスクにコピーします。ディスクのサイズが目的のイメージに対して十分であることを確認します。仮想マシンにインストールするときは、仮想DVD-ROMデバイスを使用します。
+  </p><div id="id-1.5.5.4" data-id-title="インストールメディアイメージをリムーバブルフラッシュディスクにコピーする" class="admonition tip normal"><img class="symbol" alt="ヒント" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">ヒント: インストールメディアイメージをリムーバブルフラッシュディスクにコピーする</div><p>
+    次のコマンドを使用して、インストールイメージのコンテンツをリムーバブルフラッシュディスクにコピーします。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> dd if=<em class="replaceable">IMAGE</em> of=<em class="replaceable">FLASH_DISK</em> bs=4M &amp;&amp; sync</pre></div><p>
+    <em class="replaceable">IMAGE</em>をインストールメディアイメージファイルへのパスに置き換え、<em class="replaceable">FLASH_DISK</em>をフラッシュデバイスに置き換えます。
+   </p></div></section><section class="sect1" id="sec-migration" data-id-title="オフラインマイグレーション"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.3 </span><span class="title-name">オフラインマイグレーション</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-migration">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP applicationsのマイグレーションパスは、SUSE Linux Enterprise Server with <span class="productname">Enhanced Service Pack Overlay Support</span> (ESPOS)のマイグレーションパスと同じです。詳細については、<a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-upgrade-paths.html" target="_blank">https://documentation.suse.com/sles-15/html/SLES-all/cha-upgrade-paths.html</a>にある『<em class="citetitle">SUSE Linux Enterprise Server</em>アップグレードガイド』を参照してください。
+  </p></section><section class="sect1" id="sec-workflow-overview" data-id-title="インストールワークフローの概要"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.4 </span><span class="title-name">インストールワークフローの概要</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-workflow-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP applicationsのインストールワークフローは、次のステップで構成されます。
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)のインストール。<a class="xref" href="cha-install.html#sec-install-workflow" title="3.1. インストールワークフロー">3.1項 「インストールワークフロー」</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート1:すべての必要なSAPメディアをローカルディスクにコピーするか、使用する共有ストレージメディアを選択する。<a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="cha-install-sap.html#st-copy-master" title="ステップ 1">ステップ 1</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート2:ユーザにインタラクティブにクエリを実行して、実際のインストールのすべてのパラメータを収集する。<a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="cha-install-sap.html#st-collect-parameter" title="ステップ 10">ステップ 10</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート3:SAPインストーラを実行する。<a class="xref" href="cha-install-sap.html#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="cha-install-sap.html#st-sapinst" title="ステップ 13">ステップ 13</a>を参照してください。
+    </p></li></ol></div><p>
+   これらのステップのほとんどは各ステップ後すぐに実行する必要がないため、システムのインストール方法に柔軟性があります。つまり、最初のステップとして単一のインストールを準備し、そこから続行できます。次に例を示します。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)のみをインストールします。
+    </p><p>
+     <span><span class="emphasis"><strong>または</strong></span></span>
+    </p></li><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)をインストールし、SAPメディアをコピーして、SAPインストールパラメータを収集します。
+    </p></li></ul></div><p>
+   次に、ディスクイメージを作成して、それらを他のシステムにコピーし、SAPインストールパラメータを調整します。最後に、各マシンの個別のインストールを終了します。
+  </p></section><section class="sect1" id="sec-data" data-id-title="インストールに必要なデータ"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.5 </span><span class="title-name">インストールに必要なデータ</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-data">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.8.2.1"><span class="term">オペレーティングシステム</span></dt><dd><p>
+      SUSE Linux Enterprise Serverのインストールには、すべての物理サーバについて次のデータが必要です。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        ホスト名、ドメイン、IPアドレス、サブネットマスク、ドメイン検索リスト(DNS)、名前サーバのIP、ゲートウェイ用IPなどの、ネットワーク設定パラメータ
+       </p></li><li class="listitem"><p>
+        SUSE Linux Enterprise Serverインストール用の管理者(<code class="systemitem">root</code>)パスワード
+       </p></li></ul></div></dd><dt id="id-1.5.8.2.2"><span class="term">SAPアプリケーション</span></dt><dd><p>
+      SAPアプリケーションのインストールでは、通常、次のものを指定する必要があります。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAPインスタンス番号
+       </p></li><li class="listitem"><p>
+        SAPアプリケーションのパスワード
+       </p></li></ul></div><p>
+      インストールするSAPアプリケーションによって、T-Shirt Sizingや仮想ネットワーキング用のパラメータなど、より多くのパラメータが必要な場合があります。
+     </p></dd><dt id="id-1.5.8.2.3"><span class="term">SAP HANAデータベース</span></dt><dd><p>
+      SAP HANAのインストールでは、次を指定する必要があります。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAPインスタンス番号
+       </p></li><li class="listitem"><p>
+        マルチテナントデータベースコンテナ(MDC)を有効にするかどうか。SAP HANAのマルチテナントサポートにより、1つのSAP HANAインストールとして実行される複数のデータベースを使用できます。(SAP HANA MDCを使用するには、SAP HANA Lifecycle Managerが必要です。)
+       </p><p>
+        シングルテナントインストールの場合は、<span class="guimenu">いいえ</span>を選択します。
+       </p><p>
+        1人の<code class="systemitem"><em class="replaceable">SID</em>adm</code>ユーザによって管理するマルチテナントインスタンスの場合は、<span class="guimenu">Yes with low isolation (低分離ではい)</span>を選択します。
+       </p><p>
+        各データベースが独自の<code class="systemitem"><em class="replaceable">SID</em>adm</code>ユーザを持つ管理対象のマルチテナントインスタンスの場合は、<span class="guimenu">Yes with high isolation (高分離の場合は、はい)</span>を選択します。
+       </p></li><li class="listitem"><p>
+        SAP HANAデータベースのパスワード
+       </p></li></ul></div></dd></dl></div><p>
+   SAPソフトウェアのインストールの詳細については、<a class="link" href="https://help.sap.com" target="_blank">https://help.sap.com</a>および<a class="link" href="https://support.sap.com" target="_blank">https://support.sap.com</a>にあるSAP文書を参照してください。
+  </p></section><section class="sect1" id="sec-partition" data-id-title="パーティショニング"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.6 </span><span class="title-name">パーティショニング</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  SUSE Linux Enterprise Server for SAP applicationsは、次の2つのステージでパーティショニングテーブルを作成します。
+ </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+    <a class="xref" href="cha-plan.html#sec-partition-os" title="2.6.1. オペレーティングシステムのパーティショニング(ステージ1)">オペレーティングシステムのパーティショニング(ステージ1)</a> (オペレーティングシステムのインストール中)
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="cha-plan.html#sec-partition-sap" title="2.6.2. SAPシステムのパーティショニング(ステージ2)">SAPシステムのパーティショニング(ステージ2)</a> (SAP製品のインストール中)
+   </p></li></ol></div><section class="sect2" id="sec-partition-os" data-id-title="オペレーティングシステムのパーティショニング(ステージ1)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.1 </span><span class="title-name">オペレーティングシステムのパーティショニング(ステージ1)</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition-os">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   オペレーティングシステムのインストール中に、オペレーティングシステムのパーティションが作成されます。
+  </p><p>
+   <code class="literal">/dev/system</code>という名前の論理ボリュームグループ(LVG)が作成されます。このLVGには次の2つの論理ボリューム(LV)が含まれます。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="filename">/dev/system/root</code>: デフォルトで60GB、オペレーティングシステムおよびSAPメディア用。
+    </p></li><li class="listitem"><p>
+     <code class="filename">/dev/system/swap</code>: デフォルトで2GB、小さいサイズの設定を回避。<em class="citetitle">SAP Note 2578899: SUSE Linux Enterprise
+     Server 15: Installation notes</em>(<a class="link" href="https://launchpad.support.sap.com/#/notes/2578899" target="_blank">https://launchpad.support.sap.com/#/notes/2578899</a>)も参照してください。
+    </p></li></ul></div><p>
+   また、<code class="filename">boot</code>またはUEFIパーティションが必要に応じて作成されます。
+  </p></section><section class="sect2" id="sec-partition-sap" data-id-title="SAPシステムのパーティショニング(ステージ2)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.2 </span><span class="title-name">SAPシステムのパーティショニング(ステージ2)</span></span> <a title="Permalink" class="permalink" href="cha-plan.html#sec-partition-sap">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   パーティショニングのこの部分は、オペレーティングシステムがインストールされた後でのみ作成できます。これは、パーティションが、再起動後のインストールワークフローまたは実行中のシステムのいずれかで作成されることを意味します。
+  </p><p>
+   インストールしている製品および特定のユースケースに応じて、必要なハードディスク容量は異なります。
+  </p></section></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-about.html"><span class="pagination-relation">前へ</span><span class="pagination-label"><span class="title-number">第1章 </span>SUSE Linux Enterprise Server for SAP applicationsとは</span></a> </div><div><a class="pagination-link next" href="cha-install.html"><span class="pagination-relation">次へ</span><span class="pagination-label"><span class="title-number">第3章 </span>オペレーティングシステムのインストール</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">このページで</div><div class="toc"><ul><li><span class="sect1"><a href="cha-plan.html#sec-hardware"><span class="title-number">2.1 </span><span class="title-name">ハードウェア要件</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-download"><span class="title-number">2.2 </span><span class="title-name">インストールイメージ</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-migration"><span class="title-number">2.3 </span><span class="title-name">オフラインマイグレーション</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-workflow-overview"><span class="title-number">2.4 </span><span class="title-name">インストールワークフローの概要</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-data"><span class="title-number">2.5 </span><span class="title-name">インストールに必要なデータ</span></a></span></li><li><span class="sect1"><a href="cha-plan.html#sec-partition"><span class="title-number">2.6 </span><span class="title-name">パーティショニング</span></a></span></li></ul></div><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>

@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head><title>インストールクイックスタート | SLES for SAP 15 SP7</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2025-06-17"/>
+<meta name="dcterms.modified" content="2025-06-17"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-21"/>
+<meta name="title" content="インストールクイックスタート | SLES for SAP 15 SP7"/>
+<meta name="description" content="SUSE Linux Enterprise Server for SAP applicationsをインストールする方法"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
+<meta name="product-number" content="15 SP7"/>
+<meta name="book-title" content="インストールクイックスタート"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP7"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="インストールクイックスタート"/>
+<meta property="og:description" content="SLES for SAPのインストール"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="インストールクイックスタート"/>
+<meta name="twitter:description" content="SLES for SAPのインストール"/>
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": ["TechArticle"],
+    "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
+    "name": "インストールクイックスタート | SLES for SAP 15 SP7",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Products &amp; Solutions"
+    },
+    "inLanguage": "ja",
+    "headline": "インストールクイックスタート",
+    "description": "SUSE Linux Enterprise Server for SAP applicationsをインストールする方法",
+    "author": [
+      {
+        "@type": "Corporation",
+        "name": "SUSE Product &amp; Solution Documentation Team",
+        "url": "https://documentation.suse.com"
+      }
+    ],
+    "dateCreated": "2025-06-17T00:00+02:00",
+    "dateModified": "2025-06-17T00:00+02:00",
+    "datePublished": "2026-09-21T11:23+02:00",
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Installation"
+      },
+      {
+        "@type": "Thing",
+        "name": "Upgrade &amp; Update"
+      }
+    ],
+    "mentions": [
+      { "@type": "SoftwareApplication",
+        "name": "SLES for SAP",
+        "softwareVersion": "15 SP7",
+        "applicationCategory": "Operating System",
+        "operatingSystem": "Linux"
+      }
+    ],
+    "sameAs": [
+          "https://www.facebook.com/SUSEWorldwide/about",
+          "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
+          "https://twitter.com/SUSE",
+          "https://www.linkedin.com/company/suse"
+    ],
+    "publisher": {
+      "@type": "Corporation",
+      "name": "SUSE",
+      "url": "https://documentation.suse.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+      }
+    }
+  }</script>
+<link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script></head><body class="draft single normal offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">目次にジャンプ</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="#book-s4s">インストールクイックスタート</a></div></div><main id="_content"><nav class="side-toc placebo" id="_side-toc-overall"> </nav><article class="documentation"><button id="_unfold-side-toc-page">このページで</button><section xml:lang="ja" class="book" id="book-s4s" data-id-title="インストールクイックスタート"><div class="titlepage"><div><div class="big-version-info"><span class="productname">SUSE Linux Enterprise Server for SAP applications</span> <span class="productnumber">15 SP7</span></div><div class="title-container"><div class="title-container"><h1 class="title"><span class="phrase">インストールクイックスタート</span> <a title="Permalink" class="permalink" href="#book-s4s">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="date"><span class="imprint-label">発行日: </span>2026
+ 年 9
+ 月 21
+ 日
+</div></div></div><div class="toc"><ul><li><span class="preface"><a href="#pre-s4s"><span class="title-name">序文</span></a></span></li><li><span class="chapter"><a href="#cha-about"><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></a></span><ul><li><span class="sect1"><a href="#sec-component"><span class="title-number">1.1 </span><span class="title-name">ソフトウェアコンポーネント</span></a></span></li><li><span class="sect1"><a href="#sec-s4s-service"><span class="title-number">1.2 </span><span class="title-name">含まれるサービス</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-plan"><span class="title-number">2 </span><span class="title-name">インストールの計画</span></a></span><ul><li><span class="sect1"><a href="#sec-hardware"><span class="title-number">2.1 </span><span class="title-name">ハードウェア要件</span></a></span></li><li><span class="sect1"><a href="#sec-download"><span class="title-number">2.2 </span><span class="title-name">インストールイメージ</span></a></span></li><li><span class="sect1"><a href="#sec-migration"><span class="title-number">2.3 </span><span class="title-name">オフラインマイグレーション</span></a></span></li><li><span class="sect1"><a href="#sec-workflow-overview"><span class="title-number">2.4 </span><span class="title-name">インストールワークフローの概要</span></a></span></li><li><span class="sect1"><a href="#sec-data"><span class="title-number">2.5 </span><span class="title-name">インストールに必要なデータ</span></a></span></li><li><span class="sect1"><a href="#sec-partition"><span class="title-number">2.6 </span><span class="title-name">パーティショニング</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install"><span class="title-number">3 </span><span class="title-name">オペレーティングシステムのインストール</span></a></span><ul><li><span class="sect1"><a href="#sec-install-workflow"><span class="title-number">3.1 </span><span class="title-name">インストールワークフロー</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-install-sap"><span class="title-number">4 </span><span class="title-name">SAPアプリケーションのインストール</span></a></span><ul><li><span class="sect1"><a href="#sec-install-sap-welcome"><span class="title-number">4.1 </span><span class="title-name">最初のステップ</span></a></span></li><li><span class="sect1"><a href="#sec-install-sap-product"><span class="title-number">4.2 </span><span class="title-name">SAPインストールウィザードの使用</span></a></span></li></ul></li><li><span class="chapter"><a href="#cha-upgrade-sap-hana-cluster"><span class="title-number">5 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></a></span><ul><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-preparing"><span class="title-number">5.1 </span><span class="title-name">アップグレードの準備</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-upgrading"><span class="title-number">5.2 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></a></span></li><li><span class="sect1"><a href="#sec-upgrade-sap-hana-cluster-finishing"><span class="title-number">5.3 </span><span class="title-name">アップグレードタスクの完了</span></a></span></li></ul></li><li><span class="appendix"><a href="#id-1.9"><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></span><ul><li><span class="sect1"><a href="#id-1.9.4"><span class="title-number">A1 </span><span class="title-name">GNU Free Documentation License</span></a></span></li></ul></li></ul></div><div class="list-of-figures"><div class="toc-title">図の一覧</div><ul><li><span class="figure"><a href="#fig-offering"><span class="number">1.1 </span><span class="name">SUSE Linux Enterprise Server for SAP applicationsのオファリング</span></a></span></li><li><span class="figure"><a href="#fig-install-license"><span class="number">3.1 </span><span class="name">言語、キーボード、および製品選択</span></a></span></li><li><span class="figure"><a href="#fig-install-type"><span class="number">3.2 </span><span class="name">システムの役割</span></a></span></li><li><span class="figure"><a href="#fig-install-overview"><span class="number">3.3 </span><span class="name">インストール設定</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-source"><span class="number">4.1 </span><span class="name">SAPインストールマスタの場所</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-sapmedia"><span class="number">4.2 </span><span class="name">SAPインストールウィザード: 追加のインストールメディア</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-mode-db"><span class="number">4.3 </span><span class="name">SAPインストールウィザード: インストールタイプおよびデータベース</span></a></span></li><li><span class="figure"><a href="#fig-sap-wizard-avail-products"><span class="number">4.4 </span><span class="name">SAPインストールウィザード: 製品の選択</span></a></span></li><li><span class="figure"><a href="#fig-product-parameter"><span class="number">4.5 </span><span class="name">製品パラメータ</span></a></span></li><li><span class="figure"><a href="#fig-sapinst-param"><span class="number">4.6 </span><span class="name">SAPインストーラ: パラメータの定義</span></a></span></li></ul></div><div class="list-of-tables"><div class="toc-title">表の一覧</div><ul><li><span class="table"><a href="#tab-sap-media-source"><span class="number">4.1 </span><span class="name">メディアソースのパス</span></a></span></li></ul></div><div><div xml:lang="ja" class="legalnotice" id="id-1.2.12"><p>
+  Copyright © 2010–2026
+ SUSE LLC and contributors. All rights reserved.
+ </p><p>
+  この文書は、GNU Free Documentation Licenseのバージョン1.2または(オプションとして)バージョン1.3の条項に従って、複製、頒布、および/または改変が許可されています。ただし、この著作権表示およびライセンスは変更せずに記載すること。ライセンスバージョン1.2のコピーは、<span class="quote">「<span class="quote">GNU Free Documentation License</span>」</span>セクションに含まれています。
+ </p><p>
+  SUSEの商標については、<a class="link" href="https://www.suse.com/company/legal/" target="_blank">https://www.suse.com/company/legal/</a>を参照してください。サードパーティ各社とその製品の商標は、所有者であるそれぞれの会社に所属します。商標記号(®、™など)は、SUSEおよび関連会社の商標を示します。アスタリスク(*)は、第三者の商標を示します。
+ </p><p>
+  本書のすべての情報は、細心の注意を払って編集されています。しかし、このことは正確性を完全に保証するものではありません。SUSE LLC、その関係者、著者、翻訳者のいずれも誤りまたはその結果に対して一切責任を負いかねます。
+ </p></div></div><section class="preface" id="pre-s4s" data-id-title="序文"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number"> </span><span class="title-name">序文</span></span> <a title="Permalink" class="permalink" href="#pre-s4s">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  SUSE® Linux Enterprise Server for SAP applicationsは、SAPのソフトウェア開発のための参照プラットフォームです。SAPアプリケーション用に最適化されています。<span class="phrase">このドキュメントでは、SUSE Linux Enterprise Server for SAP applicationsのインストールについて説明します。</span>
+ </p><p>
+  SUSE Linux Enterprise High Availabilityも、SUSE Linux Enterprise Server for SAP applicationsの一部です。
+ </p></section><section class="chapter" id="cha-about" data-id-title="SUSE Linux Enterprise Server for SAP applicationsとは"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></span> <a title="Permalink" class="permalink" href="#cha-about">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div><div class="abstract"><p>
+   SUSE® Linux Enterprise Server for SAP applicationsは、SAPユーザの特定のニーズに対処するソフトウェアとサービスのバンドルです。すべてのSAPソフトウェアソリューション用に最適化された唯一のオペレーティングシステムです。
+  </p></div></div></div></div><p>
+  対象となる使用例は次のとおりです。
+ </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+    UnixからLinuxへのマイグレーションおよびプラットフォーム変更
+   </p></li><li class="listitem"><p>
+    SAPアプライアンス
+   </p></li><li class="listitem"><p>
+    SAPクラウドの展開
+   </p></li></ul></div><p>
+  SUSE Linux Enterprise Server for SAP applicationsは、ソフトウェアコンポーネントおよびサービス提供から構成されています。サービス提供については、次の各セクションで説明します。図<a class="xref" href="#fig-offering" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング">SUSE Linux Enterprise Server for SAP applicationsのオファリング</a>は、SUSEのその他の製品でも使用できるソフトウェアコンポーネントおよびサービス(緑色)とSUSE Linux Enterprise Server for SAP applicationsでのみ使用できるソフトウェアコンポーネントおよびサービス(青色)を示しています。
+ </p><div class="figure" id="fig-offering"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_overview.png"><img src="images/s4s_overview.png" width="85%" alt="SUSE Linux Enterprise Server for SAP applicationsのオファリング" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 1.1: </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsのオファリング </span></span><a title="Permalink" class="permalink" href="#fig-offering">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><section class="sect1" id="sec-component" data-id-title="ソフトウェアコンポーネント"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.1 </span><span class="title-name">ソフトウェアコンポーネント</span></span> <a title="Permalink" class="permalink" href="#sec-component">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  <a class="xref" href="#fig-offering" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング">図1.1「SUSE Linux Enterprise Server for SAP applicationsのオファリング」</a>で示されているように、SUSE Linux Enterprise Server for SAP applicationsは、SUSE Linux Enterprise Serverをベースとしていますが、SUSE Linux Enterprise High Availabilityやインストールワークフローなどのいくつかの追加のソフトウェアコンポーネントが含まれています。これらのソフトウェアコンポーネントについて以下に簡単に説明します。
+ </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.7.4.1"><span class="term">SUSE Linux Enterprise Server</span></dt><dd><p>
+     現在のリリースはSUSE Linux Enterprise Server 15 SP7をベースとしています。SUSE Linux Enterprise Serverは、物理環境と仮想環境の両方でミッションクリティカルなコンピューティングに対応する非常に相互運用性の高いプラットフォームです。
+    </p></dd><dt id="id-1.4.7.4.2"><span class="term">SUSE Linux Enterprise High Availability</span></dt><dd><p>
+     SUSE Linux Enterprise High Availabilityには、ポリシー重視の柔軟なクラスタリングのためのツールが用意されていて、SAPインスタンスおよびSAPデータベースのバックエンドを管理するためのリソースエージェントが含まれています。
+    </p></dd><dt id="id-1.4.7.4.3"><span class="term">簡素化されたSAP HANAシステムレプリケーションのセットアップ</span></dt><dd><p>
+     SUSE Linux Enterprise Server for SAP applicationsは、SUSE Linux Enterprise High Availabilityのコンポーネントと、SAP HANAスケールアップ、スケールアウト、およびトポロジ管理用の追加のリソースエージェントを使用したSAP HANAシステムレプリケーションをサポートしています。また、SUSE Linux Enterprise Server for SAP applicationsには、クラスタのセットアップを簡素化するYaSTウィザードが付属しています。
+    </p></dd><dt id="id-1.4.7.4.4"><span class="term">インストールワークフロー</span></dt><dd><p>
+     インストールワークフローは、SUSE Linux Enterprise ServerオペレーティングシステムとSAPアプリケーション両方のガイド付きインストールパスを提供します。このワークフローは、補足メディアを使用してサードパーティベンダーが拡張できます。詳細については、<a class="xref" href="#sec-workflow-overview" title="2.4. インストールワークフローの概要">2.4項 「インストールワークフローの概要」</a>を参照してください。
+    </p></dd><dt id="id-1.4.7.4.5"><span class="term">ClamSAPを使用したマルウェア保護</span></dt><dd><p>
+     ClamSAPは、ClamAVマルウェア対策ツールキットをSAP NetWeaverおよびSAP Mobile Platformアプリケーションに統合し、クロスプラットフォーム脅威検出を可能にします。
+    </p></dd><dt id="id-1.4.7.4.6"><span class="term">SAP HANAのファイアウォールおよびSAP HANA強化ガイド</span></dt><dd><p>
+     さらに、SUSE Linux Enterprise Server for SAP applicationsには、<code class="systemitem">firewalld</code>と統合されたパッケージ<code class="systemitem">HANA-Firewall</code>が用意されています。これにより、できるだけ簡単にSAP HANAをセキュリティ保護するための事前設定されたセットアップおよびルールが提供されます。
+    </p><p>
+     ベースとなっているオペレーティングシステムを強化する方法については、SUSE Linux Enterprise Server for SAP applicationsリソースライブラリ(<a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>)を参照してください。そこで、ドキュメント『<em class="citetitle">OS Security Hardening for SAP HANA</em>』を検索してください。
+    </p></dd><dt id="id-1.4.7.4.7"><span class="term">簡素化された運用管理</span></dt><dd><p>
+     <code class="command">sapconf</code>によって提供されるシステムチューニングプロファイルを使用すると、SAPで推奨するようにシステムを自動的かつ包括的にチューニングできます。
+    </p><p>
+     <code class="command">cryptctl</code>では、LUKSを使用して機密ディレクトリを暗号化できます。暗号化キーは、お客様の構内にある中央サーバに配置されます。暗号化されたパーティションは、予期しない再起動後に自動的に再マウントされます。
+    </p><p>
+     SAPアプリケーションのソフトウェア依存関係の作業を簡素化するため、SUSEでは固有のアプリケーションに関連する依存関係RPMパッケージを組み合わせたパターンを作成しました。
+    </p><p>
+     <code class="systemitem">ClusterTools2</code>には、Corosync/<code class="systemitem">pacemaker</code>のクラスタのセットアップと管理を支援するツールが用意されています。
+    </p></dd></dl></div></section><section class="sect1" id="sec-s4s-service" data-id-title="含まれるサービス"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.2 </span><span class="title-name">含まれるサービス</span></span> <a title="Permalink" class="permalink" href="#sec-s4s-service">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.8.2.1"><span class="term"><span><span class="emphasis"><strong>「Extended Service Pack Overlap Support (ESPOS)」</strong></span></span>
+    </span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションには、Extended Service Pack Overlap Support (ESPOS)が含まれています。これにより、2つの連続するサービスパックのサポート期間の重複期間が3年延長されます。この期間中、長期サービスパックサポート(LTSS)の条項に従ってサポートおよび関連するすべての保守更新を受け取ります。
+     </p><p>
+        Extended Service Pack Overlap Supportの場合、6カ月のみではなく3年半以内にサービスパックのマイグレーションを実行できます。このため、マイグレーションを容易にスケジュールし、時間の制約が軽減された状況でマイグレーション前にテストを行うことができます。追加コストを支払うことでSUSEはLTSSも提供します。LTSSでは、ESPOS期間の終了後に特定のサービスパックのサポートを受けることができます。SUSE Linux Enterprise Server for SAP applicationsには、1年半の一般的なサポートとそれぞれのサービスパックに対する3年間のESPOSが含まれています。
+     </p><p>
+        各SLEファミリの最後のサービスパックにはESPOSは含まれていません。これにはESPOSの代わりに一般的なより長期のサポート期間が含まれています。そのため、LTSSは最後のサービスパックに対してのみ使用できます。その他すべてのサービスパックには3年間のESPOSがすでに含まれています。これはLTSSと同じです。
+     </p><p>
+      詳細については、次のリソースを参照してください。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        製品ライフサイクルサポートポリシー: <a class="link" href="https://www.suse.com/support/policy-products/#sap" target="_blank">https://www.suse.com/support/policy-products/#sap</a>
+       </p></li><li class="listitem"><p>
+        製品別のライフサイクル日付: <a class="link" href="https://www.suse.com/lifecycle/" target="_blank">https://www.suse.com/lifecycle/</a>
+       </p></li><li class="listitem"><p>
+        長期サービスパックサポート: <a class="link" href="https://www.suse.com/products/long-term-service-pack-support/" target="_blank">https://www.suse.com/products/long-term-service-pack-support/</a>
+       </p></li></ul></div></dd><dt id="id-1.4.8.2.2"><span class="term"><span><span class="emphasis"><strong>SUSE Linux Enterprise Server Priority Support for SAP Applications</strong></span></span>
+    </span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションには、SUSE Linux Enterprise Server Priority Support for SAP Applicationsが含まれています。SAPから直接SUSE Linux Enterprise Server for SAP applicationsのテクニカルサポートを提供します。SUSE Technical SupportおよびSAPのサポートエンジニアによってジョイントサポートインフラストラクチャが提供されます。これはSAP Resolveに基づき、SAPとSUSEの両方とのシームレス通信を提供します。この<span class="quote">「<span class="quote">One Face to the Customer</span>」</span> (お客様に対する一元窓口)サポートモデルによって、複雑さが軽減され、総所有コストが低減されます。
+     </p><p>
+      詳細については、「<em class="citetitle">SAP Note 1056161: SUSE
+       Priority Support for SAP Applications</em>」(<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>)を参照してください。
+     </p></dd></dl></div><div id="id-1.4.8.3" data-id-title="モジュールおよび拡張機能のライフサイクルおよびサポート" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: モジュールおよび拡張機能のライフサイクルおよびサポート</div><p>
+    モジュールおよび拡張機能のライフサイクルはSLES for SAPとは異なります。SUSEではモジュールおよび拡張機能に対して異なるサポートが提供されます。
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      モジュール:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         モジュールによって異なります。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         最新のパッケージのみがサポートされます。サポートはSUSE Linux Enterprise Server for SAP applicationsのサブスクリプションに含まれています。追加の登録キーは必要ありません。
+        </p></li></ul></div></li><li class="listitem"><p>
+      拡張機能
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         SUSE Linux Enterprise Server for SAP applicationsとともに通常リリースが調整されます。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         サポートは利用できますが、SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションに含まれていません。追加の登録キーが必要です。
+        </p></li></ul></div></li><li class="listitem"><p>
+      サポートされない拡張機能(SUSE Package HubおよびSUSE Software Development Kit)
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         SUSE Linux Enterprise Server for SAP applicationsとともに通常リリースが調整されます。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         セキュリティおよびパッケージングの問題の修正以外のサポートはありません。追加の登録キーは必要ありません。
+        </p></li></ul></div></li></ul></div></div></section></section><section class="chapter" id="cha-plan" data-id-title="インストールの計画"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">2 </span><span class="title-name">インストールの計画</span></span> <a title="Permalink" class="permalink" href="#cha-plan">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  この章はインストールの計画に役立つため、注意深くお読みください。この章には要件のリストが記載されており、システムに関するデータを収集するのに役立ちます。
+ </p><section class="sect1" id="sec-hardware" data-id-title="ハードウェア要件"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.1 </span><span class="title-name">ハードウェア要件</span></span> <a title="Permalink" class="permalink" href="#sec-hardware">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   このセクションでは、SUSE Linux Enterprise Server for SAP applicationsのインストールの最小ハードウェア要件を一覧表示し、特定のSAPソフトウェアの想定されるハードウェア要件に関する基本的なガイダンスを示します。SAPソフトウェアのハードウェア要件の最新情報については、<a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>にある公式サイジングガイドラインを参照してください。
+  </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.4.3.1"><span class="term">サポートされているCPU</span></dt><dd><p>
+      Intel 64
+     </p><p>
+      IBM POWER 8 (PowerVM搭載)
+     </p><p>
+      IBM POWER 9 (PowerVM搭載)
+     </p></dd><dt id="id-1.5.4.3.2"><span class="term">ハードディスク</span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsには、システムボリュームに対して最低41GB (スワップなし)のハードディスク容量が必要です。それに加えて、スワップパーティション用に適切なハードディスク容量を予約します。
+     </p><p>
+      SAP NetWeaverなどのSAPアプリケーションをインストールするには、アプリケーションの<code class="filename">/data</code>パーティションのオペレーティングシステムに必要な容量のほか、最低200GBの空きディスク容量が必要です。
+     </p><p>
+      SAP HANAをインストールするには、次のいずれかが必要です。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP BusinessOne認定マシン
+       </p></li><li class="listitem"><p>
+        SAP HANA TDI (Tailored Datacenter Integration)の要件を満たす互換性のあるマシン。つまり、オペレーティングシステムに必要な容量のほか、次の空きディスク容量が必要です。
+       </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+          パーティション<code class="filename">/usr/sap</code>用に52GBの空きディスク容量
+         </p></li><li class="listitem"><p>
+          SAP HANAデータ用の3つのパーティションの容量: <code class="filename">/hana/data</code> (RAMと同じサイズ)、<code class="filename">/hana/log</code> (RAMと同じサイズで最大512GB)、および<code class="filename">/hana/shared</code> (RAMと同じサイズで最大1TB)。
+         </p></li></ul></div></li></ul></div><p>
+      SAP HANAの詳細については、<a class="link" href="https://help.sap.com/docs/SAP_HANA_PLATFORM" target="_blank">https://help.sap.com/docs/SAP_HANA_PLATFORM</a> (セクション<span class="guimenu">実装</span> › <span class="guimenu">SAP HANAマスタガイド</span> › <span class="guimenu">SAP HANA展開オプション</span> › <span class="guimenu">オンプレミス展開</span>)を参照してください。
+     </p></dd><dt id="id-1.5.4.3.3"><span class="term">RAM</span></dt><dd><p>
+      SUSE Linux Enterprise Serverオペレーティングシステムそれ自体には、CPUコアあたり最低1024MBの合計RAMまたは最低512MBのRAM(どちらか高いほうを選択)が必要です。
+     </p><p>
+      インストールするSAPソフトウェアには追加のRAMが必要です。
+     </p><p>
+      SAP HANAをインストールするには、マシンに最低24GBのRAMが必要です。
+     </p></dd></dl></div><p>
+   SAP HANAのハードウェアの設定の詳細については、『<em class="citetitle">SAP Note 1944415: Hardware Configuration Guide and Software
+   Installation Guide for SUSE Linux Enterprise Server with SAP HANA and SAP
+   Business One</em>』(<a class="link" href="https://launchpad.support.sap.com/#/notes/1944415" target="_blank">https://launchpad.support.sap.com/#/notes/1944415</a>)を参照してください。
+  </p><p>
+   パーティショニングに関する詳細については、<a class="xref" href="#sec-partition" title="2.6. パーティショニング">2.6項 「パーティショニング」</a>を参照してください。
+  </p></section><section class="sect1" id="sec-download" data-id-title="インストールイメージ"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.2 </span><span class="title-name">インストールイメージ</span></span> <a title="Permalink" class="permalink" href="#sec-download">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   以前のSLE製品と異なり、SLE 15 SP7製品ライン全体を単一インストールメディアである<code class="literal">SLE 15 SP7 Online media 1</code>からインストールできます。ネットワークアクセスや登録なしでインストールするには、<code class="literal">SLE 15 SP7 Full media 1</code>イメージをダウンロードしてください。両方のISOイメージは<a class="link" href="https://download.suse.com/" target="_blank">https://download.suse.com/</a>から入手できます。
+  </p><p>
+   物理DVDにイメージを書き込むか、リムーバブルフラッシュディスクにコピーします。ディスクのサイズが目的のイメージに対して十分であることを確認します。仮想マシンにインストールするときは、仮想DVD-ROMデバイスを使用します。
+  </p><div id="id-1.5.5.4" data-id-title="インストールメディアイメージをリムーバブルフラッシュディスクにコピーする" class="admonition tip normal"><img class="symbol" alt="ヒント" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">ヒント: インストールメディアイメージをリムーバブルフラッシュディスクにコピーする</div><p>
+    次のコマンドを使用して、インストールイメージのコンテンツをリムーバブルフラッシュディスクにコピーします。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code><code class="command">sudo</code> dd if=<em class="replaceable">IMAGE</em> of=<em class="replaceable">FLASH_DISK</em> bs=4M &amp;&amp; sync</pre></div><p>
+    <em class="replaceable">IMAGE</em>をインストールメディアイメージファイルへのパスに置き換え、<em class="replaceable">FLASH_DISK</em>をフラッシュデバイスに置き換えます。
+   </p></div></section><section class="sect1" id="sec-migration" data-id-title="オフラインマイグレーション"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.3 </span><span class="title-name">オフラインマイグレーション</span></span> <a title="Permalink" class="permalink" href="#sec-migration">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP applicationsのマイグレーションパスは、SUSE Linux Enterprise Server with <span class="productname">Enhanced Service Pack Overlay Support</span> (ESPOS)のマイグレーションパスと同じです。詳細については、<a class="link" href="https://documentation.suse.com/sles-15/html/SLES-all/cha-upgrade-paths.html" target="_blank">https://documentation.suse.com/sles-15/html/SLES-all/cha-upgrade-paths.html</a>にある『<em class="citetitle">SUSE Linux Enterprise Server</em>アップグレードガイド』を参照してください。
+  </p></section><section class="sect1" id="sec-workflow-overview" data-id-title="インストールワークフローの概要"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.4 </span><span class="title-name">インストールワークフローの概要</span></span> <a title="Permalink" class="permalink" href="#sec-workflow-overview">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   SUSE Linux Enterprise Server for SAP applicationsのインストールワークフローは、次のステップで構成されます。
+  </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)のインストール。<a class="xref" href="#sec-install-workflow" title="3.1. インストールワークフロー">3.1項 「インストールワークフロー」</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート1:すべての必要なSAPメディアをローカルディスクにコピーするか、使用する共有ストレージメディアを選択する。<a class="xref" href="#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="#st-copy-master" title="ステップ 1">ステップ 1</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート2:ユーザにインタラクティブにクエリを実行して、実際のインストールのすべてのパラメータを収集する。<a class="xref" href="#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="#st-collect-parameter" title="ステップ 10">ステップ 10</a>を参照してください。
+    </p></li><li class="listitem"><p>
+     SAPインストールウィザード、パート3:SAPインストーラを実行する。<a class="xref" href="#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>、特に<a class="xref" href="#st-sapinst" title="ステップ 13">ステップ 13</a>を参照してください。
+    </p></li></ol></div><p>
+   これらのステップのほとんどは各ステップ後すぐに実行する必要がないため、システムのインストール方法に柔軟性があります。つまり、最初のステップとして単一のインストールを準備し、そこから続行できます。次に例を示します。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)のみをインストールします。
+    </p><p>
+     <span><span class="emphasis"><strong>または</strong></span></span>
+    </p></li><li class="listitem"><p>
+     オペレーティングシステム(SUSE Linux Enterprise Server)をインストールし、SAPメディアをコピーして、SAPインストールパラメータを収集します。
+    </p></li></ul></div><p>
+   次に、ディスクイメージを作成して、それらを他のシステムにコピーし、SAPインストールパラメータを調整します。最後に、各マシンの個別のインストールを終了します。
+  </p></section><section class="sect1" id="sec-data" data-id-title="インストールに必要なデータ"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.5 </span><span class="title-name">インストールに必要なデータ</span></span> <a title="Permalink" class="permalink" href="#sec-data">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.5.8.2.1"><span class="term">オペレーティングシステム</span></dt><dd><p>
+      SUSE Linux Enterprise Serverのインストールには、すべての物理サーバについて次のデータが必要です。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        ホスト名、ドメイン、IPアドレス、サブネットマスク、ドメイン検索リスト(DNS)、名前サーバのIP、ゲートウェイ用IPなどの、ネットワーク設定パラメータ
+       </p></li><li class="listitem"><p>
+        SUSE Linux Enterprise Serverインストール用の管理者(<code class="systemitem">root</code>)パスワード
+       </p></li></ul></div></dd><dt id="id-1.5.8.2.2"><span class="term">SAPアプリケーション</span></dt><dd><p>
+      SAPアプリケーションのインストールでは、通常、次のものを指定する必要があります。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAPインスタンス番号
+       </p></li><li class="listitem"><p>
+        SAPアプリケーションのパスワード
+       </p></li></ul></div><p>
+      インストールするSAPアプリケーションによって、T-Shirt Sizingや仮想ネットワーキング用のパラメータなど、より多くのパラメータが必要な場合があります。
+     </p></dd><dt id="id-1.5.8.2.3"><span class="term">SAP HANAデータベース</span></dt><dd><p>
+      SAP HANAのインストールでは、次を指定する必要があります。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        SAP SID
+       </p></li><li class="listitem"><p>
+        SAPインスタンス番号
+       </p></li><li class="listitem"><p>
+        マルチテナントデータベースコンテナ(MDC)を有効にするかどうか。SAP HANAのマルチテナントサポートにより、1つのSAP HANAインストールとして実行される複数のデータベースを使用できます。(SAP HANA MDCを使用するには、SAP HANA Lifecycle Managerが必要です。)
+       </p><p>
+        シングルテナントインストールの場合は、<span class="guimenu">いいえ</span>を選択します。
+       </p><p>
+        1人の<code class="systemitem"><em class="replaceable">SID</em>adm</code>ユーザによって管理するマルチテナントインスタンスの場合は、<span class="guimenu">Yes with low isolation (低分離ではい)</span>を選択します。
+       </p><p>
+        各データベースが独自の<code class="systemitem"><em class="replaceable">SID</em>adm</code>ユーザを持つ管理対象のマルチテナントインスタンスの場合は、<span class="guimenu">Yes with high isolation (高分離の場合は、はい)</span>を選択します。
+       </p></li><li class="listitem"><p>
+        SAP HANAデータベースのパスワード
+       </p></li></ul></div></dd></dl></div><p>
+   SAPソフトウェアのインストールの詳細については、<a class="link" href="https://help.sap.com" target="_blank">https://help.sap.com</a>および<a class="link" href="https://support.sap.com" target="_blank">https://support.sap.com</a>にあるSAP文書を参照してください。
+  </p></section><section class="sect1" id="sec-partition" data-id-title="パーティショニング"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">2.6 </span><span class="title-name">パーティショニング</span></span> <a title="Permalink" class="permalink" href="#sec-partition">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  SUSE Linux Enterprise Server for SAP applicationsは、次の2つのステージでパーティショニングテーブルを作成します。
+ </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+    <a class="xref" href="#sec-partition-os" title="2.6.1. オペレーティングシステムのパーティショニング(ステージ1)">オペレーティングシステムのパーティショニング(ステージ1)</a> (オペレーティングシステムのインストール中)
+   </p></li><li class="listitem"><p>
+    <a class="xref" href="#sec-partition-sap" title="2.6.2. SAPシステムのパーティショニング(ステージ2)">SAPシステムのパーティショニング(ステージ2)</a> (SAP製品のインストール中)
+   </p></li></ol></div><section class="sect2" id="sec-partition-os" data-id-title="オペレーティングシステムのパーティショニング(ステージ1)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.1 </span><span class="title-name">オペレーティングシステムのパーティショニング(ステージ1)</span></span> <a title="Permalink" class="permalink" href="#sec-partition-os">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   オペレーティングシステムのインストール中に、オペレーティングシステムのパーティションが作成されます。
+  </p><p>
+   <code class="literal">/dev/system</code>という名前の論理ボリュームグループ(LVG)が作成されます。このLVGには次の2つの論理ボリューム(LV)が含まれます。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="filename">/dev/system/root</code>: デフォルトで60GB、オペレーティングシステムおよびSAPメディア用。
+    </p></li><li class="listitem"><p>
+     <code class="filename">/dev/system/swap</code>: デフォルトで2GB、小さいサイズの設定を回避。<em class="citetitle">SAP Note 2578899: SUSE Linux Enterprise
+     Server 15: Installation notes</em>(<a class="link" href="https://launchpad.support.sap.com/#/notes/2578899" target="_blank">https://launchpad.support.sap.com/#/notes/2578899</a>)も参照してください。
+    </p></li></ul></div><p>
+   また、<code class="filename">boot</code>またはUEFIパーティションが必要に応じて作成されます。
+  </p></section><section class="sect2" id="sec-partition-sap" data-id-title="SAPシステムのパーティショニング(ステージ2)"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">2.6.2 </span><span class="title-name">SAPシステムのパーティショニング(ステージ2)</span></span> <a title="Permalink" class="permalink" href="#sec-partition-sap">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   パーティショニングのこの部分は、オペレーティングシステムがインストールされた後でのみ作成できます。これは、パーティションが、再起動後のインストールワークフローまたは実行中のシステムのいずれかで作成されることを意味します。
+  </p><p>
+   インストールしている製品および特定のユースケースに応じて、必要なハードディスク容量は異なります。
+  </p></section></section></section><section class="chapter" id="cha-install" data-id-title="オペレーティングシステムのインストール"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">3 </span><span class="title-name">オペレーティングシステムのインストール</span></span> <a title="Permalink" class="permalink" href="#cha-install">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  次のセクションでは、基本オペレーティングシステムのインストール手順について説明します。インストールワークフローを使用すると、ローカルインストールメディアを使用するか、ネットワークを介してインストールできます。または、AutoYaSTを使用してインストールできます。
+ </p><section class="sect1" id="sec-install-workflow" data-id-title="インストールワークフロー"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">3.1 </span><span class="title-name">インストールワークフロー</span></span> <a title="Permalink" class="permalink" href="#sec-install-workflow">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   インストールワークフローは、SAPアプリケーション用に最適化された設定を使用したオペレーティングシステムのガイド付きインストールです。インストールワークフロー中に、SAPアプリケーションをインストールするかどうかを選択できます。その場合、SUSE Linux Enterprise Serverのインストールが完了したら、SAPインストールメディアを指定するように求められます。サードパーティの拡張機能をインストールするかどうかも選択できます。
+  </p><p>
+   このセクションでは、ローカルメディアからインストールを開始することを前提としています。
+   
+  </p><p>
+   詳細については、<a class="xref" href="#sec-workflow-overview" title="2.4. インストールワークフローの概要">2.4項 「インストールワークフローの概要」</a>を参照してください。
+  </p><p>
+   このセクションでは、SUSE Linux Enterprise Server for SAP applicationsオペレーティングシステムのインストールについて説明します。
+  </p><div id="id-1.6.4.6" data-id-title="Oracleデータベースのインストール" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: Oracleデータベースのインストール</div><p>
+    Oracleデータベースを後でインストールできるようにするには、まずSUSE Linux Enterprise Serverをインストールし、次にインストールをSUSE Linux Enterprise Server for SAP applicationsに変換します。
+   </p><p>
+    これは、Oracleデータベースのインストーラで、特定のファイルが存在するかを照会するために必要です。これらのファイルのすべてがSLES for SAPインストールに含まれているわけではありません。
+   </p></div><div class="procedure" id="pro-workflow-start" data-id-title="OSインストールの開始"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">手順 3.1: </span><span class="title-name">OSインストールの開始 </span></span><a title="Permalink" class="permalink" href="#pro-workflow-start">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       AMD64/Intel 64では、インストールメディアからブートします。ブートメニューから<span class="guimenu">インストール</span>を選択します。
+       
+       
+      </p></li><li class="listitem"><p>
+       POWERについては、SUSE Linux Enterprise Serverのドキュメント<em class="citetitle">Deployment Guide,
+       Part <span class="quote">「<span class="quote">Installation Preparation</span>」</span>,
+       Chapter <span class="quote">「<span class="quote">Installation on IBM POWER</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)の手順に従ってください。
+      </p></li></ul></div><p>
+     初期オペレーティングシステムの起動時に、<span class="keycap">Esc</span>を押してブートメッセージを表示できます。このプロセスが完了したら、グラフィカルインストールワークフローが開始されます。最初のステップとして、インストールワークフローはそれ自体のアップデートを確認します。その後、インストールが開始できるようになります。
+    </p></li><li class="step"><p>
+     <span class="guimenu">言語</span>でデフォルトのシステム言語を選択します。
+    </p><div class="figure" id="fig-install-license"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-product.png"><img src="images/s4s-install-product.png" width="73%" alt="言語、キーボード、および製品選択" title="言語、キーボード、および製品選択"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 3.1: </span><span class="title-name">言語、キーボード、および製品選択 </span></span><a title="Permalink" class="permalink" href="#fig-install-license">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step"><p>
+     <span class="guimenu">キーボードレイアウト</span>で、適切なキーボードレイアウトを選択します。選択したレイアウトが物理キーボードに一致しているかどうかをテストするには、<span class="guimenu">キーボードのテスト</span>テキストボックスを使用します。
+    </p></li><li class="step"><p>
+     SLE 15 SP7では、製品ライン全体に単一のインストールISOを提供します。したがって、このページでインストールする製品を選択する必要があります。
+    </p><p>
+     <span class="guimenu">インストールする製品</span>で、<span class="guimenu">SUSE Linux Enterprise Server for SAP applications 15 SP7</span>を選択します。
+    </p></li><li class="step"><p>
+     使用許諾契約に目を通してください。同意する場合は、<span class="guimenu">ライセンス条件に同意します</span>を選択します。<span class="guimenu">次へ</span>で続行します。
+    </p><p>
+     同意しない場合は、<span class="guimenu">中止</span> › <span class="guimenu">インストールを中止</span>でインストールをキャンセルします。
+    </p></li><li class="step"><p><span class="step-optional">(オプション)</span> 
+     DHCPを介した自動ネットワーク設定が失敗すると、<span class="guimenu">ネットワーク設定</span>画面が開きます。
+    </p><p>
+     ただし、代わりに<span class="guimenu">登録</span>画面が表示された場合、ネットワーク接続が機能していることを示します。ネットワーク設定を変更するには、<span class="guimenu">ネットワーク設定</span>をクリックします。
+    </p><p>
+     ネットワークを設定し終えたら、<span class="guimenu">次へ</span>で続行します。
+    </p><div id="id-1.6.4.7.7.4" data-id-title="SAPで推奨するようにネットワークを設定する" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: SAPで推奨するようにネットワークを設定する</div><p>
+      SAPで提供されているドキュメントどおりに、ネットワーク接続を設定してください。
+     </p></div><p>
+     ネットワーキングの設定については、<em class="citetitle">
+      Administration Guide, Chapter <span class="quote">「<span class="quote">Basic Networking</span>」</span>,
+      Section <span class="quote">「<span class="quote">Configuring a Network Connection with YaST</span>」</span>
+     </em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+    </p></li><li class="step"><p>
+     <span class="guimenu">登録</span>画面で、<span class="guimenu">電子メールアドレス</span>と<span class="guimenu">登録コード</span>を入力します。登録成功は、製品の更新を受け取り、テクニカルサポートを受ける資格を得るための前提条件です。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><div id="id-1.6.4.7.8.3" data-id-title="このステップで登録" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: このステップで登録</div><p>
+      インストールのこのステップでシステムを必ず登録してください。登録をしないと、最小限のSLEシステムしかインストールできず、更新を受け取ることができなくなります。
+     </p><p>
+      インストール中にネットワークにアクセスせずに完全な(ただしアップデートされていない) SLES for SAPシステムをインストールするには、<a class="link" href="https://download.suse.com" target="_blank">https://download.suse.com</a>からのSLE 15 SP7パッケージISOイメージを使用してください。次にこのページで<span class="guimenu">登録を行なわずに次へ進む</span>を選択し、次のページでアドオン製品としてSLE 15 SP7パッケージISOイメージを選択できます。
+     </p></div></li><li class="step"><p>
+     更新リポジトリを有効にするかどうか尋ねられたら、<span class="guimenu">はい</span>を選択します。
+    </p></li><li class="step"><p>
+     システムが正常に登録されたら、YaSTでSUSE Customer CenterからSUSE Linux Enterprise Server for SAP applicationsで使用可能なモジュールが一覧表示されます。デフォルトでは、最も一般的なケースが選択されています。追加のモジュールを有効にするには、そのエントリを有効にします。
+    </p><div id="id-1.6.4.7.10.2" data-id-title="リリースノート" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: リリースノート</div><p>
+      これ以降の手順では、<span class="guimenu">リリースノート</span>を選択することで、インストールプロセスのどの画面からでもリリースノートを参照できます。
+     </p></div><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p></li><li class="step"><p><span class="step-optional">(オプション)</span> <span class="guimenu">アドオン製品</span>ダイアログを使用して、SUSE Customer Centerで提供されていない他のソフトウェアソース(<span class="quote">「<span class="quote">リポジトリ</span>」</span>)をSUSE Linux Enterprise Server for SAP applicationsに追加できます。このようなアドオン製品には、ご使用のシステム用のサードパーティの製品や、ドライバまたは追加ソフトウェアなどがあります。
+    </p></li><li class="step"><p>
+     <span class="guimenu">システムの役割</span>を選択します。システムの役割は、選択したシナリオに合わせてシステムを調整する事前定義済みの使用例です。SUSE Linux Enterprise Server for SAP applicationsの場合、次のいずれかを選択できます。
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       <span class="guimenu">SAPアプリケーション向けSLES</span>:デフォルト。ほとんどの状況に推奨されます。このシステムの役割には、次のプロパティが含まれています。
+      </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+         SUSE Linux Enterprise Server for SAP applicationsのインストールウィザードのサポート。
+        </p></li><li class="listitem"><p>
+         RDPアクセス(<span><span class="emphasis"><strong>リモートデスクトッププロトコル</strong></span></span>)の有効化。
+        </p></li><li class="listitem"><p>
+         特別なパーティショニング推奨事項の提供。
+        </p></li></ul></div></li><li class="listitem"><p>
+       <span class="guimenu">GNOMEを利用するSLES</span>:固有なケースで必要になる場合があります。このインストールパスについては、このドキュメントでは説明していません。このインストールパスの詳細については、<em class="citetitle">
+        Installation Quick Start, Section <span class="quote">「<span class="quote">Installing SUSE Linux Enterprise Server</span>」</span>
+       </em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+      </p></li></ul></div><p>
+     特定のユースケース(高可用性、テキストモード、最小、およびKVM/XEN仮想化ホスト)に追加のシステムの役割を使用できます。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><div class="figure" id="fig-install-type"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-installationtype.png"><img src="images/s4s-install-installationtype.png" width="73%" alt="システムの役割" title="システムの役割"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 3.2: </span><span class="title-name">システムの役割 </span></span><a title="Permalink" class="permalink" href="#fig-install-type">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li></ol></div></div><div class="procedure" id="pro-workflow-finish" data-id-title="OSインストールの完了"><div class="title-container"><div class="procedure-title-wrap"><div class="procedure-title"><span class="title-number-name"><span class="title-number">手順 3.2: </span><span class="title-name">OSインストールの完了 </span></span><a title="Permalink" class="permalink" href="#pro-workflow-finish">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     次のオプションを有効にするかどうかを選択します。
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       システムとともにSAPアプリケーションをインストールするには、<span class="guimenu">オペレーティングシステムのインストール後にSAP製品のインストールウィザードを起動する</span>を有効にします。
+      </p></li><li class="listitem"><p>
+       このマシンへのRDPアクセス(リモートデスクトッププロトコル)を有効にするには、<span class="guimenu">RDPサービスを有効にしてファイアウォールでポートを開く</span>を有効にします。
+      </p></li></ul></div></li><li class="step"><p>
+     ボリューム<code class="literal">/dev/system/root</code>および<code class="literal">/dev/system/swap</code>に対して提案されたパーティションセットアップを確認します。ボリューム<code class="literal">/dev/system/data</code>は、<a class="xref" href="#sec-partition" title="2.6. パーティショニング">2.6項 「パーティショニング」</a>で説明されているように、後で作成されます。
+    </p><p>
+     提案されたセットアップを変更しないで受け入れるには、<span class="guimenu">次へ</span>で続行します。
+    </p></li><li class="step"><p>
+     システムで使用する時計とタイムゾーンを選択します。時刻を手動で調整したり、時刻同期用のNTPサーバを設定したりするには、<span class="guimenu">その他の設定</span>を選択します。詳細については、<em class="citetitle">Deployment Guide,
+     Chapter <span class="quote">「<span class="quote">Installation with YaST</span>」</span>,
+     Section <span class="quote">「<span class="quote">Clock and Time Zone</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p></li><li class="step"><p>
+     システム管理者アカウント(<code class="systemitem">root</code>と呼ばれる)のパスワードを入力し、<span class="guimenu">パスワードの確認</span>にも入力します。<span class="guimenu">キーボードレイアウトのテスト</span>テキストボックスを使用して、すべての特殊文字が正しく表示されているか確認できます。
+    </p><p>
+     
+     SSHログインを介してパスワード不要認証を有効にする場合は、<span class="guimenu">SSH公開鍵の取り込み</span>を介して鍵を取り込むことができます。パスワードを介して<code class="systemitem">root</code>ログインを完全に無効にする場合は、鍵のみをアップロードし、rootパスワードは指定しないでください。この場合、システム管理者としてのログインは、それぞれの鍵を使用したSSH経由でのみ可能です。
+    </p><p>
+     詳細については、<em class="citetitle">Deployment Guide,
+     Chapter <span class="quote">「<span class="quote">Installation with YaST</span>」</span>,
+     Section <span class="quote">「<span class="quote">Password for the System Administrator
+     root</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><div id="id-1.6.4.8.5.5" data-id-title="rootのパスワードは、決して忘れないでください" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: <code class="systemitem">root</code>のパスワードは、決して忘れないでください</div><p>
+      ユーザ<code class="systemitem">root</code>には、すべての管理タスクを実行する権限があります。このパスワードがなければ、<code class="systemitem">root</code>としてシステムにログインできません。ここに入力したパスワードを後で取得することはできません。
+     </p></div></li><li class="step"><p>
+     <span class="guimenu">インストール設定</span>画面で、いくつかの提案されるインストール設定を確認し、必要に応じて変更できます。各設定は現在の設定とともに表示されます。設定の一部を変更するには、適切なヘッドライン、他の下線付きアイテムをクリックします。
+    </p><div class="figure" id="fig-install-overview"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s-install-overview.png"><img src="images/s4s-install-overview.png" alt="インストール設定" title="インストール設定"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 3.3: </span><span class="title-name">インストール設定 </span></span><a title="Permalink" class="permalink" href="#fig-install-overview">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step"><p>
+     必要なシステム設定を完了したら、<span class="guimenu">インストール</span>をクリックします。
+    </p><div id="id-1.6.4.8.7.2" data-id-title="データの削除" class="admonition warning normal"><img class="symbol" alt="警告" title="Warning" src="static/images/icon-warning.svg"/><div class="admon-title">警告: データの削除</div><p>
+      インストールプロセスが完全または部分的にディスク上の既存のデータを上書きします。
+     </p></div><p>
+     インストールの確認ボックスで、<span class="guimenu">インストール</span>をクリックします。
+    </p><p>
+     オペレーティングシステムのインストールが完了したら、システムは自動的に再起動します。
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       システムのインストール準備のみを選択した場合、システムはデスクトップログイン画面から起動します。
+      </p></li><li class="listitem"><p>
+       SAPアプリケーションを直ちにインストールすることを選択した場合、インストールは再起動後に続行します。<a class="xref" href="#cha-install-sap" title="第4章 SAPアプリケーションのインストール">第4章 「<em>SAPアプリケーションのインストール</em>」</a>に進んでください。
+      </p></li></ul></div></li></ol></div></div></section></section><section class="chapter" id="cha-install-sap" data-id-title="SAPアプリケーションのインストール"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">4 </span><span class="title-name">SAPアプリケーションのインストール</span></span> <a title="Permalink" class="permalink" href="#cha-install-sap">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  このセクションでは、SAPから受け取ったSAPメディアセットのインストールについて説明します。
+ </p><section class="sect1" id="sec-install-sap-welcome" data-id-title="最初のステップ"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4.1 </span><span class="title-name">最初のステップ</span></span> <a title="Permalink" class="permalink" href="#sec-install-sap-welcome">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   これらの最初のステップは、インストールワークフロー中にのみ関連します。
+  </p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     システムがブートすると、<span class="guimenu">ようこそ</span>画面が表示されます。<span class="guimenu">次へ</span>で続行します。
+    </p></li><li class="step"><p>
+     <span class="guimenu">ネットワーク設定</span>画面が開きます。これにより、ネットワーク設定を変更することができます。
+    </p><p>
+     ネットワークを設定し終えたら、<span class="guimenu">次へ</span>で続行します。
+    </p><div id="id-1.7.4.3.2.3" data-id-title="SAPで推奨するようにネットワークを設定する" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: SAPで推奨するようにネットワークを設定する</div><p>
+      SAPアプリケーションのドキュメントに従って、ネットワーク接続を設定してください。
+     </p></div><p>
+     ネットワーキングの設定については、<em class="citetitle">
+      Administration Guide, Chapter <span class="quote">「<span class="quote">Basic Networking</span>」</span>,
+      Section <span class="quote">「<span class="quote">Configuring a Network Connection with YaST</span>」</span>
+     </em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+    </p><p>
+      (次の画面が読み込まれる間、<span class="guimenu">ようこそ</span>画面が数秒間、再び表示される場合があります。)
+     </p></li><li class="step"><p>
+     以下のいずれかのオプションを選択してください。
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.4.3.3.2.1"><span class="term">
+       <span class="guimenu">SAPファイルシステムを作成してSAP製品のインストールを開始する</span>
+      </span></dt><dd><p>
+        SAPアプリケーションをインストールし、SAPインストールルーチンを他のシステムに提供するサーバとしてシステムをセットアップできます。
+       </p><p>
+        <a class="xref" href="#sec-install-sap-product" title="4.2. SAPインストールウィザードの使用">4.2項 「SAPインストールウィザードの使用」</a>に進んでください。
+       </p></dd><dt id="id-1.7.4.3.3.2.2"><span class="term">
+       <span class="guimenu">Only create SAP HANA file systems, do not install SAP products now (SAP HANAファイルシステムのみを作成し、今はSAP製品をインストールしません)</span>
+      </span></dt><dd><p>
+        SAP BusinessOne認定ハードウェア上にSAP HANAファイルシステムを作成します。
+       </p><div id="id-1.7.4.3.3.2.2.2.3" data-id-title="ハードウェア要件" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: ハードウェア要件</div><p>
+         ご使用のマシンが<a class="xref" href="#sec-hardware" title="2.1. ハードウェア要件">2.1項 「ハードウェア要件」</a>で詳しく説明されるSAP HANAのハードウェア要件を満たしていることを確認してください。満たしていない場合、このオプションは新しいファイルシステムを作成せず、この時点でインストールワークフローが終了します。
+        </p></div></dd><dt id="id-1.7.4.3.3.2.3"><span class="term">
+       <span class="guimenu">ウィザードを完了してOSログインに進む</span>
+      </span></dt><dd><p>
+        SAPアプリケーションをインストールせず、SUSE Linux Enterprise Server for SAP applicationsのログイン画面に進みます。
+       </p></dd></dl></div><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p></li></ol></div></div></section><section class="sect1" id="sec-install-sap-product" data-id-title="SAPインストールウィザードの使用"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">4.2 </span><span class="title-name">SAPインストールウィザードの使用</span></span> <a title="Permalink" class="permalink" href="#sec-install-sap-product">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   SAPインストールウィザードを使用して、SAP NetWeaverシステム(データベースを含む)またはSAP HANAシステムをインストールします。
+  </p><p>
+   他のSAPアプリケーションをインストールしたり、より高度なSAP HANAセットアップを作成したりするには、このウィザードではなく、SAPによって提供されるインストール方法のいずれかを直接使用してください。
+  </p><div id="id-1.7.5.4" data-id-title="完全にインストールされたシステムへのSAPアプリケーションのインストール" class="admonition tip normal"><img class="symbol" alt="ヒント" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">ヒント: 完全にインストールされたシステムへのSAPアプリケーションのインストール</div><p>
+    このプロセスは、インストールワークフロー中に表示されるとおりに文書化されています。ただし、インストール済みシステムで使用可能なYaSTモジュール<span class="guimenu">SAPインストールウィザード</span>にも適用されます。
+   </p><p>
+    SAPインストーラを起動するには、デスクトップから<span class="guimenu">アプリケーション</span> › <span class="guimenu">システム</span> › <span class="guimenu">YaST</span>の順に選択し、YaSTコントロールセンターで<span class="guimenu">その他</span> › <span class="guimenu">SAPインストールウィザード</span>を選択して続行します。
+   </p></div><div id="id-1.7.5.5" data-id-title="SAPインストールウィザードの設定" class="admonition tip normal"><img class="symbol" alt="ヒント" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">ヒント: SAPインストールウィザードの設定</div><p>
+    SAPインストールウィザードの設定は<code class="filename">/etc/sysconfig/sap-installation-wizard</code>で指定され、文書化されています。ニーズに応じてそれを変更できます。
+   </p></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step" id="st-copy-master"><p>
+     <span class="guimenu">SAPインストールウィザード</span>画面で、<span class="guimenu">SAPインストールマスタの場所</span>(<a class="xref" href="#fig-sap-wizard-source" title="SAPインストールマスタの場所">図4.1「SAPインストールマスタの場所」</a>)を指定します。場所はローカル、リムーバブル、またはリモートインストールソースのいずれかです。
+    </p><div class="figure" id="fig-sap-wizard-source"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_source.png"><img src="images/s4s_sap_wizard_source.png" width="73%" alt="SAPインストールマスタの場所" title="SAPインストールマスタの場所"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.1: </span><span class="title-name">SAPインストールマスタの場所 </span></span><a title="Permalink" class="permalink" href="#fig-sap-wizard-source">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><p>
+     ドロップダウンリストから適切なオプションを選択します。テキストボックスで、次の表に示す形式に従って、ソースへのパスを指定します。
+    </p><div class="table" id="tab-sap-media-source" data-id-title="メディアソースのパス"><div class="title-container"><div class="table-title-wrap"><div class="table-title"><span class="title-number-name"><span class="title-number">表 4.1: </span><span class="title-name">メディアソースのパス </span></span><a title="Permalink" class="permalink" href="#tab-sap-media-source">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div><div class="table-contents"><table style="border-collapse: collapse; border-top: 1px solid ; border-bottom: 1px solid ; border-left: 1px solid ; border-right: 1px solid ; "><colgroup><col class="option"/><col class="desc"/><col class="format"/></colgroup><thead><tr><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          オプション
+         </p>
+        </th><th style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          説明
+         </p>
+        </th><th style="border-bottom: 1px solid ; ">
+         <p>
+          パスの形式
+         </p>
+        </th></tr></thead><tbody><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span><span class="emphasis"><strong>ローカルソース</strong></span></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">dir://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          ローカルディレクトリ
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">/path/to/dir/</em></code>
+         </p>
+        </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span><span class="emphasis"><strong>リムーバブルソース</strong></span></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">device://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          ローカルに接続されたハードディスク
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">devicename</em><em class="replaceable">/path/to/dir/on/device</em></code>
+         </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">usb://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          USBマスストレージデバイス
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">/path/to/dir/on/USB</em></code>
+         </p>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">cdrom://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          CDまたはDVD
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">//</em></code>
+         </p>
+         
+        </td></tr><tr><td style="border-bottom: 1px solid ; " colspan="3">
+         <span><span class="emphasis"><strong>リモートソース</strong></span></span>
+        </td></tr><tr><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          <span class="guimenu">nfs://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; border-bottom: 1px solid ; ">
+         <p>
+          NFS共有
+         </p>
+        </td><td style="border-bottom: 1px solid ; ">
+         <p>
+          <code class="filename"><em class="replaceable">server_name</em><em class="replaceable">/path/to/dir/on/device</em></code>
+         </p>
+         
+        </td></tr><tr><td style="border-right: 1px solid ; ">
+         <p>
+          <span class="guimenu">smb://</span>
+         </p>
+        </td><td style="border-right: 1px solid ; ">
+         <p>
+          SMB共有
+         </p>
+        </td><td>
+         <p>
+          <code class="filename">[<em class="replaceable">user_name</em>:<em class="replaceable">password</em>@]<em class="replaceable">server_name</em>/<em class="replaceable">/path/to/dir/on/server</em>[?workgroup=<em class="replaceable">workgroup_name</em>]</code>
+         </p>
+        </td></tr></tbody></table></div></div><p>
+     以前にインストールサーバからSAPアプリケーションをインストールしたことがある場合、またはシステムをインストールサーバとして設定している場合は、インストールマスタのプロバイダとしてそのサーバを直接選択することもできます。これを行うには、<span class="guimenu">インストールマスタの選択</span>の下のドロップダウンリストを使用します。
+    </p></li><li class="step"><p>
+     <span class="guimenu">高度なオプション</span>で、次のオプションから選択します。
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.5.6.2.2.1"><span class="term">
+       <span class="guimenu">SAP製品に対するインストールプロファイルを収集しますが、インストールは実行しません</span>
+      </span></dt><dd><p>
+        このオプションを使用して、インストールパラメータを設定しますが、実際のインストールは実行しません。このオプションを使用すると、SAPインストーラ(SAPinst)は実際のSAP製品のインストールを実行しないで停止します。ただし、以降の手順はすべて適用されます。
+       </p></dd><dt id="id-1.7.5.6.2.2.2"><span class="term">
+       <span class="guimenu">ローカルのネットワークに対して、NFSを介してすべてのインストールメディア(マスターを含む)を提供します</span>
+      </span></dt><dd><p>
+        このシステムを他のSUSE Linux Enterprise Server for SAP applicationsシステムのインストールサーバとして設定します。このインストールサーバにコピーされるメディアはNFSを通じて提供され、サービスロケーションプロトコル(SLP)を介して検出できます。
+       </p></dd></dl></div><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><p>
+     SAPインストールウィザードは、インストールマスタをローカルディスクにコピーします。選択したインストールマスタのタイプによって、インストールは異なる方法で続行されます。
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       SAP HANAデータベースをインストールする場合は、<a class="xref" href="#st-supplement" title="ステップ 8">ステップ 8</a>にスキップします。
+      </p></li><li class="listitem"><p>
+       SAP NetWeaverアプリケーションをインストールする場合は、次の手順に進みます。
+      </p></li></ul></div></li><li class="step" id="st-copy-media"><p>
+     <span class="guimenu">SAPインストールウィザード</span>画面で、インストールする追加のインストールメディアの場所を指定します。これには、SAPカーネル、データベースおよびデータベースのエクスポートを含めることができます。
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.5.6.3.2.1"><span class="term"><span class="guimenu">メディアのコピー</span></span></dt><dd><p>
+        追加のインストールメディアへのパスを指定します。パスの指定の詳細については、<a class="xref" href="#tab-sap-media-source" title="メディアソースのパス">表4.1「メディアソースのパス」</a>を参照してください。
+       </p></dd><dt id="id-1.7.5.6.3.2.2"><span class="term"><span class="guimenu">メディアのコピーの省略</span></span></dt><dd><p>
+        追加のインストールメディアはコピーしない。追加のインストールメディアが必要ない場合、または追加のインストールメディアをCD/DVDやフラッシュディスクなどのソースから直接インストールする場合は、このオプションを選択します。
+       </p><p>
+        SAP製品に追加のインストールメディアが必要であるにもかかわらずこのオプションを選択する場合は、後でSAPインストーラ(SAPinst)に関連するパスを提供する必要があります。
+       </p></dd></dl></div><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><p>
+     インストールメディアをコピーすることを選択する場合、SAPインストールウィザードはローカルハードディスクに関連するファイルをコピーします。
+    </p><div class="figure" id="fig-sap-wizard-sapmedia"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_location_sapmedia.png"><img src="images/s4s_sap_wizard_location_sapmedia.png" width="73%" alt="SAPインストールウィザード: 追加のインストールメディア" title="SAPインストールウィザード: 追加のインストールメディア"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.2: </span><span class="title-name">SAPインストールウィザード: 追加のインストールメディア </span></span><a title="Permalink" class="permalink" href="#fig-sap-wizard-sapmedia">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step"><p>
+     インストールメディアをコピーした後で、追加のインストールメディアを準備するかどうかを尋ねられます。これを行うには、<span class="guimenu">はい</span>をクリックします。次に、<a class="xref" href="#st-copy-media" title="ステップ 3">ステップ 3</a>の手順に従います。
+    </p><p>
+     これを行わない場合は、<span class="guimenu">いいえ</span>をクリックします。
+    </p></li><li class="step"><p>
+     <span class="guimenu">What Would You Like to Install (インストールするもの)</span>画面の<span class="guimenu">The SAP product is (SAP製品)</span>の下で、製品をインストールする方法を選択します。
+    </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.7.5.6.5.2.1"><span class="term"><span class="guimenu">SAP標準システム</span></span></dt><dd><p>
+        そのデータベースを含むSAPアプリケーションをインストールします。
+       </p></dd><dt id="id-1.7.5.6.5.2.2"><span class="term"><span class="guimenu">SAPスタンドアロンエンジン</span></span></dt><dd><p>
+        標準の製品に機能を追加するエンジン:SAP TREX、SAPゲートウェイ、およびWebディスパッチャー。
+       </p></dd><dt id="id-1.7.5.6.5.2.3"><span class="term"><span class="guimenu">分散システム</span></span></dt><dd><p>
+        複数のサーバに分散されたSAPアプリケーション。
+       </p></dd><dt id="id-1.7.5.6.5.2.4"><span class="term"><span class="guimenu">SAP高可用性システム</span></span></dt><dd><p>
+        高可用性セットアップでのSAP NetWeaverのインストール。
+       </p></dd><dt id="id-1.7.5.6.5.2.5"><span class="term"><span class="guimenu">システムの名前変更</span></span></dt><dd><p>
+        SAPシステムID、データベースID、インスタンス番号、ホスト名など、さまざまなシステムプロパティを変更できます。これを使用して、同じ製品を異なるシステムに非常に類似した設定でインストールできます。
+       </p></dd></dl></div><div class="figure" id="fig-sap-wizard-mode-db"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_mode_db.png"><img src="images/s4s_sap_wizard_mode_db.png" width="73%" alt="SAPインストールウィザード: インストールタイプおよびデータベース" title="SAPインストールウィザード: インストールタイプおよびデータベース"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.3: </span><span class="title-name">SAPインストールウィザード: インストールタイプおよびデータベース </span></span><a title="Permalink" class="permalink" href="#fig-sap-wizard-mode-db">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step"><p>
+     <span class="guimenu">SAP標準システム</span>、<span class="guimenu">分散システム</span>、または<span class="guimenu">SAP高可用性システム</span>を選択した場合、追加で<span class="guimenu">バックエンドデータベース</span>でバックエンドデータベースを選択します。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p></li><li class="step"><p>
+     <span class="guimenu">製品を選択してください</span>画面が表示されます。表示される製品は、SAPから受け取るメディアセットおよびインストールマスタによって異なります。リストから、インストールする製品を選択します。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><div class="figure" id="fig-sap-wizard-avail-products"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_available_products.png"><img src="images/s4s_sap_wizard_available_products.png" width="73%" alt="SAPインストールウィザード: 製品の選択" title="SAPインストールウィザード: 製品の選択"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.4: </span><span class="title-name">SAPインストールウィザード: 製品の選択 </span></span><a title="Permalink" class="permalink" href="#fig-sap-wizard-avail-products">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></li><li class="step" id="st-supplement"><p>
+     補足メディアまたはサードパーティメディアをコピーするかどうかを尋ねられます。これを行うには、<span class="guimenu">はい</span>をクリックし、<a class="xref" href="#st-copy-media" title="ステップ 3">ステップ 3</a>の手順に従います。
+    </p><p>
+     これを行わない場合は、<span class="guimenu">いいえ</span>をクリックします。
+    </p><div id="id-1.7.5.6.8.3" data-id-title="補足メディア/サードパーティメディアの違いおよび追加のソフトウェアリポジトリ" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: 補足メディア/サードパーティメディアの違いおよび追加のソフトウェアリポジトリ</div><p>
+      どちらのタイプの配信メカニズムでも、SUSE Linux Enterprise Server for SAP applicationsメディアの一部でもなく、SAPのメディアセットの一部でもないソフトウェアをインストールできます。ただし、配信メカニズムは異なります。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        補足メディア/サードパーティメディアは、インストールウィザードおよびカスタムインストールスクリプトを作成できるAutoYaSTファイルを使用してインストールされます。
+       </p></li><li class="listitem"><p>
+        追加のソフトウェアリポジトリは、購読したままにするRPMパッケージリポジトリです。これは、サードパーティメディアのアップデートと定期的なシステムアップデートを受信することを意味します。
+       </p></li></ul></div></div></li><li class="step"><p>
+     <span class="guimenu">SAPをインストールするための追加のソフトウェアリポジトリ</span>画面では、さらにソフトウェアリポジトリを追加できます。たとえば、RPMとしてパッケージ化されたアドオン用。これを実行するには、<span class="guimenu">新しいソフトウェアリポジトリの追加</span>をクリックします。リポジトリの追加の詳細については、<em class="citetitle">Deployment Guide,
+     Chapter <span class="quote">「<span class="quote">Installing and Removing Software</span>」</span>,
+     Section <span class="quote">「<span class="quote">Adding Software Repositories</span>」</span></em>(<a class="link" href="https://documentation.suse.com/sles-15" target="_blank">https://documentation.suse.com/sles-15</a>)を参照してください。
+    </p><p>
+     <span class="guimenu">次へ</span>で続行します。
+    </p><div id="id-1.7.5.6.9.3" data-id-title="コピーされたSAPメディアの場所" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: コピーされたSAPメディアの場所</div><p>
+      この時点で、SAPインストールに必要なすべてのデータが<code class="filename">/data/SAP_CDs</code>にコピーされています(コピープロセスをスキップすることを選択した場合を除く)。各インストールメディアは個別のディレクトリにコピーされます。たとえば、次のようなディレクトリ構造があります。
+     </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code>ls /data/SAP_CDs
+742-KERNEL-SAP-Kernel-742
+742-UKERNEL-SAP-Unicode-Kernel-742
+RDBMS-MAX-DB-LINUX_X86_64
+SAP-NetWeaver-740-SR2-Installation-Export-CD-1-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-2-3
+SAP-NetWeaver-740-SR2-Installation-Export-CD-3-3</pre></div><p>
+      <code class="filename">/data/SAP_CDs</code>は、<code class="filename">/etc/sysconfig/sap-installation-wizard</code>設定ファイルで指定されたデフォルトのディレクトリです。
+     </p></div></li><li class="step" id="st-collect-parameter"><p>
+     インストールする製品に応じて、1つ以上のダイアログが、インストールするSAPアプリケーションのいくつかの設定パラメータの値を指定するよう要求します。
+    </p><p>
+     SAPによって提供されたドキュメントの説明に従って、値を指定します。設定パラメータのヘルプも、ダイアログの左側に表示されます。詳細については、<a class="xref" href="#sec-data" title="2.5. インストールに必要なデータ">2.5項 「インストールに必要なデータ」</a>を参照してください。
+    </p><p>
+     1つ(または複数)のフォームに入力し、<span class="guimenu">OK</span>で続行します。
+    </p><div class="figure" id="fig-product-parameter"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sap_wizard_product_param.png"><img src="images/s4s_sap_wizard_product_param.png" alt="製品パラメータを設定するダイアログ" title="製品パラメータを設定するダイアログ"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.5: </span><span class="title-name">製品パラメータ </span></span><a title="Permalink" class="permalink" href="#fig-product-parameter">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><p>
+     完了したら、SAPインストールウィザードは追加のソフトウェアパッケージをダウンロードします。
+    </p></li><li class="step"><p>
+     インストールを続行するか、または別のSAP製品をインストールする準備をするかを尋ねられます。別のSAP製品を準備することを選択する場合は、この手順の初めから開始します。
+    </p></li><li class="step"><p><span class="step-optional">(オプション)</span> 
+     SAP HANAの認定を受けておらず、SAP HANA TDI (Tailored Datacenter Integration)の最小ハードウェア要件を満たしていないシステムにSAP HANAをインストールする場合、続行するかどうかを尋ねられます。予期せずこのメッセージが表示された場合は、<a class="xref" href="#sec-hardware" title="2.1. ハードウェア要件">2.1項 「ハードウェア要件」</a>およびSAPのサイジングガイドライン(<a class="link" href="https://service.sap.com/sizing" target="_blank">https://service.sap.com/sizing</a>)を確認してください(情報にアクセスするにはSAP IDが必要です)。
+    </p><p>
+     それ以外の場合は、<span class="guimenu">はい</span>で続行します。
+    </p></li><li class="step" id="st-sapinst"><p>
+     以降の手順は、インストールするSAPアプリケーションのタイプによって異なります。
+    </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+       SAP HANAデータベースをインストールする場合、さらに質問されることなく、SAP HANAがインストールされます。
+      </p></li><li class="listitem"><p>
+       SAP NetWeaverアプリケーションをインストールする場合、実際のインストールはSAPインストーラ(SAPinst)を使用して実行されます。数秒後、SAPインストーラが自動的に開きます。
+      </p><p>
+       SAPで提供されるドキュメントの説明に従って、SAPインストーラを実行します。ほとんどの設定パラメータはすでに正しく入力されています。
+      </p></li></ul></div><div class="figure" id="fig-sapinst-param"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_sapinst_param.png"><img src="images/s4s_sapinst_param.png" width="73%" alt="SAPインストーラ: パラメータの定義" title="SAPインストーラ: パラメータの定義"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 4.6: </span><span class="title-name">SAPインストーラ: パラメータの定義 </span></span><a title="Permalink" class="permalink" href="#fig-sapinst-param">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div id="id-1.7.5.6.13.4" data-id-title="インストールログファイル" class="admonition tip normal"><img class="symbol" alt="ヒント" title="Tip" src="static/images/icon-tip.svg"/><div class="admon-title">ヒント: インストールログファイル</div><p>
+      SAPアプリケーションのインストールが失敗する場合は、インストールログファイルを参照してください。これらのファイルは、<code class="filename">/var/adm/autoinstall</code>にあります。失敗したインストールは、名前が<code class="filename">.err</code>で終わるファイルに記録されます。
+     </p></div></li><li class="step"><p>
+     最後の画面は<span class="guimenu">インストールが完了しました</span>です。
+    </p><p>
+     このインストールでAutoYaSTファイルを作成するには、<span class="guimenu">このシステムをAutoYaST用に複製する</span>を有効にします。AutoYaSTファイルは<code class="filename">/root/autoinst.xml</code>に配置されます。
+    </p><p>
+     <span class="guimenu">完了</span>をクリックします。
+    </p></li></ol></div></div></section></section><section class="chapter" id="cha-upgrade-sap-hana-cluster" data-id-title="SAP HANAクラスタのアップグレード"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">5 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></span> <a title="Permalink" class="permalink" href="#cha-upgrade-sap-hana-cluster">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div><div class="abstract"><p>
+    この章では、YaSTモジュール<span class="guimenu">SUSE HANA Cluster Update (SUSE HANAクラスタのアップデート)</span>を使用してSAP HANAクラスタをアップグレードする方法について説明します。これは、ウィザードとして機能し、すべてのSAP HANAクラスタの保守手順をガイドします。
+   </p></div></div></div></div><p>
+   SAP HANAの公式ドキュメントでは、いわゆる<span><span class="emphasis"><strong>ニアゼロのダウンタイムアップグレードプロセス</strong></span></span>について説明しています。YaSTモジュールは、このプロセスに基づいており、SUSEクラスタに関連する手順の一部を処理します。すべての手順が自動的に実行できるわけではありません。一部の手順は、SAP HANA管理者が手動で実行する必要があります。YaSTモジュールはプロセス中に通知します。
+  </p><p>
+   このYaSTモジュールは、SUSE Linux Enterprise Server for SAP applications 12 SP3以降の<span class="package">yast2-sap-ha</span>パッケージで使用できます。現在、このウィザードは<span><span class="emphasis"><strong>SAP HANAスケールアップパフォーマンス最適化</strong></span></span>シナリオに対応するためにのみ準備されています。
+  </p><p>アップグレードは次のタスクをカバーします。</p><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-preparing" title="5.1. アップグレードの準備">5.1項 「アップグレードの準備」</a></p></li><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-upgrading" title="5.2. SAP HANAクラスタのアップグレード">5.2項 「SAP HANAクラスタのアップグレード」</a></p></li><li class="step"><p><a class="xref" href="#sec-upgrade-sap-hana-cluster-finishing" title="5.3. アップグレードタスクの完了">5.3項 「アップグレードタスクの完了」</a></p></li></ol></div></div><section class="sect1" id="sec-upgrade-sap-hana-cluster-preparing" data-id-title="アップグレードの準備"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.1 </span><span class="title-name">アップグレードの準備</span></span> <a title="Permalink" class="permalink" href="#sec-upgrade-sap-hana-cluster-preparing">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><p>
+    2つのノード(プライマリとセカンダリ)の間で<code class="systemitem">root</code>のパスワード不要SSHアクセスが可能であることを確認します。一部のクラウドサービスプロバイダは、デフォルトで<code class="systemitem">root</code>のSSHアクセスを設定していない可能性があることに注意してください。
+   </p><ol class="procedure" type="1"><li class="step"><p>
+     次のように両方のノードに<span class="package">yast2-hana-update</span>パッケージをインストールします。
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">zypper</code> install yast2-hana-update</pre></div><p>
+     インストール後、<span class="guimenu">YaSTコントロールセンター</span>に<span class="guimenu">SUSE HANA Cluster Update (SUSE HANAクラスタのアップデート)</span>モジュールが見つかります。
+    </p></li><li class="step"><p>
+     セカンダリノードで、<span class="guimenu">YaSTコントロールセンター</span>を開始し、<span class="guimenu">SUSE HANA Cluster Update (SUSE HANAクラスタのアップデート)</span>モジュールを開きます。
+    </p></li><li class="step"><p>
+     YaSTモジュールで、前提条件を確認します。次の手順に進む前にこれらのすべての操作を完了してください。このウィザードは「HANAスケールアップパフォーマンス最適化」シナリオのみをサポートしていることに注意してください。
+    </p></li><li class="step"><p>
+     SAP HANAシステムをアップグレードするには、セカンダリノードを選択します。
+    </p></li><li class="step"><p>
+     インストールメディアの場所を選択します。
+    </p><p>
+     SAPメディアが配置される場所をポイントします。必要に応じて、<span class="guimenu">すべてのホストに更新メディアをマウントする</span>をオンにし、NFS共有およびパスを提供します。
+    </p><div id="id-1.8.7.2.6.3" data-id-title="SAP HANAバージョン1.0と2.0の相違点" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: SAP HANAバージョン1.0と2.0の相違点</div><p>
+      SAP HANAバージョン1.0からバージョン2.0にアップグレードする場合は、<span class="guimenu">これはHANA 1.0からHANA 2.0への更新です</span>をオンにしてください。
+     </p><p>
+      YaSTモジュールは以前のセカンダリノードから以前のプライマリノードに<span><span class="emphasis"><strong>PKI SSFSキー</strong></span></span>をコピーします。詳細については、<span class="guimenu">ヘルプ</span>ボタンを使用して参照してください。
+     </p></div></li></ol></div></div><p>
+   <a class="xref" href="#sec-upgrade-sap-hana-cluster-upgrading" title="5.2. SAP HANAクラスタのアップグレード">5.2項 「SAP HANAクラスタのアップグレード」</a>に進んでください。
+  </p></section><section class="sect1" id="sec-upgrade-sap-hana-cluster-upgrading" data-id-title="SAP HANAクラスタのアップグレード"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.2 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></span> <a title="Permalink" class="permalink" href="#sec-upgrade-sap-hana-cluster-upgrading">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+     ウィザードによって生成されたアップデート計画を確認してください。
+    </p><p>
+     このウィザードには2つの手順(自動と手動)が表示されます。この自動手順では、ウィザードはクラスタリソースを保守モードにしてから、自動手順で開始します。この手動手順は、SAP HANA専用で、SAP HANA管理者が実行する必要があります。詳細については、公式のSAP HANAドキュメントを参照してください。
+    </p></li><li class="step"><p>
+     SAP HANAソフトウェアをアップデートします。
+    </p><p>
+     このウィザードは、自動アクションを実行し、SAP HANA管理者がSAP HANAのアップグレードを実行するまで待機します。
+    </p></li><li class="step"><p>
+     SAP HANAアップグレードを実行します。
+    </p></li><li class="step"><p>
+     プライマリ(リモート)ノードの計画を確認します。
+    </p><p>
+     SAP HANAアップグレードが実行された後で、ウィザードはアップデート計画を示します。この手順を続行すると、ウィザードによってプライマリノードがセカンダリノードになり、アップグレードの準備が整います。
+    </p><p>
+     この手順にはしばらく時間がかかる場合があることに注意してください。
+    </p></li></ol></div></div><p>
+   <a class="xref" href="#sec-upgrade-sap-hana-cluster-finishing" title="5.3. アップグレードタスクの完了">5.3項 「アップグレードタスクの完了」</a>に進んでください。
+  </p></section><section class="sect1" id="sec-upgrade-sap-hana-cluster-finishing" data-id-title="アップグレードタスクの完了"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">5.3 </span><span class="title-name">アップグレードタスクの完了</span></span> <a title="Permalink" class="permalink" href="#sec-upgrade-sap-hana-cluster-finishing">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="procedure"><div class="procedure-contents"><ol class="procedure" type="1"><li class="step"><p>
+    以前のプライマリノードをアップデートします。
+   </p><p>
+    このステップの<code class="option">--hdbupd_server_nostart</code>オプションには特に注意してください。
+   </p></li><li class="step"><p>
+    クラスタの以前の状態に復元します。
+   </p><p>
+    デフォルトで、ウィザードは以前のマスタをSAP HANAシステムレプリケーションのセカンダリとして登録します。システムレプリケーションを元の状態に戻したい場合は、<span class="guimenu">Reverse (リバース)</span>ボタンをクリックします。
+   </p></li><li class="step"><p>
+     アップデートのサマリを確認します。
+    </p><p>
+     SAP HANAの元のバージョンと現在のバージョンおよびクラスタの状態を確認できます。
+    </p><div id="id-1.8.9.3.3.3" data-id-title="中間クラスタ状態の処理" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: 中間クラスタ状態の処理</div><p>
+      ウィザードがクラスタリソースのステータスアップデートより速い場合は、サマリに中間クラスタ状態が表示されます。クラスタの状態は<code class="literal">UNDEFINED</code>または<code class="literal">DEMOTED</code>です。
+     </p><p>
+      これを解決するには、<code class="command">SAPHanaSR-showAttr</code>コマンドを使用してクラスタのステータスを再確認し、以前のセカンダリノードの状態が<code class="literal">PROMOTED</code>になっていることを確認します。
+     </p></div></li></ol></div></div><p>
+   詳細については、SUSEブログの投稿<a class="link" href="https://www.suse.com/c/how-to-upgrade-your-suse-sap-hana-cluster-in-an-easy-way/" target="_blank">https://www.suse.com/c/how-to-upgrade-your-suse-sap-hana-cluster-in-an-easy-way/</a>を参照してください。
+  </p></section></section><div class="legal-section"><section class="appendix" id="id-1.9" data-id-title="GNU licenses"><div class="titlepage"><div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">A </span><span class="title-name">GNU licenses</span></span> <a title="Permalink" class="permalink" href="#id-1.9">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div/></div></div><p>
+  This appendix contains the GNU Free Documentation License version 1.2.
+ </p><section class="sect1" id="id-1.9.4" data-id-title="GNU Free Documentation License"><div class="titlepage"><div><div><div class="title-container"><h2 class="title legal"><span class="title-number-name"><span class="title-name">GNU Free Documentation License</span></span> <a title="Permalink" class="permalink" href="#id-1.9.4">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div/></div></div><p>
+  Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc. 51 Franklin St,
+  Fifth Floor, Boston, MA 02110-1301 USA. Everyone is permitted to copy and
+  distribute verbatim copies of this license document, but changing it is not
+  allowed.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.4"><span class="name">
+    0. PREAMBLE
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.4">#</a></h5></div><p>
+  The purpose of this License is to make a manual, textbook, or other
+  functional and useful document "free" in the sense of freedom: to assure
+  everyone the effective freedom to copy and redistribute it, with or without
+  modifying it, either commercially or non-commercially. Secondarily, this
+  License preserves for the author and publisher a way to get credit for their
+  work, while not being considered responsible for modifications made by
+  others.
+ </p><p>
+  This License is a kind of "copyleft", which means that derivative works of
+  the document must themselves be free in the same sense. It complements the
+  GNU General Public License, which is a copyleft license designed for free
+  software.
+ </p><p>
+  We have designed this License to use it for manuals for free software,
+  because free software needs free documentation: a free program should come
+  with manuals providing the same freedoms that the software does. But this
+  License is not limited to software manuals; it can be used for any textual
+  work, regardless of subject matter or whether it is published as a printed
+  book. We recommend this License principally for works whose purpose is
+  instruction or reference.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.8"><span class="name">
+    1. APPLICABILITY AND DEFINITIONS
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.8">#</a></h5></div><p>
+  This License applies to any manual or other work, in any medium, that
+  contains a notice placed by the copyright holder saying it can be distributed
+  under the terms of this License. Such a notice grants a world-wide,
+  royalty-free license, unlimited in duration, to use that work under the
+  conditions stated herein. The "Document", below, refers to any such manual or
+  work. Any member of the public is a licensee, and is addressed as "you". You
+  accept the license if you copy, modify or distribute the work in a way
+  requiring permission under copyright law.
+ </p><p>
+  A "Modified Version" of the Document means any work containing the Document
+  or a portion of it, either copied verbatim, or with modifications and/or
+  translated into another language.
+ </p><p>
+  A "Secondary Section" is a named appendix or a front-matter section of the
+  Document that deals exclusively with the relationship of the publishers or
+  authors of the Document to the Document's overall subject (or to related
+  matters) and contains nothing that could fall directly within that overall
+  subject. (Thus, if the Document is in part a textbook of mathematics, a
+  Secondary Section may not explain any mathematics.) The relationship could be
+  a matter of historical connection with the subject or with related matters,
+  or of legal, commercial, philosophical, ethical or political position
+  regarding them.
+ </p><p>
+  The "Invariant Sections" are certain Secondary Sections whose titles are
+  designated, as being those of Invariant Sections, in the notice that says
+  that the Document is released under this License. If a section does not fit
+  the above definition of Secondary then it is not allowed to be designated as
+  Invariant. The Document may contain zero Invariant Sections. If the Document
+  does not identify any Invariant Sections then there are none.
+ </p><p>
+  The "Cover Texts" are certain short passages of text that are listed, as
+  Front-Cover Texts or Back-Cover Texts, in the notice that says that the
+  Document is released under this License. A Front-Cover Text may be at most 5
+  words, and a Back-Cover Text may be at most 25 words.
+ </p><p>
+  A "Transparent" copy of the Document means a machine-readable copy,
+  represented in a format whose specification is available to the general
+  public, that is suitable for revising the document straightforwardly with
+  generic text editors or (for images composed of pixels) generic paint
+  programs or (for drawings) some widely available drawing editor, and that is
+  suitable for input to text formatters or for automatic translation to a
+  variety of formats suitable for input to text formatters. A copy made in an
+  otherwise Transparent file format whose markup, or absence of markup, has
+  been arranged to thwart or discourage subsequent modification by readers is
+  not Transparent. An image format is not Transparent if used for any
+  substantial amount of text. A copy that is not "Transparent" is called
+  "Opaque".
+ </p><p>
+  Examples of suitable formats for Transparent copies include plain ASCII
+  without markup, Texinfo input format, LaTeX input format, SGML or XML using a
+  publicly available DTD, and standard-conforming simple HTML, PostScript or
+  PDF designed for human modification. Examples of transparent image formats
+  include PNG, XCF and JPG. Opaque formats include proprietary formats that can
+  be read and edited only by proprietary word processors, SGML or XML for which
+  the DTD and/or processing tools are not generally available, and the
+  machine-generated HTML, PostScript or PDF produced by some word processors
+  for output purposes only.
+ </p><p>
+  The "Title Page" means, for a printed book, the title page itself, plus such
+  following pages as are needed to hold, legibly, the material this License
+  requires to appear in the title page. For works in formats which do not have
+  any title page as such, "Title Page" means the text near the most prominent
+  appearance of the work's title, preceding the beginning of the body of the
+  text.
+ </p><p>
+  A section "Entitled XYZ" means a named subunit of the Document whose title
+  either is precisely XYZ or contains XYZ in parentheses following text that
+  translates XYZ in another language. (Here XYZ stands for a specific section
+  name mentioned below, such as "Acknowledgements", "Dedications",
+  "Endorsements", or "History".) To "Preserve the Title" of such a section when
+  you modify the Document means that it remains a section "Entitled XYZ"
+  according to this definition.
+ </p><p>
+  The Document may include Warranty Disclaimers next to the notice which states
+  that this License applies to the Document. These Warranty Disclaimers are
+  considered to be included by reference in this License, but only as regards
+  disclaiming warranties: any other implication that these Warranty Disclaimers
+  may have is void and has no effect on the meaning of this License.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.19"><span class="name">
+    2. VERBATIM COPYING
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.19">#</a></h5></div><p>
+  You may copy and distribute the Document in any medium, either commercially
+  or non-commercially, provided that this License, the copyright notices, and
+  the license notice saying this License applies to the Document are reproduced
+  in all copies, and that you add no other conditions whatsoever to those of
+  this License. You may not use technical measures to obstruct or control the
+  reading or further copying of the copies you make or distribute. However, you
+  may accept compensation in exchange for copies. If you distribute a large
+  enough number of copies you must also follow the conditions in section 3.
+ </p><p>
+  You may also lend copies, under the same conditions stated above, and you may
+  publicly display copies.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.22"><span class="name">
+    3. COPYING IN QUANTITY
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.22">#</a></h5></div><p>
+  If you publish printed copies (or copies in media that commonly have printed
+  covers) of the Document, numbering more than 100, and the Document's license
+  notice requires Cover Texts, you must enclose the copies in covers that
+  carry, clearly and legibly, all these Cover Texts: Front-Cover Texts on the
+  front cover, and Back-Cover Texts on the back cover. Both covers must also
+  clearly and legibly identify you as the publisher of these copies. The front
+  cover must present the full title with all words of the title equally
+  prominent and visible. You may add other material on the covers in addition.
+  Copying with changes limited to the covers, as long as they preserve the
+  title of the Document and satisfy these conditions, can be treated as
+  verbatim copying in other respects.
+ </p><p>
+  If the required texts for either cover are too voluminous to fit legibly, you
+  should put the first ones listed (as many as fit reasonably) on the actual
+  cover, and continue the rest onto adjacent pages.
+ </p><p>
+  If you publish or distribute Opaque copies of the Document numbering more
+  than 100, you must either include a machine-readable Transparent copy along
+  with each Opaque copy, or state in or with each Opaque copy a
+  computer-network location from which the general network-using public has
+  access to download using public-standard network protocols a complete
+  Transparent copy of the Document, free of added material. If you use the
+  latter option, you must take reasonably prudent steps, when you begin
+  distribution of Opaque copies in quantity, to ensure that this Transparent
+  copy will remain thus accessible at the stated location until at least one
+  year after the last time you distribute an Opaque copy (directly or through
+  your agents or retailers) of that edition to the public.
+ </p><p>
+  It is requested, but not required, that you contact the authors of the
+  Document well before redistributing any large number of copies, to give them
+  a chance to provide you with an updated version of the Document.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.27"><span class="name">
+    4. MODIFICATIONS
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.27">#</a></h5></div><p>
+  You may copy and distribute a Modified Version of the Document under the
+  conditions of sections 2 and 3 above, provided that you release the Modified
+  Version under precisely this License, with the Modified Version filling the
+  role of the Document, thus licensing distribution and modification of the
+  Modified Version to whoever possesses a copy of it. In addition, you must do
+  these things in the Modified Version:
+ </p><div class="orderedlist"><ol class="orderedlist" type="A"><li class="listitem"><p>
+    Use in the Title Page (and on the covers, if any) a title distinct from
+    that of the Document, and from those of previous versions (which should, if
+    there were any, be listed in the History section of the Document). You may
+    use the same title as a previous version if the original publisher of that
+    version gives permission.
+   </p></li><li class="listitem"><p>
+    List on the Title Page, as authors, one or more persons or entities
+    responsible for authorship of the modifications in the Modified Version,
+    together with at least five of the principal authors of the Document (all
+    of its principal authors, if it has fewer than five), unless they release
+    you from this requirement.
+   </p></li><li class="listitem"><p>
+    State on the Title page the name of the publisher of the Modified Version,
+    as the publisher.
+   </p></li><li class="listitem"><p>
+    Preserve all the copyright notices of the Document.
+   </p></li><li class="listitem"><p>
+    Add an appropriate copyright notice for your modifications adjacent to the
+    other copyright notices.
+   </p></li><li class="listitem"><p>
+    Include, immediately after the copyright notices, a license notice giving
+    the public permission to use the Modified Version under the terms of this
+    License, in the form shown in the Addendum below.
+   </p></li><li class="listitem"><p>
+    Preserve in that license notice the full lists of Invariant Sections and
+    required Cover Texts given in the Document's license notice.
+   </p></li><li class="listitem"><p>
+    Include an unaltered copy of this License.
+   </p></li><li class="listitem"><p>
+    Preserve the section Entitled "History", Preserve its Title, and add to it
+    an item stating at least the title, year, new authors, and publisher of the
+    Modified Version as given on the Title Page. If there is no section
+    Entitled "History" in the Document, create one stating the title, year,
+    authors, and publisher of the Document as given on its Title Page, then add
+    an item describing the Modified Version as stated in the previous sentence.
+   </p></li><li class="listitem"><p>
+    Preserve the network location, if any, given in the Document for public
+    access to a Transparent copy of the Document, and likewise the network
+    locations given in the Document for previous versions it was based on.
+    These may be placed in the "History" section. You may omit a network
+    location for a work that was published at least four years before the
+    Document itself, or if the original publisher of the version it refers to
+    gives permission.
+   </p></li><li class="listitem"><p>
+    For any section Entitled "Acknowledgements" or "Dedications", Preserve the
+    Title of the section, and preserve in the section all the substance and
+    tone of each of the contributor acknowledgements and/or dedications given
+    therein.
+   </p></li><li class="listitem"><p>
+    Preserve all the Invariant Sections of the Document, unaltered in their
+    text and in their titles. Section numbers or the equivalent are not
+    considered part of the section titles.
+   </p></li><li class="listitem"><p>
+    Delete any section Entitled "Endorsements". Such a section may not be
+    included in the Modified Version.
+   </p></li><li class="listitem"><p>
+    Do not retitle any existing section to be Entitled "Endorsements" or to
+    conflict in title with any Invariant Section.
+   </p></li><li class="listitem"><p>
+    Preserve any Warranty Disclaimers.
+   </p></li></ol></div><p>
+  If the Modified Version includes new front-matter sections or appendices that
+  qualify as Secondary Sections and contain no material copied from the
+  Document, you may at your option designate some or all of these sections as
+  invariant. To do this, add their titles to the list of Invariant Sections in
+  the Modified Version's license notice. These titles must be distinct from any
+  other section titles.
+ </p><p>
+  You may add a section Entitled "Endorsements", provided it contains nothing
+  but endorsements of your Modified Version by various parties--for example,
+  statements of peer review or that the text has been approved by an
+  organization as the authoritative definition of a standard.
+ </p><p>
+  You may add a passage of up to five words as a Front-Cover Text, and a
+  passage of up to 25 words as a Back-Cover Text, to the end of the list of
+  Cover Texts in the Modified Version. Only one passage of Front-Cover Text and
+  one of Back-Cover Text may be added by (or through arrangements made by) any
+  one entity. If the Document already includes a cover text for the same cover,
+  previously added by you or by arrangement made by the same entity you are
+  acting on behalf of, you may not add another; but you may replace the old
+  one, on explicit permission from the previous publisher that added the old
+  one.
+ </p><p>
+  The author(s) and publisher(s) of the Document do not by this License give
+  permission to use their names for publicity for or to assert or imply
+  endorsement of any Modified Version.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.34"><span class="name">
+    5. COMBINING DOCUMENTS
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.34">#</a></h5></div><p>
+  You may combine the Document with other documents released under this
+  License, under the terms defined in section 4 above for modified versions,
+  provided that you include in the combination all of the Invariant Sections of
+  all of the original documents, unmodified, and list them all as Invariant
+  Sections of your combined work in its license notice, and that you preserve
+  all their Warranty Disclaimers.
+ </p><p>
+  The combined work need only contain one copy of this License, and multiple
+  identical Invariant Sections may be replaced with a single copy. If there are
+  multiple Invariant Sections with the same name but different contents, make
+  the title of each such section unique by adding at the end of it, in
+  parentheses, the name of the original author or publisher of that section if
+  known, or else a unique number. Make the same adjustment to the section
+  titles in the list of Invariant Sections in the license notice of the
+  combined work.
+ </p><p>
+  In the combination, you must combine any sections Entitled "History" in the
+  various original documents, forming one section Entitled "History"; likewise
+  combine any sections Entitled "Acknowledgements", and any sections Entitled
+  "Dedications". You must delete all sections Entitled "Endorsements".
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.38"><span class="name">
+    6. COLLECTIONS OF DOCUMENTS
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.38">#</a></h5></div><p>
+  You may make a collection consisting of the Document and other documents
+  released under this License, and replace the individual copies of this
+  License in the various documents with a single copy that is included in the
+  collection, provided that you follow the rules of this License for verbatim
+  copying of each of the documents in all other respects.
+ </p><p>
+  You may extract a single document from such a collection, and distribute it
+  individually under this License, provided you insert a copy of this License
+  into the extracted document, and follow this License in all other respects
+  regarding verbatim copying of that document.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.41"><span class="name">
+    7. AGGREGATION WITH INDEPENDENT WORKS
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.41">#</a></h5></div><p>
+  A compilation of the Document or its derivatives with other separate and
+  independent documents or works, in or on a volume of a storage or
+  distribution medium, is called an "aggregate" if the copyright resulting from
+  the compilation is not used to limit the legal rights of the compilation's
+  users beyond what the individual works permit. When the Document is included
+  in an aggregate, this License does not apply to the other works in the
+  aggregate which are not themselves derivative works of the Document.
+ </p><p>
+  If the Cover Text requirement of section 3 is applicable to these copies of
+  the Document, then if the Document is less than one half of the entire
+  aggregate, the Document's Cover Texts may be placed on covers that bracket
+  the Document within the aggregate, or the electronic equivalent of covers if
+  the Document is in electronic form. Otherwise they must appear on printed
+  covers that bracket the whole aggregate.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.44"><span class="name">
+    8. TRANSLATION
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.44">#</a></h5></div><p>
+  Translation is considered a kind of modification, so you may distribute
+  translations of the Document under the terms of section 4. Replacing
+  Invariant Sections with translations requires special permission from their
+  copyright holders, but you may include translations of some or all Invariant
+  Sections in addition to the original versions of these Invariant Sections.
+  You may include a translation of this License, and all the license notices in
+  the Document, and any Warranty Disclaimers, provided that you also include
+  the original English version of this License and the original versions of
+  those notices and disclaimers. In case of a disagreement between the
+  translation and the original version of this License or a notice or
+  disclaimer, the original version will prevail.
+ </p><p>
+  If a section in the Document is Entitled "Acknowledgements", "Dedications",
+  or "History", the requirement (section 4) to Preserve its Title (section 1)
+  will typically require changing the actual title.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.47"><span class="name">
+    9. TERMINATION
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.47">#</a></h5></div><p>
+  You may not copy, modify, sublicense, or distribute the Document except as
+  expressly provided for under this License. Any other attempt to copy, modify,
+  sublicense or distribute the Document is void, and will automatically
+  terminate your rights under this License. However, parties who have received
+  copies, or rights, from you under this License will not have their licenses
+  terminated so long as such parties remain in full compliance.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.49"><span class="name">
+    10. FUTURE REVISIONS OF THIS LICENSE
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.49">#</a></h5></div><p>
+  The Free Software Foundation may publish new, revised versions of the GNU
+  Free Documentation License from time to time. Such new versions will be
+  similar in spirit to the present version, but may differ in detail to address
+  new problems or concerns. See
+  <a class="link" href="https://www.gnu.org/copyleft/" target="_blank">https://www.gnu.org/copyleft/</a>.
+ </p><p>
+  Each version of the License is given a distinguishing version number. If the
+  Document specifies that a particular numbered version of this License "or any
+  later version" applies to it, you have the option of following the terms and
+  conditions either of that specified version or of any later version that has
+  been published (not as a draft) by the Free Software Foundation. If the
+  Document does not specify a version number of this License, you may choose
+  any version ever published (not as a draft) by the Free Software Foundation.
+ </p><div class="sect4 bridgehead"><h5 class="title legal" id="id-1.9.4.52"><span class="name">
+    ADDENDUM: How to use this License for your documents
+  </span><a title="Permalink" class="permalink" href="#id-1.9.4.52">#</a></h5></div><div class="verbatim-wrap"><pre class="screen">Copyright (c) YEAR YOUR NAME.
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+A copy of the license is included in the section entitled “GNU
+Free Documentation License”.</pre></div><p>
+  If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+  replace the “with...Texts.” line with this:
+ </p><div class="verbatim-wrap"><pre class="screen">with the Invariant Sections being LIST THEIR TITLES, with the
+Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</pre></div><p>
+  If you have Invariant Sections without Cover Texts, or some other combination
+  of the three, merge those two alternatives to suit the situation.
+ </p><p>
+  If your document contains nontrivial examples of program code, we recommend
+  releasing these examples in parallel under your choice of free software
+  license, such as the GNU General Public License, to permit their use in free
+  software.
+ </p></section></section></div></section></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>

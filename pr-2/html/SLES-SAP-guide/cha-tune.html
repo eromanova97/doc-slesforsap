@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head><title>saptuneを使用したシステムのチューニング | ガイド | SLES for SAP 15 SP7</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2025-06-17"/>
+<meta name="dcterms.modified" content="2025-06-17"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-21"/>
+<meta name="title" content="saptuneを使用したシステムのチューニング | SLES for SAP 15 SP7"/>
+<meta name="description" content="saptuneを使用したシステムのチューニング"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
+<meta name="product-number" content="15 SP7"/>
+<meta name="book-title" content="ガイド"/>
+<meta name="chapter-title" content="第8章 saptuneを使用したシステムのチューニング"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP7"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="ガイド"/>
+<meta property="og:description" content="SLES for SAPのインストールとカスタマイズ"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ガイド"/>
+<meta name="twitter:description" content="SLES for SAPのインストールとカスタマイズ"/>
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": ["TechArticle"],
+    "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
+    "name": "saptuneを使用したシステムのチューニング | SLES for SAP 15 SP7",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Products &amp; Solutions"
+    },
+    "inLanguage": "ja",
+    "headline": "saptuneを使用したシステムのチューニング",
+    "description": "saptuneを使用したシステムのチューニング",
+    "author": [
+      {
+        "@type": "Corporation",
+        "name": "SUSE Product &amp; Solution Documentation Team",
+        "url": "https://documentation.suse.com"
+      }
+    ],
+    "dateCreated": "2025-06-17T00:00+02:00",
+    "dateModified": "2025-06-17T00:00+02:00",
+    "datePublished": "2026-09-21T11:23+02:00",
+    "about": [
+
+    ],
+    "mentions": [
+      { "@type": "SoftwareApplication",
+        "name": "SLES for SAP",
+        "softwareVersion": "15 SP7",
+        "applicationCategory": "Operating System",
+        "operatingSystem": "Linux"
+      }
+    ],
+    "sameAs": [
+          "https://www.facebook.com/SUSEWorldwide/about",
+          "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
+          "https://twitter.com/SUSE",
+          "https://www.linkedin.com/company/suse"
+    ],
+    "publisher": {
+      "@type": "Corporation",
+      "name": "SUSE",
+      "url": "https://documentation.suse.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+      }
+    }
+  }</script>
+<link rel="prev" href="cha-cluster.html" title="第7章 SAP HANAクラスタの設定"/><link rel="next" href="cha-memory-protection.html" title="第9章 ワークロードメモリ保護のチューニング"/><link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">目次にジャンプ</a><a href="#_bottom-pagination">ページナビゲーションにジャンプ: 前のページ[アクセスキーp]/次のページ[アクセスキーn]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">ガイド</a><span class="sep">|</span><a class="crumb" href="cha-tune.html">saptuneを使用したシステムのチューニング</a></div></div><main id="_content"><nav id="_side-toc-overall" tabindex="0" class="side-toc"><div class="side-title"><span class="phrase">ガイド</span></div><ol role="list"><li role="listitem"><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">序文</span></a></li><li role="listitem"><a href="cha-about.html" class=" "><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></a></li><li role="listitem"><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">インストールの計画</span></a></li><li role="listitem"><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">オペレーティングシステムのインストール</span></a></li><li role="listitem"><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">SAPアプリケーションのインストール</span></a></li><li role="listitem"><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></a></li><li role="listitem"><a href="cha-serve-mediaset.html" class=" "><span class="title-number">6 </span><span class="title-name">SAPメディアセット用のインストールサーバの設定</span></a></li><li role="listitem"><a href="cha-cluster.html" class=" "><span class="title-number">7 </span><span class="title-name">SAP HANAクラスタの設定</span></a></li><li role="listitem"><a href="cha-tune.html" class=" you-are-here"><span class="title-number">8 </span><span class="title-name"><code class="command">saptune</code>を使用したシステムのチューニング</span></a></li><li role="listitem"><a href="cha-memory-protection.html" class=" "><span class="title-number">9 </span><span class="title-name">ワークロードメモリ保護のチューニング</span></a></li><li role="listitem"><a href="cha-access.html" class=" "><span class="title-number">10 </span><span class="title-name">ファイアウォールの設定</span></a></li><li role="listitem"><a href="cha-clamsap.html" class=" "><span class="title-number">11 </span><span class="title-name">ClamSAPを使用したマルウェアに対する保護</span></a></li><li role="listitem"><a href="cha-configure-rdp.html" class=" "><span class="title-number">12 </span><span class="title-name">RDPを介した接続</span></a></li><li role="listitem"><a href="cha-image.html" class=" "><span class="title-number">13 </span><span class="title-name">オペレーティングシステムイメージの作成</span></a></li><li role="listitem"><a href="cha-trouble.html" class=" "><span class="title-number">14 </span><span class="title-name">重要なログファイル</span></a></li><li role="listitem"><a href="app-additional-software.html" class=" "><span class="title-number">A </span><span class="title-name">SLES for SAP用の追加ソフトウェア</span></a></li><li role="listitem"><a href="app-autoyast-partition.html" class=" "><span class="title-number">B </span><span class="title-name">AutoYaSTを使用したSAPシステムのパーティショニング</span></a></li><li role="listitem"><a href="app-component-supplement.html" class=" "><span class="title-number">C </span><span class="title-name">補足メディア</span></a></li><li role="listitem"><a href="win-cheatsheet.html" class=" "><span class="title-number">D </span><span class="title-name">Windows管理者のチートシート
+  </span></a></li><li role="listitem"><a href="ape.html" class=" "><span class="title-number">E </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="目次"> </button><article class="documentation"><button id="_unfold-side-toc-page">このページで</button><section class="chapter" id="cha-tune" data-id-title="saptuneを使用したシステムのチューニング"><div class="titlepage"><div><div class="version-info">適用項目  <span class="productname">SUSE Linux Enterprise Server for SAP applications</span> <span class="productnumber">15 SP7</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">8 </span><span class="title-name"><code class="command">saptune</code>を使用したシステムのチューニング</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  この章では、SUSE Linux Enterprise Server for SAP applicationsがSAPアプリケーションと最適に連携できるようにチューニングする方法について説明します。
+ </p><p>
+   <code class="command">saptune</code>を使用すると、SAP NetWeaver、SAP HANA/SAP BusinessObjects、およびSAP S/4HANAの各アプリケーション用にシステムをチューニングできます。
+ </p><section class="sect1" id="sec-saptune-enable" data-id-title="saptuneのインストールと更新"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.1 </span><span class="title-name"><code class="command">saptune</code>のインストールと更新</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-enable">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   <code class="command">saptune</code>をインストールするには、<code class="command">zypper install saptune</code>コマンドを実行します。
+   </p><p>
+   インストールが完了したら、<code class="literal">saptune</code>サービスを有効にして開始し(<a class="xref" href="cha-tune.html#sec-saptune-disable" title="8.2. saptuneの有効化と無効化">8.2項 「<code class="command">saptune</code>の有効化と無効化」</a>を参照)、チューニングを設定します(<a class="xref" href="cha-tune.html#sec-saptune-configure-tuning" title="8.3. チューニングの設定">8.3項 「チューニングの設定」</a>を参照)。
+   </p><p>
+   <code class="command">saptune</code>を更新するには、<code class="command">zypper update saptune</code>コマンドを使用します。
+   </p><div id="id-1.11.5.5" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要</div><p>
+   <code class="command">saptune</code>のインストールと更新を行う場合は、zypperの出力に注意を払い、インストールと更新が正しく実行されていることを確認してください。出力は<code class="filename">/var/log/zypp/history</code>にも保存されます。
+   </p></div></section><section class="sect1" id="sec-saptune-disable" data-id-title="saptuneの有効化と無効化"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.2 </span><span class="title-name"><code class="command">saptune</code>の有効化と無効化</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-disable">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   再起動後にシステムをチューニングするには、インストール後に<code class="literal">saptune</code>サービスを有効にして起動します。ほとんどの場合、<code class="literal">saptune</code>サービスの起動は失敗します。これは、<code class="literal">sapconf</code>によってシステムがすでにチューニングされているためです。この問題を解決するには、次のコマンドを実行します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune service takeover</code></pre></div><p>
+このコマンドは、<code class="literal">sapconf</code>サービスと<code class="literal">tuned</code>サービスを停止して無効にした後、<code class="literal">saptune</code>サービスを起動して有効にします。
+</p><p>
+<code class="literal">saptune</code>サービスを無効にして停止するには、次のコマンドを使用します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune service disablestop</code></pre></div></section><section class="sect1" id="sec-saptune-configure-tuning" data-id-title="チューニングの設定"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.3 </span><span class="title-name">チューニングの設定</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-configure-tuning">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  システムをチューニングする最も簡単な方法は、インストールされているSAPソフトウェアに合ったSAPソリューションを適用することです。SAPソリューションは、実際のチューニングを実行するSAPノートのグループです。使用可能なすべてのソリューションとそのノートを表示するには、次のコマンドを実行します。
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution list</code></pre></div><p>
+<code class="command">saptune</code>では、次のSAPソリューションを認識します。
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+SAP BusinessObjectsを実行するためのBOBJソリューション
+</p></li><li class="listitem"><p>
+SAP HANAデータベースを実行するためのHANAソリューション
+</p></li><li class="listitem"><p>
+SAP MaxDBデータベースを実行するためのMAXDBソリューション
+</p></li><li class="listitem"><p>
+SAP NetWeaverアプリケーションサーバを実行するためのNETWEAVERソリューション
+</p></li><li class="listitem"><p>
+SAP S/4HANAアプリケーションサーバを実行するためのS4HANA-APPSERVERソリューション
+</p></li><li class="listitem"><p>
+SAP S/4HANAアプリケーションサーバとSAP HANAの両方を同じホストで実行するためのS4HANA-APP+DBソリューション
+</p></li><li class="listitem"><p>
+SAP S/4HANAインストールのSAP HANAデータベースを実行するためのS4HANA-DBSERVERソリューション
+</p></li><li class="listitem"><p>
+SAP Adaptive Server Enterpriseデータベースを実行するためのSAP-ASEソリューション
+</p></li><li class="listitem"><p>
+SAPアプリケーションサーバとSAP HANAの両方を同じホストで実行するためのNETWEAVER+HANAソリューション
+</p></li><li class="listitem"><p>
+ SAPアプリケーションサーバとMAXDBの両方を同じホストで実行するためのNETWEAVER+MAXDBソリューション
+</p></li></ul></div><p>
+ソリューションを適用するには、次のコマンドを実行します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution apply <em class="replaceable">SOLUTION</em></code></pre></div><p>
+ソリューションは一度に1つしか適用できないことに注意してください。
+</p><p>
+ソリューションを無効にするには、次のコマンドを使用します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution revert <em class="replaceable">SOLUTION</em></code></pre></div><p>
+別のソリューションに切り替えるには、次のコマンドを使用します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution change <em class="replaceable">SOLUTION</em></code></pre></div><p>
+または、特定のSAP Notesからの推奨事項に従って、コンピュータをチューニングできます。チューニングできるノートのリストを表示するには、<code class="command">saptune note list</code>を使用します。
+</p><p>
+ノートを適用するには、次のコマンドを実行します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note apply <em class="replaceable">NOTE</em></code></pre></div><p>
+ノートを元に戻すには、次のコマンドを実行します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note revert <em class="replaceable">NOTE</em></code></pre></div><div id="id-1.11.7.18" data-id-title="最適化の組み合わせ" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: 最適化の組み合わせ</div><p>
+適用済みのソリューションからノートを元に戻したり、追加のノートを適用したりすることにより、ソリューションとノートを組み合わせることが可能です。ただし、一度にアクティブにできるのは1つのソリューションのみです。サービスを再開または再起動すると、<code class="literal">saptune</code>サービスによってソリューションとノートの組み合わせが復元されます。
+</p><p>
+まれに、ノートのオプションやパラメータの競合が発生する可能性があります。競合を避けるために、ノートは慎重に編成してください。最後のノートが、以前のノートの競合するオプションまたはパラメータよりも常に優先されます。この状況の場合は、独自のソリューションを作成するか(<a class="xref" href="cha-tune.html#sec-saptune-create" title="8.4.2. 新しいSAPノートの作成">8.4.2項 「新しいSAPノートの作成」</a>を参照)、適用済みのソリューションをカスタマイズします(<a class="xref" href="cha-tune.html#sec-saptune-customize" title="8.4.1. SAPノートのカスタマイズ">8.4.1項 「SAPノートのカスタマイズ」</a>を参照)。
+</p></div></section><section class="sect1" id="sec-saptune-sapnotes" data-id-title="SAPノートの管理"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.4 </span><span class="title-name">SAPノートの管理</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-sapnotes">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   次のセクションでは、SAPノートの操作について説明します。
+  </p><p>
+SAPノートの設定には、元のSAPノートのOS固有の部分ができる限り完全に含まれています。パラメータに値の推奨事項がない場合、または<code class="command">saptune</code>が正しい値を設定するための条件を安全に検出できない場合、パラメータは無効になります(設定には存在しますが、値はありません)。適切な値を設定するには、対応するSAPノートを読んでノートをカスタマイズします(<a class="xref" href="cha-tune.html#sec-saptune-customize" title="8.4.1. SAPノートのカスタマイズ">8.4.1項 「SAPノートのカスタマイズ」</a>を参照)。
+  </p><section class="sect2" id="sec-saptune-customize" data-id-title="SAPノートのカスタマイズ"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.1 </span><span class="title-name">SAPノートのカスタマイズ</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-customize">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    どのSAPノートも、次のコマンドを使用して設定できます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note customise <em class="replaceable">NOTE</em></code></pre></div><p>
+    このコマンドを実行すると、デフォルトのエディタ(環境変数<code class="literal">EDITOR</code>で定義)でノートの設定のコピーが開きます。変更または無効化するパラメータと、そのパラメータが属するセクションのヘッダ以外をすべて削除します。
+    </p><p>
+    パラメータの値を変更または設定するには、パラメータの値を変更または追加します。パラメータを無効にするには、値を削除しますが、パラメータと<code class="literal">=</code>の文字は残します。<code class="command">saptune</code>はパラメータを一覧表示しますが、パラメータを変更したり、パラメータのコンプライアンスステータスを確認したりすることはありません。詳細については、<code class="literal">saptune-note(5)</code>のマニュアルページを参照してください。
+   </p><p>
+   これにより、<code class="filename">/etc/saptune/override/<em class="replaceable">NOTE</em></code>ファイルが作成されます。このファイルは、別の場所で作成して<code class="filename">/etc/saptune/override/</code>に配置することもできます。
+   </p><p>
+   設定セクションは条件付きにすることができます。これをタグ付けと呼びます。詳細については、<code class="literal">saptune-note(5)</code>を参照してください。
+   </p><p>
+   ノートのカスタマイズが完了したら、<code class="literal">saptune</code>サービスを再起動して変更を適用します。
+   </p></section><section class="sect2" id="sec-saptune-create" data-id-title="新しいSAPノートの作成"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.2 </span><span class="title-name">新しいSAPノートの作成</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-create">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    次のコマンドを使用して新しいSAPノートを作成できます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note create <em class="replaceable">NOTE</em></code></pre></div><p>
+    このコマンドを実行すると、デフォルトのエディタ(環境変数<code class="literal">EDITOR</code>で定義)でメモの設定テンプレートが開きます。ここでは、<code class="command">saptune</code>のすべての機能が利用できます。詳細については、<code class="literal">saptune-note(5)</code>のマニュアルページを参照してください。
+    </p><p>
+    これにより、ノートの設定ファイル<code class="filename">/etc/saptune/extra/<em class="replaceable">NOTE.conf</em></code>が作成されます。このファイルは、別の場所で作成して<code class="filename">/etc/saptune/extra/</code>に配置することもできます。
+    </p><p>
+    設定セクションは条件付きにすることができます。これをタグ付けと呼びます。詳細については、<code class="literal">saptune-note(5)</code>を参照してください。
+   </p></section><section class="sect2" id="sec-saptune-edit" data-id-title="カスタムSAPノートの編集"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.3 </span><span class="title-name">カスタムSAPノートの編集</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-edit">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   カスタムノートを編集するには、次のコマンドを使用します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note edit <em class="replaceable">NOTE</em></code></pre></div><p>
+このコマンドを実行すると、デフォルトのエディタ(<code class="literal">EDITOR</code>)でメモの設定が開きます。ノートの編集が完了したら、<code class="literal">saptune</code>サービスを再起動して変更を適用します。カスタムノートは、提供されているノートと同じようにカスタマイズできます。
+</p></section><section class="sect2" id="sec-saptune-delete" data-id-title="SAPノートまたはカスタマイズの削除"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.4 </span><span class="title-name">SAPノートまたはカスタマイズの削除</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-delete">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    次のコマンドは、ノートを削除します。対応する上書きファイルが利用可能な場合は、それも削除されます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note delete test</code>
+Note to delete is a customer/vendor specific Note.
+Do you really want to delete this Note (test2)? [y/n]: y</pre></div><p>
+    ノートはその時点では適用されない場合があります。次の点に注意してください。
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      アクションを完了するには確認が必要です。
+     </p></li><li class="listitem"><p>
+      <code class="command">saptune</code>で提供された内部SAPノートは削除できません。代わりに、利用可能な場合は、上書きファイルが削除されます。
+     </p></li><li class="listitem"><p>
+      ノートがすでに適用されている場合、コマンドは、ノートを削除する前に元に戻す必要があるというメッセージで終了します。
+     </p></li></ul></div></section><section class="sect2" id="sec-saptune-rename" data-id-title="SAPノートの名前の変更"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.5 </span><span class="title-name">SAPノートの名前の変更</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-rename">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    次のコマンドを使用すると、作成されたノートを新しい名前に変更することができます。対応する上書きファイルが利用可能な場合は、このファイルの名前も変更されます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note rename test test2</code>
+Note to rename is a customer/vendor specific Note.
+Do you really want to rename this Note (test) to the new name 'test2'? [y/n]: y</pre></div><p>
+    ノートはその時点では適用されない場合があります。次の点に注意してください。
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      アクションを完了するには確認が必要です。
+     </p></li><li class="listitem"><p>
+      <code class="command">saptune</code>で提供された内部SAPノートの名前は変更できません。
+     </p></li><li class="listitem"><p>
+      ノートがすでに適用されている場合、コマンドは、ノートを削除する前に元に戻す必要があるという情報で終了します。
+     </p></li></ul></div></section><section class="sect2" id="sec-saptune-show" data-id-title="SAPノートの設定の表示"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.6 </span><span class="title-name">SAPノートの設定の表示</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-show">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    次のコマンドを使用して、ノートの設定を一覧表示できます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note show <em class="replaceable">NOTE</em></code></pre></div></section><section class="sect2" id="sec-saptune-verify" data-id-title="SAPノートの検証"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.7 </span><span class="title-name">SAPノートの検証</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-verify">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   ノートのチューニングを検証するには、次のコマンドを使用します。
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note verify <em class="replaceable">NOTE</em></code></pre></div><p>
+コマンドの出力の詳細、および単一のノートのチューニングではなくチューニング全体を検証する方法については、<a class="xref" href="cha-tune.html#sec-saptune-verify-and-troubleshooting" title="8.6. 検証とトラブルシューティング">8.6項 「検証とトラブルシューティング」</a>を参照してください。
+</p></section><section class="sect2" id="sec-saptune-simulate" data-id-title="SAPノートのドライ実行"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.8 </span><span class="title-name">SAPノートのドライ実行</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-simulate">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    ノートの各パラメータを表示するには、次のコマンドを使用します。
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note simulate</code></pre></div><p>
+このコマンドは、現在のシステム値および予想される値(デフォルトと上書き)を一覧表示します。
+</p><div id="id-1.11.8.11.5" data-id-title="非推奨に関する注意" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: 非推奨に関する注意</div><p>
+<code class="command">simulate</code>コマンドはバージョン3.1から廃止され、SUSE Linux Enterprise Server for SAP applications 16の<code class="command">saptune</code>のすべてのバージョンで削除されています。
+</p></div></section><section class="sect2" id="sec-saptune-revert" data-id-title="SAPノートを元に戻す"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.9 </span><span class="title-name">SAPノートを元に戻す</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-revert">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>SAPノートを元に戻すには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note revert <em class="replaceable">NOTE</em></code></pre></div><p>これにより、SAPノートのすべてのパラメータが適用時の値に戻ります。</p><p>すべてを元に戻すには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note revert all</code></pre></div></section><section class="sect2" id="sec-saptune-list" data-id-title="有効化または適用されたすべてのSAPノートの一覧表示"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.4.10 </span><span class="title-name">有効化または適用されたすべてのSAPノートの一覧表示</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-list">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    すべての有効化されたSAPノートを一覧表示するには、次のコマンドを実行します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note enabled</code></pre></div><p>すべての適用されたSAPノートを一覧表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note applied</code></pre></div><p>
+   どちらのコマンドも、主にスクリプトで使用するためのものです。
+   </p></section></section><section class="sect1" id="sec-saptune-sapsolution" data-id-title="SAPソリューションの管理"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.5 </span><span class="title-name">SAPソリューションの管理</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-sapsolution">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   この章では、SAPソリューションの操作を説明します。
+  </p><p>
+SAPソリューションは、SAPノートの設定を論理的にグループ化して組み合わせたものです。1つのSAPソリューションは、一般に1つのSAP製品または組み合わせに相当します。SAPソリューションを適用すると、ソリューションに記述されているSAPノートのすべての設定を効果的に適用できます。ソリューションの一覧表示と設定の手順については、<a class="xref" href="cha-tune.html#sec-saptune-configure-tuning" title="8.3. チューニングの設定">8.3項 「チューニングの設定」</a>を参照してください。
+  </p><section class="sect2" id="sec-saptune-customize-solution" data-id-title="SAPソリューションのカスタマイズ"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.1 </span><span class="title-name">SAPソリューションのカスタマイズ</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-customize-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>次のコマンドを使用して、SAPソリューションをカスタマイズできます。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution customise <em class="replaceable">SOLUTION</em></code></pre></div><p>
+    このコマンドを実行すると、デフォルトのエディタ(環境変数<code class="literal">EDITOR</code>で定義)でソリューションの設定のコピーが開きます。アーキテクチャのノートのリストを目的に合わせて変更します。詳細については、<code class="literal">saptune-note(5)</code>のマニュアルページを参照してください。
+    </p><p>
+    これにより、上書きファイル<code class="filename">/etc/saptune/override/<em class="replaceable">SOLUTION.sol</em></code>が作成されます。このファイルは、別の場所で作成して<code class="filename">/etc/saptune/override/</code>に配置することもできます。
+    </p><p>
+    SAPソリューションのカスタマイズが完了したら、<code class="literal">saptune</code>サービスを再起動して変更を適用します。
+    </p></section><section class="sect2" id="sec-saptune-create-solution" data-id-title="新しいSAPソリューションの作成"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.2 </span><span class="title-name">新しいSAPソリューションの作成</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-create-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>新しいSAPソリューションを作成するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution create <em class="replaceable">SOLUTION</em></code></pre></div><p>
+  このコマンドを実行すると、デフォルトのエディタ(環境変数<code class="literal">EDITOR</code>で定義)でソリューションの設定テンプレートが開きます。テンプレートに入力します。
+  </p><p>
+  これにより、ソリューションの設定ファイル<code class="filename">/etc/saptune/extra/<em class="replaceable">SOLUTION.sol</em></code>が作成されます。このファイルは、別の場所で作成して<code class="filename">/etc/saptune/extra/</code>に配置することもできます。
+  </p></section><section class="sect2" id="sec-saptune-edit-solution" data-id-title="カスタムSAPソリューションの編集"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.3 </span><span class="title-name">カスタムSAPソリューションの編集</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-edit-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+ カスタムSAPソリューションを編集するには、次のコマンドを使用します。
+ </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution edit <em class="replaceable">NOTE</em></code></pre></div><p>
+このコマンドを実行すると、デフォルトのエディタ(環境変数<code class="literal">EDITOR</code>で定義)でソリューションの設定が開きます。
+</p><p>
+SAPソリューションの編集が完了したら、<code class="literal">saptune</code>サービスを再起動して変更を適用します。
+</p><p>
+カスタムソリューションは、提供されているソリューションと同じようにカスタマイズできます。
+ </p></section><section class="sect2" id="sec-saptune-delete-solution" data-id-title="SAPソリューションの削除"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.4 </span><span class="title-name">SAPソリューションの削除</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-delete-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   次のコマンドは、作成されたソリューション(この例ではmyHANA)を削除します。対応する上書きファイルや、提供されているソリューションの上書きファイル(利用可能な場合)も削除されます。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution delete myHANA</code>
+
+Solution to delete is a customer/vendor specific Solution.
+Do you really want to delete this Solution 'myHANA'? [y/n]: y</pre></div><p>
+   SAPソリューションはその時点では適用されない場合があります。次の点に注意してください。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     アクションを完了するには確認が必要です。
+    </p></li><li class="listitem"><p>
+      <code class="command">saptune</code>で提供されたSAPソリューションは削除できません。上書きファイルが利用可能な場合は、上書きファイルのみが削除されます。
+    </p></li><li class="listitem"><p>
+      SAPソリューションがすでに適用されている場合、コマンドは、SAPソリューションを削除する前に元に戻す必要があるという情報で終了します。
+    </p></li></ul></div></section><section class="sect2" id="sec-saptune-rename-solution" data-id-title="SAPソリューションの名前の変更"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.5 </span><span class="title-name">SAPソリューションの名前の変更</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-rename-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>SAPソリューションの名前を変更するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution rename myHANA myHANA2</code>
+
+Solution to rename is a customer/vendor specific Solution.
+Do you really want to rename this Solution 'myHANA' to the new name 'myHANA2'? [y/n]:</pre></div><p>
+   SAPソリューションはその時点では適用されない場合があります。次の点に注意してください。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     アクションを完了するには確認が必要です。
+    </p></li><li class="listitem"><p>
+      <code class="command">saptune</code>で提供されたSAPソリューションの名前は変更できません。
+    </p></li><li class="listitem"><p>
+      SAPソリューションがすでに適用されている場合、コマンドは、SAPソリューションの名前を変更する前に元に戻す必要があるという情報で終了します。
+    </p></li></ul></div></section><section class="sect2" id="sec-saptune-show-solution" data-id-title="SAPソリューションの設定の表示"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.6 </span><span class="title-name">SAPソリューションの設定の表示</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-show-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>SAPソリューションの設定を一覧表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution show <em class="replaceable">SOLUTION</em></code></pre></div></section><section class="sect2" id="sec-saptune-switch-solution" data-id-title="別のSAPソリューションへの切り替え"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.7 </span><span class="title-name">別のSAPソリューションへの切り替え</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-switch-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+      <code class="command">saptune</code>バージョン3.1以降、<code class="command">saptune solution change <em class="replaceable">SOLUTION</em></code>コマンドを使用して簡単に別のソリューションに切り替えられるようになりました。
+    </p><p>
+      内部的にはまず現在のソリューションが元に戻され、その後新しいソリューションが適用されることに注意してください。追加のノートを設定する場合、その順序は保持されません。
+    </p><p>
+      同じソリューションがすでに適用されている場合、何も実行されません。同じソリューションが適用されていない場合、現在のソリューションが元に戻され、新しいソリューションが適用されます。このコマンドを実行すると、変更を実行する前に確認を求められます。これは、<code class="option">--force</code>オプションを追加することによって無効にできます。
+    </p></section><section class="sect2" id="sec-saptune-verify-solution" data-id-title="SAPソリューションの検証"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.8 </span><span class="title-name">SAPソリューションの検証</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-verify-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  ソリューションのチューニングを検証するには、次のコマンドを使用します。
+  </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution verify <em class="replaceable">SOLUTION</em></code></pre></div><p>
+<code class="command">verify</code>コマンドの出力、および単一のソリューションのチューニングではなくチューニング全体を検証する方法の詳細については、<a class="xref" href="cha-tune.html#sec-saptune-verify-and-troubleshooting" title="8.6. 検証とトラブルシューティング">8.6項 「検証とトラブルシューティング」</a>を参照してください。
+</p></section><section class="sect2" id="sec-saptune-simulate-solution" data-id-title="SAPソリューションのドライ実行"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.9 </span><span class="title-name">SAPソリューションのドライ実行</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-simulate-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+ソリューションに属するすべてのノートのすべてのパラメータを表示するには、次のコマンドを使用します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution simulate <em class="replaceable">SOLUTION</em></code></pre></div><p>
+このコマンドは、現在のシステム値および予想される値(デフォルトと上書き)を一覧表示します。
+</p><div id="id-1.11.9.12.5" data-id-title="非推奨に関する注意" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記: 非推奨に関する注意</div><p>
+<code class="command">simulate</code>コマンドは3.1から廃止され、SUSE Linux Enterprise Server for SAP applications 16の<code class="command">saptune</code>のすべてのバージョンで削除されています。
+</p></div></section><section class="sect2" id="sec-saptune-revert-solution" data-id-title="SAPソリューションを元に戻す"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.10 </span><span class="title-name">SAPソリューションを元に戻す</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-revert-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>SAPソリューションを元に戻すには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution revert <em class="replaceable">SOLUTION</em></code></pre></div><p>
+     SAPソリューションを適用する必要があります。これにより、まだ適用されているSAPソリューションのすべてのSAPノートの部分が元に戻されます。
+    </p></section><section class="sect2" id="sec-saptune-edit-custom-solution" data-id-title="カスタムSAPソリューションの編集"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.11 </span><span class="title-name">カスタムSAPソリューションの編集</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-edit-custom-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>カスタムSAPソリューションを編集するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution edit <em class="replaceable">SOLUTION</em></code></pre></div></section><section class="sect2" id="sec-saptune-list-solution" data-id-title="有効化/適用されたSAPソリューションの一覧表示"><div class="titlepage"><div><div><div class="title-container"><h3 class="title"><span class="title-number-name"><span class="title-number">8.5.12 </span><span class="title-name">有効化/適用されたSAPソリューションの一覧表示</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-list-solution">#</a></h3><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>有効化されたSAPソリューションを一覧表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution enabled</code></pre></div><p>適用されたSAPソリューションを一覧表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune solution applied</code></pre></div><p>
+    適用されたSAPソリューションのSAPノートが元に戻された場合、文字列<code class="literal">(partial)</code>がソリューション名に追加されています。
+   </p><p>
+   どちらのコマンドも、主にスクリプトで使用するためのものです。
+   </p></section></section><section class="sect1" id="sec-saptune-verify-and-troubleshooting" data-id-title="検証とトラブルシューティング"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.6 </span><span class="title-name">検証とトラブルシューティング</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-verify-and-troubleshooting">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p><code class="command">saptune</code>の現在のステータスを表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune status</code></pre></div><p>出力には次の項目が含まれます。</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><code class="command">saptune</code>、<code class="literal">sapconf</code>、および<code class="systemitem">tuned</code>サービスのステータス</p></li><li class="listitem"><p>パッケージおよび実行中の<code class="command">saptune</code>のバージョン</p></li><li class="listitem"><p>設定されたSAPソリューションおよびSAPノートに関する詳細</p></li><li class="listitem"><p>ステージングに関する詳細</p></li><li class="listitem"><p>systemdシステム状態のステータス</p></li><li class="listitem"><p>仮想化環境(<code class="command">saptune</code>バージョン3.1の新機能)</p></li><li class="listitem"><p>チューニングのコンプライアンス(<code class="command">saptune</code>バージョン3.1の新機能)</p></li></ul></div><p>
+   <code class="command">saptune</code>のインストールを分析するには、次のコマンドを実行します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune check</code></pre></div><p>
+このコマンドは以下のチェックを実行します。
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+必須の設定ファイルまたは古い設定ファイルがないかどうかのチェック
+</p></li><li class="listitem"><p>
+RPMの残りがないかどうかのチェック
+</p></li><li class="listitem"><p>
+systemdのシステム状態が悪化しているかどうかのチェックと、障害が発生したユニットの一覧表示
+</p></li><li class="listitem"><p>
+sapconf、saptune、およびチューニングしたサービスのステータスのチェック
+</p></li></ul></div><div id="id-1.11.10.10" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記</div><p>
+<code class="command">saptune check</code>でsystemdのシステムステータスの悪化について警告されても、ほとんどの場合、<code class="command">saptune</code>に影響はありません。ただし、障害が発生したサービスのトラブルシューティングが必要です。
+</p></div><p>
+このコマンドは、チューニング自体はチェックしません。チューニングをチェックするには、次のコマンドを使用します。
+</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune note verify</code></pre></div><div id="id-1.11.10.13" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記</div><p>
+ノートを指定せずに<code class="command">saptune note verify</code>を呼び出すと、現在適用されているノートがすべて検証されます。これにより、現在のチューニング全体を検証できます。代わりに、<code class="command">saptune solution verify</code>コマンドを使用します。このコマンドでは、現在適用されているすべてのノートもチェックできます。
+</p></div><p>
+<code class="command">saptune note verify</code>コマンドは、適用されているすべてのノートの表を、以下を含めて出力します。
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+SAPノートとバージョン
+</p></li><li class="listitem"><p>
+パラメータ
+</p></li><li class="listitem"><p>
+パラメータの予想される値
+</p></li><li class="listitem"><p>
+上書きが存在する場合、上書きの値
+</p></li><li class="listitem"><p>
+現在のシステム値
+</p></li><li class="listitem"><p>
+パラメータのコンプライアンスステータス
+</p></li></ul></div><p>
+最後の行には、チューニング全体の総合的なコンプライアンスステータスが含まれます。
+</p><div id="id-1.11.10.17" class="admonition note normal"><img class="symbol" alt="注記" title="Note" src="static/images/icon-note.svg"/><div class="admon-title">注記</div><p>
+提供されているノートの一部のパラメータは無効になっています。つまり、「Expected」列には空の値が入っています。このような場合、そのSAPノートに具体的な推奨事項が含まれていないか、<code class="command">saptune</code>が推奨事項の条件を検出することができません。SAPノートを読み、ノートをカスタマイズして値を手動で設定してください(<a class="xref" href="cha-tune.html#sec-saptune-customize" title="8.4.1. SAPノートのカスタマイズ">8.4.1項 「SAPノートのカスタマイズ」</a>を参照)。
+</p></div><p>
+パラメータが準拠していない場合、脚注があればその脚注を読んでください。一部のチューニングには、同等のパラメータが存在します。次はその例です。
+</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+<code class="literal">grub:intel_idle.max_cstate</code>は<code class="literal">force_latency</code>で対応
+</p></li><li class="listitem"><p>
+<code class="literal">grub:processor.max_cstate</code>は<code class="literal">force_latency</code>で対応
+</p></li><li class="listitem"><p>
+<code class="literal">grub:numa_balancing</code>は<code class="literal">kernel.numa_balancing</code>で対応
+</p></li><li class="listitem"><p>
+<code class="literal">grub:transparent_hugepage</code>は<code class="literal">THP</code>で対応
+</p></li></ul></div><p>
+<code class="literal">saptune</code>サービスを再起動すると、問題は修正されます。ただし、非準拠パッケージ(パラメータが<code class="literal">rpm:</code>で始まる)またはGRUBエントリ(パラメータが<code class="literal">grub:</code>で始まる)の場合を除きます。<code class="command">saptune</code>は、パッケージのインストール、アンインストール、またはアップグレードは行いません。また、ブートローダを変更することもありません。
+</p><p>
+一般的な問題は、<code class="command">saptune</code>とsysctlによって処理されるsysctlパラメータです。パラメータのコンプライアンス列の脚注に、そのパラメータがいずれかのsysctlの設定ファイルにも存在するかどうかが示されます。問題を修正するには、パラメータをsysctlの設定から削除するか、<code class="command">saptune</code>でパラメータを無効にします(<a class="xref" href="cha-tune.html#sec-saptune-customize" title="8.4.1. SAPノートのカスタマイズ">8.4.1項 「SAPノートのカスタマイズ」</a>を参照)。
+</p><p>
+必ずチューニングの変更の原因を調査して修正してください。<code class="command">saptune</code>が特定のパラメーターをチューニングしない場合は、ノートを元に戻すか、上書きを使用してパラメータを無効にすることができます(<a class="xref" href="cha-tune.html#sec-saptune-customize" title="8.4.1. SAPノートのカスタマイズ">8.4.1項 「SAPノートのカスタマイズ」</a>を参照)。
+   </p></section><section class="sect1" id="sec-saptune-machine-readable-output" data-id-title="マシンが読み取り可能な出力"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.7 </span><span class="title-name">マシンが読み取り可能な出力</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-machine-readable-output">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+      バージョン3.1以降、<code class="command">saptune</code>は、次のコマンドに対してマシンが読み取り可能な出力(JSON)をサポートしています。
+      </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+            <code class="command">saptune [daemon|service] status</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune note list|verify|enabled|applied</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune solution list|verify|enabled|applied</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune status</code>
+          </p></li><li class="listitem"><p>
+            <code class="command">saptune version</code>
+          </p></li></ul></div><p>
+      マシンが読み取り可能な出力によって、<code class="command">saptune</code>をスクリプトおよび設定管理ソリューションに統合できます。
+    </p><p>
+      JSON出力を生成するには、最初のオプションとして<code class="option">--format json</code>を追加します。次に例を示します。
+    </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt user">&gt; </code>saptune --format json note applied | jq
+{
+"$schema": "file:///usr/share/saptune/schemas/1.0/saptune_note_applied.schema.json",
+"publish time": "2023-08-29 17:05:45.627",
+"argv": "saptune --format json note applied",
+"pid": 1538,
+"command": "note applied",
+"exit code": 0,
+"result": {
+    "Notes applied": [
+    "941735",
+    "1771258",
+    "1980196",
+    "2578899",
+    "2684254",
+    "2382421",
+    "2534844",
+    "2993054",
+    "1656250"
+    ]
+},
+"messages": []
+}</pre></div><p>
+  まだJSON出力をサポートしていないコマンドを実行すると、<code class="literal">result</code>ブロックが<code class="literal">"implemented": false</code>に設定されて失敗します。
+</p><div class="verbatim-wrap"><pre class="screen">[+]
+<code class="prompt user">&gt; </code>saptune --format json staging status | jq
+{
+"$schema": "file:///usr/share/saptune/schemas/1.0/saptune_staging_status.schema.json",
+"publish time": "2023-08-29 17:08:16.708",
+"argv": "saptune --format json staging status",
+"pid": 1653,
+"command": "staging status",
+"exit code": 1,
+"result": {
+    "implemented": false
+},
+"messages": []
+}</pre></div></section><section class="sect1" id="sec-saptune-staging" data-id-title="ステージング"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.8 </span><span class="title-name">ステージング</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-staging">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+    新しい<code class="command">saptune</code>パッケージには、バイナリの変更(バグ修正など)と、新規または変更されたSAPノートおよびSAPソリューションの両方を含めることができます。特定の状況では、システム設定を変更せずにバグ修正や新機能を展開することが推奨されます。
+   </p><p>
+    ステージングが有効である場合、パッケージの更新におけるSAPノートおよびSAPソリューションの変更はすぐに有効には<span><span class="emphasis"><strong>なりません</strong></span></span>。これらはステージング領域に配置され、後で確認してリリースできます。
+   </p><div id="id-1.11.12.4" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要</div><p>現在の実装では、ステージングが有効になっている場合、パッケージの更新によってステージングが上書きされます。</p></div><p>ステージングはデフォルトでは無効になっています。有効にするには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging enable</code></pre></div><p>この時点から、<code class="command">saptune</code>パッケージで提供されるSAPノートおよびSAPソリューションの変更は、ステージング領域に配置されます。ステージング領域を表示するには、次のコマンドを実行します。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging list</code></pre></div><p>次のコマンドを使用して、ステージング領域と作業領域におけるSAPノートとSAPソリューションの違いの概要を表形式で出力できます。</p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging diff [NOTE...|SOLUTION...|all]</code></pre></div><p>
+    違いを確認したら、リリースに潜在的な問題があるかどうか、または追加の手順が必要かどうかを確認するために分析を行うことができます。そのためには次のコマンドを実行します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging analysis [NOTE...|SOLUTION...|all]</code></pre></div><p>
+    SAPノートまたはSAPソリューションをステージング領域からリリースするには、次のコマンドを使用します。
+   </p><div class="verbatim-wrap"><pre class="screen"><code class="prompt root"># </code><code class="command">saptune staging [--force|--dry-run] [NOTE..|SOLUTION...|all]</code></pre></div><p>
+    このコマンドは、分析(<code class="command">saptune staging
+    analysis</code>を参照)を提示し、確認を求めた後にリリースを実行します。
+   </p></section><section class="sect1" id="sec-saptune-more" data-id-title="詳細情報"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">8.9 </span><span class="title-name">詳細情報</span></span> <a title="Permalink" class="permalink" href="cha-tune.html#sec-saptune-more">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+   次のマニュアルページを参照してください。
+  </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+     <code class="command">man 8 saptune</code>
+    </p></li><li class="listitem"><p>
+     <code class="command">man 8 saptune-migrate</code>
+    </p></li><li class="listitem"><p>
+     <code class="command">man 8 saptune-note</code>
+    </p></li></ul></div><p>
+   プロジェクトホームページ(<a class="link" href="https://github.com/SUSE/saptune/" target="_blank">https://github.com/SUSE/saptune/</a>)も参照してください。
+  </p></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="cha-cluster.html"><span class="pagination-relation">前へ</span><span class="pagination-label"><span class="title-number">第7章 </span>SAP HANAクラスタの設定</span></a> </div><div><a class="pagination-link next" href="cha-memory-protection.html"><span class="pagination-relation">次へ</span><span class="pagination-label"><span class="title-number">第9章 </span>ワークロードメモリ保護のチューニング</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">このページで</div><div class="toc"><ul><li><span class="sect1"><a href="cha-tune.html#sec-saptune-enable"><span class="title-number">8.1 </span><span class="title-name"><code class="command">saptune</code>のインストールと更新</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-disable"><span class="title-number">8.2 </span><span class="title-name"><code class="command">saptune</code>の有効化と無効化</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-configure-tuning"><span class="title-number">8.3 </span><span class="title-name">チューニングの設定</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-sapnotes"><span class="title-number">8.4 </span><span class="title-name">SAPノートの管理</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-sapsolution"><span class="title-number">8.5 </span><span class="title-name">SAPソリューションの管理</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-verify-and-troubleshooting"><span class="title-number">8.6 </span><span class="title-name">検証とトラブルシューティング</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-machine-readable-output"><span class="title-number">8.7 </span><span class="title-name">マシンが読み取り可能な出力</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-staging"><span class="title-number">8.8 </span><span class="title-name">ステージング</span></a></span></li><li><span class="sect1"><a href="cha-tune.html#sec-saptune-more"><span class="title-number">8.9 </span><span class="title-name">詳細情報</span></a></span></li></ul></div><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>

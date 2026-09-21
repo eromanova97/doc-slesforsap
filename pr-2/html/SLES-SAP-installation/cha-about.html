@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head><title>SUSE Linux Enterprise Server for SAP applicationsとは | インストールクイックスタート | SLES for SAP 15 SP7</title><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/><link rel="stylesheet" type="text/css" href="static/css/style-new.css"/>
+<link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"/><link rel="schema.dcterms" href="http://purl.org/dc/terms/"/>
+<meta name="dcterms.created" content="2025-06-17"/>
+<meta name="dcterms.modified" content="2025-06-17"/>
+<meta name="dcterms.dateSubmitted" content="2026-09-21"/>
+<meta name="title" content="SUSE Linux Enterprise Server for SAP applicationsとは | …"/>
+<meta name="description" content="SUSE® Linux Enterprise Server for SAP applicationsは、SAPユーザの特定のニーズに対処するソフトウェアとサービスのバンドルです。すべてのSAPソフトウェアソリューション用に最適化された唯一のオペレーティングシステムです。"/>
+<meta name="product-name" content="SUSE Linux Enterprise Server for SAP applications"/>
+<meta name="product-number" content="15 SP7"/>
+<meta name="book-title" content="インストールクイックスタート"/>
+<meta name="chapter-title" content="第1章 SUSE Linux Enterprise Server for SAP applicationsとは"/>
+<meta name="tracker-url" content="https://bugzilla.suse.com/enter_bug.cgi"/>
+<meta name="tracker-type" content="bsc"/>
+<meta name="tracker-bsc-assignee" content="dmitri.popov@suse.com"/>
+<meta name="tracker-bsc-component" content="Documentation"/>
+<meta name="tracker-bsc-product" content="SUSE Linux Enterprise Server for SAP Applications 15 SP7"/>
+<meta name="publisher" content="SUSE"/><meta property="og:title" content="インストールクイックスタート"/>
+<meta property="og:description" content="SLES for SAPのインストール"/>
+<meta property="og:type" content="article"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="インストールクイックスタート"/>
+<meta name="twitter:description" content="SLES for SAPのインストール"/>
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": ["TechArticle"],
+    "image": "https://www.suse.com/assets/img/suse-white-logo-green.svg",
+    "name": "SUSE Linux Enterprise Server for SAP applicationsとは | SLES for SAP 15 SP7",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "name": "Products &amp; Solutions"
+    },
+    "inLanguage": "ja",
+    "headline": "SUSE Linux Enterprise Server for SAP applicationsとは",
+    "description": "SUSE® Linux Enterprise Server for SAP applicationsは、SAPユーザの特定のニーズに対処するソフトウェアとサービスのバンドルです。すべてのSAPソフトウェアソリューション用に最適化された唯一のオペレーティングシステムです。",
+    "author": [
+      {
+        "@type": "Corporation",
+        "name": "SUSE Product &amp; Solution Documentation Team",
+        "url": "https://documentation.suse.com"
+      }
+    ],
+    "dateCreated": "2025-06-17T00:00+02:00",
+    "dateModified": "2025-06-17T00:00+02:00",
+    "datePublished": "2026-09-21T11:23+02:00",
+    "about": [
+
+    ],
+    "mentions": [
+      { "@type": "SoftwareApplication",
+        "name": "SLES for SAP",
+        "softwareVersion": "15 SP7",
+        "applicationCategory": "Operating System",
+        "operatingSystem": "Linux"
+      }
+    ],
+    "sameAs": [
+          "https://www.facebook.com/SUSEWorldwide/about",
+          "https://www.youtube.com/channel/UCHTfqIzPKz4f_dri36lAQGA",
+          "https://twitter.com/SUSE",
+          "https://www.linkedin.com/company/suse"
+    ],
+    "publisher": {
+      "@type": "Corporation",
+      "name": "SUSE",
+      "url": "https://documentation.suse.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+      }
+    }
+  }</script>
+<link rel="prev" href="pre-s4s.html" title="序文"/><link rel="next" href="cha-plan.html" title="第2章 インストールの計画"/><link type="text/css" rel="preload" as="style" onload="this.rel='stylesheet'" href="https://documentation.suse.com/docserv/res/fonts/suse/suse.css"/><script src="static/js/script-purejs.js" type="text/javascript"></script><script src="static/js/highlight.js" type="text/javascript"></script><script>hljs.highlightAll();</script><script src="static/js/ui-modifiers.js" type="text/javascript"></script></head><body class="draft wide offline js-off" onload="$('#betawarn-button-wrap').toggle();if (document.cookie.length > 0) {if (document.cookie.indexOf('betawarn=closed') != -1){$('#betawarn').toggle()}};"><div id="betawarn" style="position:fixed;bottom:0;z-index:9025;background-color:#FDE8E8;padding:1em;margin-left:10%;margin-right:10%;display:block;border-top:.75em solid #E11;width:80%"><p style="color:#333;margin:1em 0;padding:0;">This is a draft document that was built and uploaded automatically. It may document beta software and be incomplete or even incorrect. <strong>Use this document at your own risk.</strong></p> <div id="betawarn-button-wrap" style="display:none;margin:0;padding:0;"><a href="#" onclick="$('#betawarn').toggle();var d=new Date();d.setTime(d.getTime()+(0.5*24*60*60*1000));document.cookie='betawarn=closed; expires='+d.toUTCString()+'; path=/'; return false;" style="color:#333;text-decoration:underline;float:left;margin-top:.5em;padding:1em;display:block;background-color:#FABEBE;">I understand this is a draft</a></div></div><div class="bypass-block"><a href="#_content">目次にジャンプ</a><a href="#_bottom-pagination">ページナビゲーションにジャンプ: 前のページ[アクセスキーp]/次のページ[アクセスキーn]</a></div><header id="_mainnav"><div class="growth-inhibitor"><img src="static/images/logo.svg" alt="Logo" class="logo"/></div></header><div class="crumbs"><div class="growth-inhibitor"><a class="crumb" href="index.html">インストールクイックスタート</a><span class="sep">|</span><a class="crumb" href="cha-about.html">SUSE Linux Enterprise Server for SAP applicationsとは</a></div></div><main id="_content"><nav id="_side-toc-overall" tabindex="0" class="side-toc"><div class="side-title"><span class="phrase">インストールクイックスタート</span></div><ol role="list"><li role="listitem"><a href="pre-s4s.html" class=" "><span class="title-number"> </span><span class="title-name">序文</span></a></li><li role="listitem"><a href="cha-about.html" class=" you-are-here"><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></a></li><li role="listitem"><a href="cha-plan.html" class=" "><span class="title-number">2 </span><span class="title-name">インストールの計画</span></a></li><li role="listitem"><a href="cha-install.html" class=" "><span class="title-number">3 </span><span class="title-name">オペレーティングシステムのインストール</span></a></li><li role="listitem"><a href="cha-install-sap.html" class=" "><span class="title-number">4 </span><span class="title-name">SAPアプリケーションのインストール</span></a></li><li role="listitem"><a href="cha-upgrade-sap-hana-cluster.html" class=" "><span class="title-number">5 </span><span class="title-name">SAP HANAクラスタのアップグレード</span></a></li><li role="listitem"><a href="apa.html" class=" "><span class="title-number">A </span><span class="title-name">GNU licenses</span></a></li> </ol> </nav><button id="_open-side-toc-overall" title="目次"> </button><article class="documentation"><button id="_unfold-side-toc-page">このページで</button><section class="chapter" id="cha-about" data-id-title="SUSE Linux Enterprise Server for SAP applicationsとは"><div class="titlepage"><div><div class="version-info">適用項目  <span class="productname">SUSE Linux Enterprise Server for SAP applications</span> <span class="productnumber">15 SP7</span></div><div><div class="title-container"><h1 class="title"><span class="title-number-name"><span class="title-number">1 </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsとは</span></span> <a title="Permalink" class="permalink" href="cha-about.html#">#</a></h1><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><div><div class="abstract"><p>
+   SUSE® Linux Enterprise Server for SAP applicationsは、SAPユーザの特定のニーズに対処するソフトウェアとサービスのバンドルです。すべてのSAPソフトウェアソリューション用に最適化された唯一のオペレーティングシステムです。
+  </p></div></div></div></div><p>
+  対象となる使用例は次のとおりです。
+ </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+    UnixからLinuxへのマイグレーションおよびプラットフォーム変更
+   </p></li><li class="listitem"><p>
+    SAPアプライアンス
+   </p></li><li class="listitem"><p>
+    SAPクラウドの展開
+   </p></li></ul></div><p>
+  SUSE Linux Enterprise Server for SAP applicationsは、ソフトウェアコンポーネントおよびサービス提供から構成されています。サービス提供については、次の各セクションで説明します。図<a class="xref" href="cha-about.html#fig-offering" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング">SUSE Linux Enterprise Server for SAP applicationsのオファリング</a>は、SUSEのその他の製品でも使用できるソフトウェアコンポーネントおよびサービス(緑色)とSUSE Linux Enterprise Server for SAP applicationsでのみ使用できるソフトウェアコンポーネントおよびサービス(青色)を示しています。
+ </p><div class="figure" id="fig-offering"><div class="figure-contents"><div class="mediaobject"><a href="images/s4s_overview.png"><img src="images/s4s_overview.png" width="85%" alt="SUSE Linux Enterprise Server for SAP applicationsのオファリング" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング"/></a></div></div><div class="title-container"><div class="figure-title-wrap"><div class="figure-title"><span class="title-number-name"><span class="title-number">図 1.1: </span><span class="title-name">SUSE Linux Enterprise Server for SAP applicationsのオファリング </span></span><a title="Permalink" class="permalink" href="cha-about.html#fig-offering">#</a></div></div><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div><section class="sect1" id="sec-component" data-id-title="ソフトウェアコンポーネント"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.1 </span><span class="title-name">ソフトウェアコンポーネント</span></span> <a title="Permalink" class="permalink" href="cha-about.html#sec-component">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><p>
+  <a class="xref" href="cha-about.html#fig-offering" title="SUSE Linux Enterprise Server for SAP applicationsのオファリング">図1.1「SUSE Linux Enterprise Server for SAP applicationsのオファリング」</a>で示されているように、SUSE Linux Enterprise Server for SAP applicationsは、SUSE Linux Enterprise Serverをベースとしていますが、SUSE Linux Enterprise High Availabilityやインストールワークフローなどのいくつかの追加のソフトウェアコンポーネントが含まれています。これらのソフトウェアコンポーネントについて以下に簡単に説明します。
+ </p><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.7.4.1"><span class="term">SUSE Linux Enterprise Server</span></dt><dd><p>
+     現在のリリースはSUSE Linux Enterprise Server 15 SP7をベースとしています。SUSE Linux Enterprise Serverは、物理環境と仮想環境の両方でミッションクリティカルなコンピューティングに対応する非常に相互運用性の高いプラットフォームです。
+    </p></dd><dt id="id-1.4.7.4.2"><span class="term">SUSE Linux Enterprise High Availability</span></dt><dd><p>
+     SUSE Linux Enterprise High Availabilityには、ポリシー重視の柔軟なクラスタリングのためのツールが用意されていて、SAPインスタンスおよびSAPデータベースのバックエンドを管理するためのリソースエージェントが含まれています。
+    </p></dd><dt id="id-1.4.7.4.3"><span class="term">簡素化されたSAP HANAシステムレプリケーションのセットアップ</span></dt><dd><p>
+     SUSE Linux Enterprise Server for SAP applicationsは、SUSE Linux Enterprise High Availabilityのコンポーネントと、SAP HANAスケールアップ、スケールアウト、およびトポロジ管理用の追加のリソースエージェントを使用したSAP HANAシステムレプリケーションをサポートしています。また、SUSE Linux Enterprise Server for SAP applicationsには、クラスタのセットアップを簡素化するYaSTウィザードが付属しています。
+    </p></dd><dt id="id-1.4.7.4.4"><span class="term">インストールワークフロー</span></dt><dd><p>
+     インストールワークフローは、SUSE Linux Enterprise ServerオペレーティングシステムとSAPアプリケーション両方のガイド付きインストールパスを提供します。このワークフローは、補足メディアを使用してサードパーティベンダーが拡張できます。詳細については、<a class="xref" href="cha-plan.html#sec-workflow-overview" title="2.4. インストールワークフローの概要">2.4項 「インストールワークフローの概要」</a>を参照してください。
+    </p></dd><dt id="id-1.4.7.4.5"><span class="term">ClamSAPを使用したマルウェア保護</span></dt><dd><p>
+     ClamSAPは、ClamAVマルウェア対策ツールキットをSAP NetWeaverおよびSAP Mobile Platformアプリケーションに統合し、クロスプラットフォーム脅威検出を可能にします。
+    </p></dd><dt id="id-1.4.7.4.6"><span class="term">SAP HANAのファイアウォールおよびSAP HANA強化ガイド</span></dt><dd><p>
+     さらに、SUSE Linux Enterprise Server for SAP applicationsには、<code class="systemitem">firewalld</code>と統合されたパッケージ<code class="systemitem">HANA-Firewall</code>が用意されています。これにより、できるだけ簡単にSAP HANAをセキュリティ保護するための事前設定されたセットアップおよびルールが提供されます。
+    </p><p>
+     ベースとなっているオペレーティングシステムを強化する方法については、SUSE Linux Enterprise Server for SAP applicationsリソースライブラリ(<a class="link" href="https://www.suse.com/products/sles-for-sap/resource-library/" target="_blank">https://www.suse.com/products/sles-for-sap/resource-library/</a>)を参照してください。そこで、ドキュメント『<em class="citetitle">OS Security Hardening for SAP HANA</em>』を検索してください。
+    </p></dd><dt id="id-1.4.7.4.7"><span class="term">簡素化された運用管理</span></dt><dd><p>
+     <code class="command">sapconf</code>によって提供されるシステムチューニングプロファイルを使用すると、SAPで推奨するようにシステムを自動的かつ包括的にチューニングできます。
+    </p><p>
+     <code class="command">cryptctl</code>では、LUKSを使用して機密ディレクトリを暗号化できます。暗号化キーは、お客様の構内にある中央サーバに配置されます。暗号化されたパーティションは、予期しない再起動後に自動的に再マウントされます。
+    </p><p>
+     SAPアプリケーションのソフトウェア依存関係の作業を簡素化するため、SUSEでは固有のアプリケーションに関連する依存関係RPMパッケージを組み合わせたパターンを作成しました。
+    </p><p>
+     <code class="systemitem">ClusterTools2</code>には、Corosync/<code class="systemitem">pacemaker</code>のクラスタのセットアップと管理を支援するツールが用意されています。
+    </p></dd></dl></div></section><section class="sect1" id="sec-s4s-service" data-id-title="含まれるサービス"><div class="titlepage"><div><div><div class="title-container"><h2 class="title"><span class="title-number-name"><span class="title-number">1.2 </span><span class="title-name">含まれるサービス</span></span> <a title="Permalink" class="permalink" href="cha-about.html#sec-s4s-service">#</a></h2><div class="icons"><a target="_blank" class="icon-reportbug" title="問題の報告"> </a></div></div></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="id-1.4.8.2.1"><span class="term"><span><span class="emphasis"><strong>「Extended Service Pack Overlap Support (ESPOS)」</strong></span></span>
+    </span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションには、Extended Service Pack Overlap Support (ESPOS)が含まれています。これにより、2つの連続するサービスパックのサポート期間の重複期間が3年延長されます。この期間中、長期サービスパックサポート(LTSS)の条項に従ってサポートおよび関連するすべての保守更新を受け取ります。
+     </p><p>
+        Extended Service Pack Overlap Supportの場合、6カ月のみではなく3年半以内にサービスパックのマイグレーションを実行できます。このため、マイグレーションを容易にスケジュールし、時間の制約が軽減された状況でマイグレーション前にテストを行うことができます。追加コストを支払うことでSUSEはLTSSも提供します。LTSSでは、ESPOS期間の終了後に特定のサービスパックのサポートを受けることができます。SUSE Linux Enterprise Server for SAP applicationsには、1年半の一般的なサポートとそれぞれのサービスパックに対する3年間のESPOSが含まれています。
+     </p><p>
+        各SLEファミリの最後のサービスパックにはESPOSは含まれていません。これにはESPOSの代わりに一般的なより長期のサポート期間が含まれています。そのため、LTSSは最後のサービスパックに対してのみ使用できます。その他すべてのサービスパックには3年間のESPOSがすでに含まれています。これはLTSSと同じです。
+     </p><p>
+      詳細については、次のリソースを参照してください。
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+        製品ライフサイクルサポートポリシー: <a class="link" href="https://www.suse.com/support/policy-products/#sap" target="_blank">https://www.suse.com/support/policy-products/#sap</a>
+       </p></li><li class="listitem"><p>
+        製品別のライフサイクル日付: <a class="link" href="https://www.suse.com/lifecycle/" target="_blank">https://www.suse.com/lifecycle/</a>
+       </p></li><li class="listitem"><p>
+        長期サービスパックサポート: <a class="link" href="https://www.suse.com/products/long-term-service-pack-support/" target="_blank">https://www.suse.com/products/long-term-service-pack-support/</a>
+       </p></li></ul></div></dd><dt id="id-1.4.8.2.2"><span class="term"><span><span class="emphasis"><strong>SUSE Linux Enterprise Server Priority Support for SAP Applications</strong></span></span>
+    </span></dt><dd><p>
+      SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションには、SUSE Linux Enterprise Server Priority Support for SAP Applicationsが含まれています。SAPから直接SUSE Linux Enterprise Server for SAP applicationsのテクニカルサポートを提供します。SUSE Technical SupportおよびSAPのサポートエンジニアによってジョイントサポートインフラストラクチャが提供されます。これはSAP Resolveに基づき、SAPとSUSEの両方とのシームレス通信を提供します。この<span class="quote">「<span class="quote">One Face to the Customer</span>」</span> (お客様に対する一元窓口)サポートモデルによって、複雑さが軽減され、総所有コストが低減されます。
+     </p><p>
+      詳細については、「<em class="citetitle">SAP Note 1056161: SUSE
+       Priority Support for SAP Applications</em>」(<a class="link" href="https://launchpad.support.sap.com/#/notes/1056161" target="_blank">https://launchpad.support.sap.com/#/notes/1056161</a>)を参照してください。
+     </p></dd></dl></div><div id="id-1.4.8.3" data-id-title="モジュールおよび拡張機能のライフサイクルおよびサポート" class="admonition important normal"><img class="symbol" alt="重要" title="Important" src="static/images/icon-important.svg"/><div class="admon-title">重要: モジュールおよび拡張機能のライフサイクルおよびサポート</div><p>
+    モジュールおよび拡張機能のライフサイクルはSLES for SAPとは異なります。SUSEではモジュールおよび拡張機能に対して異なるサポートが提供されます。
+   </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p>
+      モジュール:
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         モジュールによって異なります。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         最新のパッケージのみがサポートされます。サポートはSUSE Linux Enterprise Server for SAP applicationsのサブスクリプションに含まれています。追加の登録キーは必要ありません。
+        </p></li></ul></div></li><li class="listitem"><p>
+      拡張機能
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         SUSE Linux Enterprise Server for SAP applicationsとともに通常リリースが調整されます。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         サポートは利用できますが、SUSE Linux Enterprise Server for SAP applicationsのサブスクリプションに含まれていません。追加の登録キーが必要です。
+        </p></li></ul></div></li><li class="listitem"><p>
+      サポートされない拡張機能(SUSE Package HubおよびSUSE Software Development Kit)
+     </p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><p><span class="formalpara-title">ライフサイクル. </span>
+         SUSE Linux Enterprise Server for SAP applicationsとともに通常リリースが調整されます。
+        </p></li><li class="listitem"><p><span class="formalpara-title">サポート. </span>
+         セキュリティおよびパッケージングの問題の修正以外のサポートはありません。追加の登録キーは必要ありません。
+        </p></li></ul></div></li></ul></div></div></section></section><nav class="bottom-pagination"><div><a class="pagination-link prev" href="pre-s4s.html"><span class="pagination-relation">前へ</span><span class="pagination-label">序文</span></a> </div><div><a class="pagination-link next" href="cha-plan.html"><span class="pagination-relation">次へ</span><span class="pagination-label"><span class="title-number">第2章 </span>インストールの計画</span></a> </div></nav></article><aside id="_side-toc-page" class="side-toc"><div class="side-title">このページで</div><div class="toc"><ul><li><span class="sect1"><a href="cha-about.html#sec-component"><span class="title-number">1.1 </span><span class="title-name">ソフトウェアコンポーネント</span></a></span></li><li><span class="sect1"><a href="cha-about.html#sec-s4s-service"><span class="title-number">1.2 </span><span class="title-name">含まれるサービス</span></a></span></li></ul></div><div class="side-title">このページを共有</div><ul class="share"><li><a id="_share-mail" href="#" title="電子メール"> </a></li><li><a id="_print-button" href="#" title="このページを印刷"> </a></li></ul> </aside></main><footer id="_footer"><div class="growth-inhibitor"><div class="copy"><span class="copy__rights">© SUSE  2026</span></div></div></footer>
+<script type="text/javascript" src="static/js/language-switcher.js"> </script></body></html>
