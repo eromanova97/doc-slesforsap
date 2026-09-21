@@ -3,7 +3,7 @@ name: PR-preview-build
 # Builds HTML for every document affected by a pull request and uploads it as  an artifact. Deployment happens in pr-preview-deploy.yml.
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize, reopened]
     paths:
       - 'DC-*'
@@ -30,6 +30,9 @@ jobs:
       build-list: ${{ steps.select-dc-build.outputs.dc-list }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
 
       - name: Checking basic soundness of DC files
         uses: openSUSE/doc-ci@gha-select-dcs
@@ -63,6 +66,9 @@ jobs:
         dc-files: ${{ fromJson(needs.select-dc-files.outputs.build-list) }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
 
       - name: Building DC files - ${{ matrix.dc-files }}
         id: build-dc
