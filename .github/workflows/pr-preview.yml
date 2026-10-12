@@ -46,7 +46,14 @@ jobs:
           RAW_LIST: ${{ steps.select-dc-build.outputs.dc-list }}
         run: |
           
-          FILTERED_LIST=$(printf '%s' "$RAW_LIST" | jq -c 'map(select((startswith("l10n/") or contains("/l10n/")) | not))')
+          FILTERED_LIST=$(printf '%s' "$RAW_LIST" | jq -c '
+            map(
+              split(" ")
+              | map(select((startswith("l10n/") or contains("/l10n/")) | not)) 
+              | join(" ")
+            )
+            | map(select(length > 0))
+          ')
           
           echo "Original list: $RAW_LIST"
           echo "Filtered list: $FILTERED_LIST"
